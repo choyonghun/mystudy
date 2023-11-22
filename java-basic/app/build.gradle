@@ -62,7 +62,7 @@ tasks.withType(JavaCompile).configureEach {
 // eclipse 프로젝트 이름을 설정하기
 eclipse {
     project {
-        name = "java-basic"
+        name = "java-basic"     //설정 안하면 디렉토리 이름이 프로젝트 이름으로 설정된다.
     }
     jdt {
       sourceCompatibility = 21
