@@ -4,9 +4,10 @@ public class App {
 
   public static void main(String[] args) {
 
-    String ANSI_CLEAR = "\033[0m";
-    String ANSI_BOLD_RED = "\033[1;31m";
-    String ANSI_RED = "\033[0;31m";
+    String ANSI_CLEAR = "\033[0m";            // 초기화
+    String ANSI_BOLD_RED = "\033[1;31m";      // 볼드체 + 빨간색글씨
+    String ANSI_RED = "\033[0;31m";           // 빨간색글씨
+
     String appTitle = "[과제관리 시스템]";
 
     String menu1 = "1. 과제",

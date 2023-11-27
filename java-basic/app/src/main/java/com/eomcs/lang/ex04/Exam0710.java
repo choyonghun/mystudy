@@ -1,6 +1,6 @@
 package com.eomcs.lang.ex04;
 
-//# 변수의 종류
+// # 변수의 종류
 public class Exam0710 {
 
   int a; // 인스턴스 변수
@@ -8,7 +8,7 @@ public class Exam0710 {
   static int b; // 클래스 변수 == 스태틱 변수
 
 
-  public static void main(String[] args/*로컬변수=파라미터*/) {
+  public static void main(String[] args/* 로컬변수=파라미터 */) {
 
     int c; // 로컬 변수
 
@@ -26,5 +26,5 @@ public class Exam0710 {
 //
 // 파라미터(parameter)
 // - 메서드의 아규먼트를 받는 로컬 변수이다.
-//   예) 위의 코드에서 main()의 args 로컬 변수
+// 예) 위의 코드에서 main()의 args 로컬 변수
 //
