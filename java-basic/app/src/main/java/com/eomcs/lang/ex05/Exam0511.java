@@ -1,13 +1,13 @@
 package com.eomcs.lang.ex05;
 
-//# 조건 연산자 => ? :
+// # 조건 연산자 => ? :
 //
 public class Exam0511 {
   public static void main(String[] args) {
     // 조건연산자
     // => 조건 ? 표현식1 : 표현식2
     // => 조건이 참이면 표현식1을 실행하고,
-    //    조건이 거짓이면 표현식2를 실행한다.
+    // 조건이 거짓이면 표현식2를 실행한다.
     //
     int age = 20;
 
@@ -19,12 +19,5 @@ public class Exam0511 {
     System.out.println(value + " 입니다.");
   }
 }
-
-
-
-
-
-
-
 
 
