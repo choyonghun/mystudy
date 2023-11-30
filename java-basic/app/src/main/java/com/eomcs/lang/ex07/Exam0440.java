@@ -1,10 +1,13 @@
 package com.eomcs.lang.ex07;
 
-//# 메서드 : 스택 메모리 응용 I
+// # 메서드 : 스택 메모리 응용 I
 //
 public class Exam0440 {
 
   static int m1(int value) {
+    // int r1, r2 변수를 먼저 선언하는것은 옛날방식!!
+    // r1 = m2(value);
+    // r2 = m3(value);
     int r1 = m2(value);
     int r2 = m3(value);
     return r1 + r2;

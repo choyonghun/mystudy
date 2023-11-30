@@ -1,6 +1,6 @@
 package com.eomcs.lang.ex07;
 
-//# 메서드 : call by value
+// # 메서드 : call by value
 //
 public class Exam0310 {
 
@@ -21,7 +21,7 @@ public class Exam0310 {
     // => 비록 swap()에서 a와 b라는 이름의 변수가 있지만,
     // 이 변수는 main()에 있는 변수와 다른 변수이다.
     swap(a, b);
-    System.out.printf("main(): a=%d, b=%d\n", a, b);
+    System.out.printf("---main(): a=%d, b=%d\n", a, b);
   }
 }
 
