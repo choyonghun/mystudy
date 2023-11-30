@@ -20,8 +20,8 @@ public class Exam0240 {
 
     keyboardScanner.close();
 
-    // System.out.printf("%d(%s)\n", age, name);
-    System.out.println(age + "(" + name + ")");
+    System.out.printf("%d(%s)\n", age, name);
+    // System.out.println(age + "(" + name + ")");
 
   }
 }

@@ -62,3 +62,9 @@ eclipse {
         javaRuntimeName = "JavaSE-17"
     }
 }
+
+//Gradle로 애플리케이션을 실행했을때
+//키보드 입력을 표준 입력 스트림을 연결 하는 방법
+run {
+    standardInput = System.in
+}
