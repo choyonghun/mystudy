@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class App {
 
-  static final String ANSI_CLEAR = "\033[0m";            // 초기화
-  static final String ANSI_BOLD_RED = "\033[1;31m";      // 볼드체 + 빨간색글씨
-  static final String ANSI_RED = "\033[0;31m";           // 빨간색글씨
-  static final String APP_TITLE = ANSI_BOLD_RED + "[과제관리 시스템]" + ANSI_CLEAR;
-  static final String[] MENUS = {
+  static final String ANSI_CLEAR = "\033[0m";
+  static final String ANSI_BOLD_RED = "\033[1;31m";
+  static final String ANSI_RED = "\033[0;31m";
+  static final String appTitle = "[과제관리 시스템]";
+
+  static final String[] menus = {
       "1. 과제",
       "2. 게시글",
       "3. 도움말",
@@ -24,9 +25,9 @@ public class App {
 
     loop:
     while (true) {
-      String input = prompt(scanner);
+      String no = prompt(scanner);
 
-      switch (input) {
+      switch (no) {
         case "1":
           System.out.println("과제입니다.");
           break;
@@ -37,7 +38,8 @@ public class App {
           System.out.println("도움말입니다.");
           break;
         case "4":
-          System.out.println("종료합니다.");
+          System.out.println("종료합니다");
+          System.out.println("====프로그램종료====");
           break loop;
         case "menu":
           // 코드를 기능 단위로 묶어 메서드로 정의하면
@@ -45,7 +47,7 @@ public class App {
           printMenu();
           break;
         default:
-          System.out.println("올바른번호를 입력하십시오.");
+          System.out.println("올바른 번호를 입력하세요.");
       }
     }
     scanner.close();
@@ -59,10 +61,10 @@ public class App {
     // 보통 메서드 호출 될때 마다 값이 바뀌는 변수가 아니라 고정 값을 같는 변수인 경우
     // 메서드 밖에 두는 것이 좋다.
     //
-    System.out.println(ANSI_BOLD_RED + APP_TITLE + ANSI_CLEAR);
+    System.out.println(ANSI_BOLD_RED + appTitle + ANSI_CLEAR);
     System.out.println();
 
-    for (String menu : MENUS) {
+    for (String menu : menus) {
       System.out.println(menu);
     }
   }
@@ -72,3 +74,4 @@ public class App {
     return scanner.nextLine();
   }
 }
+
