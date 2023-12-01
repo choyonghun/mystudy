@@ -1,7 +1,5 @@
 package mystudy.myapp;
 
-import java.util.Scanner;
-
 public class AssignmentMenu {
 
   static void printMenu() {
@@ -13,11 +11,11 @@ public class AssignmentMenu {
     System.out.println("0. 이전");
   }
 
-  static void execute(Scanner keyIn) {
+  static void execute() {
     AssignmentMenu.printMenu();
 
     while (true) {
-      String input = Prompt.Input("메인/과제", keyIn);
+      String input = Prompt.Input("메인/과제");
 
       switch (input) {
         case "1":
@@ -42,4 +40,5 @@ public class AssignmentMenu {
       }
     }
   }
+
 }
