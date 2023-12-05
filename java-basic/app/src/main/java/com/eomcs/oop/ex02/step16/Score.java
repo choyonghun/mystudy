@@ -1,4 +1,4 @@
-package com.eomcs.oop.ex02.step12;
+package com.eomcs.oop.ex02.step16;
 
 // ## 사용자 정의 데이터 타입 만들기
 // 학생의 성적 데이터를 담을 전용 메모리(변수)를 설계한다.
@@ -17,8 +17,12 @@ public class Score {
   int sum;
   float aver;
   
-  static void compute(Score s) {
-    s.sum = s.kor + s.eng + s.math;
-    s.aver = s.sum / 3f;
+  // Score 데이터 값으 다루는 메서드는 Score 데이터를 선언한 클래스에 가까이 두는것이
+  // 유지보수에 좋다
+  // GRASP 패턴의 'information Expert' 설계 기법을 적용한 예이다.
+  void compute() {
+    this.sum = this.kor + this.eng + this.math;
+    this.aver = this.sum / 3f;
   }
 }
+//앞에 static 지우고 this로 넣어준다.

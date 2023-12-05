@@ -26,7 +26,7 @@ public class MainMenu {
 
     loop:
     while (true) {
-      String input = Prompt.Input("메인");
+      String input = Prompt.input("메인> ");
 
       switch (input) {
         case "1":
