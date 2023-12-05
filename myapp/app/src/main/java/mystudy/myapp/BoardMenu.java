@@ -2,10 +2,16 @@ package mystudy.myapp;
 
 public class BoardMenu {
 
-  static String title;
-  static String content;
-  static String writer;
-  static String createdDate;
+  static Board Board;
+
+//  public Board(String title, String content, String writer, String createdDate) {
+//    this.title = title;
+//    this.content = content;
+//    this.writer = writer;
+//    this.createdDate = createdDate;
+//
+//  }
+
 
   static void printMenu() {
     System.out.println("[게시글]");
@@ -52,32 +58,51 @@ public class BoardMenu {
 
   static void add() {
     System.out.println("게시글 등록> ");
-    title = Prompt.input("제목? ");
-    content = Prompt.input("내용? ");
-    writer = Prompt.input("작성자? ");
-    createdDate = Prompt.input("작성일? ");
+//    title = Prompt.input("제목? ");
+//    content = Prompt.input("내용? ");
+//    writer = Prompt.input("작성자? ");
+//    createdDate = Prompt.input("작성일? ");
+
+    String title = Prompt.input("제목? ");
+    String content = Prompt.input("내용? ");
+    String writer = Prompt.input("작성자? ");
+    String createdDate = Prompt.input("작성일? ");
+
+    Board = new Board(title, content, writer, createdDate);
   }
+
 
   static void view() {
     System.out.println("게시글 조회: ");
-    System.out.printf("제목: %s\n", title);
-    System.out.printf("내용: %s\n", content);
-    System.out.printf("작성자: %s\n", writer);
-    System.out.printf("작성일: %s\n", createdDate);
+//    System.out.printf("제목: %s\n", title);
+//    System.out.printf("내용: %s\n", content);
+//    System.out.printf("작성자: %s\n", writer);
+//    System.out.printf("작성일: %s\n", createdDate);
+
+    System.out.printf("제목: %s\n", Board.title);
+    System.out.printf("내용: %s\n", Board.content);
+    System.out.printf("작성자: %s\n", Board.writer);
+    System.out.printf("작성일: %s\n", Board.createdDate);
+
   }
 
   static void modify() {
     System.out.println("게시글 변경: ");
-    title = Prompt.input("제목(%s): ", title);
-    content = Prompt.input("내용(%s): ", content);
-    writer = Prompt.input("작성자(%s): ", writer);
-    createdDate = Prompt.input("작성일(%s): ", createdDate);
+//    title = Prompt.input("제목(%s): ", title);
+//    content = Prompt.input("내용(%s): ", content);
+//    writer = Prompt.input("작성자(%s): ", writer);
+//    createdDate = Prompt.input("작성일(%s): ", createdDate);
+
+    Board.title = Prompt.input("제목(%s): ", Board.title);
+    Board.content = Prompt.input("내용(%s): ", Board.content);
+    Board.writer = Prompt.input("작성자(%s): ", Board.writer);
+    Board.createdDate = Prompt.input("작성일(%s): ", Board.createdDate);
   }
 
   static void delete() {
-    title = "";
-    content = "";
-    writer = "";
-    createdDate = "";
+    Board.title = "";
+    Board.content = "";
+    Board.writer = "";
+    Board.createdDate = "";
   }
 }

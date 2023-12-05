@@ -2,10 +2,11 @@ package mystudy.myapp;
 
 public class AssignmentMenu {
 
-  static String title;
-  static String content;
-  static String deadline;
-  static int sysdate;
+  static Project Project;
+
+//  static String title;
+//  static String content;
+//  static String deadline;
 
 
   static void printMenu() {
@@ -49,16 +50,26 @@ public class AssignmentMenu {
 
   static void add() {
     System.out.println("과제 등록: ");
-    title = Prompt.input("과제명? ");
-    content = Prompt.input("내용? ");
-    deadline = Prompt.input("제출 마감일? ");
+//    title = Prompt.input("과제명? ");
+//    content = Prompt.input("내용? ");
+//    deadline = Prompt.input("제출 마감일? ");
+
+    String title = Prompt.input("제목? ");
+    String content = Prompt.input("내용? ");
+    String deadline = Prompt.input("제출 마감일? ");
+
+    Project = new Project(title, content, deadline);
   }
 
   static void view() {
     System.out.println("과제 조회: ");
-    System.out.printf("과제명: %s\n", title);
-    System.out.printf("내용: %s\n", content);
-    System.out.printf("제출 마감일: %s\n", deadline);
+//    System.out.printf("과제명: %s\n", title);
+//    System.out.printf("내용: %s\n", content);
+//    System.out.printf("제출 마감일: %s\n", deadline);
+
+    System.out.printf("제목: %s\n", Project.title);
+    System.out.printf("내용: %s\n", Project.content);
+    System.out.printf("제출 마감일: %s\n", Project.deadline);
   }
 
   static void modify() {
@@ -71,15 +82,19 @@ public class AssignmentMenu {
 //    content = Prompt.input(String.format("내용(%s): ", content));
 //    deadline = Prompt.input(String.format("제출 마감일(%s): ", deadline));
 
-    title = Prompt.input("과제명(%s): ", title);
-    content = Prompt.input("내용(%s): ", content);
-    deadline = Prompt.input("제출 마감일(%s): ", deadline);
+//    title = Prompt.input("과제명(%s): ", title);
+//    content = Prompt.input("내용(%s): ", content);
+//    deadline = Prompt.input("제출 마감일(%s): ", deadline);
+
+    Project.title = Prompt.input("제목(%s): ", Project.title);
+    Project.content = Prompt.input("제목(%s): ", Project.content);
+    Project.deadline = Prompt.input("제목(%s): ", Project.deadline);
   }
 
   static void delete() {
     System.out.println("삭제입니다.");
-    title = "";
-    content = "";
-    deadline = "";
+    Project.title = "";
+    Project.content = "";
+    Project.deadline = "";
   }
 }
