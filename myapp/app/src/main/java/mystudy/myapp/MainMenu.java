@@ -9,8 +9,9 @@ public class MainMenu {
   static final String[] MENUS = {
       "1. 과제",
       "2. 게시글",
-      "3. 도움말",
-      ANSI_RED + "4. 종료" + ANSI_CLEAR
+      "3. 회원가입",
+      "4. 도움말",
+      ANSI_RED + "0. 종료" + ANSI_CLEAR
   };
 
   static void printMenu() {
@@ -21,7 +22,7 @@ public class MainMenu {
     }
   }
 
-  static void excute() {
+  static void execute() {
     printMenu();
 
     loop:
@@ -36,9 +37,12 @@ public class MainMenu {
           BoardMenu.execute();
           break;
         case "3":
-          System.out.println("도움말입니다.");
+          MemberMenu.execute();
           break;
         case "4":
+          System.out.println("도움말입니다.");
+          break;
+        case "0":
           System.out.println("종료합니다.");
           break loop;
         case "menu":
