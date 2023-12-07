@@ -2,16 +2,18 @@ package mystudy.myapp;
 
 public class AssignmentMenu {
 
-  static Assignment[] assignments = new Assignment[3];  //래퍼런스가 3개 있다.
-  static int length = 0;
+  Prompt prompt;
+  String title;
+  Assignment[] assignments = new Assignment[3];
+  int length = 0;
 
-//  static String title;
-//  static String content;
-//  static String deadline;
+  public AssignmentMenu(String title, Prompt prompt) {
+    this.prompt = prompt;
+    this.title = title;
+  }
 
-
-  static void printMenu() {
-    System.out.println("[과제]");
+  void printMenu() {
+    System.out.printf("[%s]", this.title);
     System.out.println("1. 등록");
     System.out.println("2. 조회");
     System.out.println("3. 변경");
@@ -20,32 +22,32 @@ public class AssignmentMenu {
     System.out.println("0. 이전");
   }
 
-  static void execute() {
-    AssignmentMenu.printMenu();
+  void execute() {
+    this.printMenu();
 
     while (true) {
-      String input = Prompt.input("메인/과제> ");
+      String input = this.prompt.input("메인/%s> ", this.title);
 
       switch (input) {
         case "1":
-          add();
+          this.add();
           break;
         case "2":
-          view();
+          this.view();
           break;
         case "3":
-          modify();
+          this.modify();
           break;
         case "4":
-          delete();
+          this.delete();
           break;
         case "5":
-          list();
+          this.list();
           break;
         case "0":
           return;
         case "menu":
-          AssignmentMenu.printMenu();
+          this.printMenu();
           break;
         default:
           System.out.println("메뉴 번호가 옳지 않습니다!");
@@ -53,86 +55,86 @@ public class AssignmentMenu {
     }
   }
 
-  static void add() {
-    System.out.println("과제 등록: ");
+  void add() {
+    System.out.println("과제 등록:");
 
-    if (length == assignments.length) {
-      //System.out.println("과제를 더이상 등록할수 없습니다.");
-      int oldSize = assignments.length;
+    if (this.length == this.assignments.length) {
+      //System.out.println("과제를 더이상 등록할 수 없습니다.");
+      int oldSize = this.assignments.length;
       int newSize = oldSize + (oldSize / 2);
 
-      //이전 배열에 들어 잇는 값을 새 배열에 복사
+      // 이전 배열에 들어 있는 값을 새 배열에 복사
       Assignment[] arr = new Assignment[newSize];
       for (int i = 0; i < oldSize; i++) {
-        arr[i] = assignments[i];
+        arr[i] = this.assignments[i];
       }
 
-      //새 배열을 가리키도록 배열 레퍼런스를 변경  =>  기존배열은 garbage가 된다.
-      assignments = arr;
+      // 새 배열을 가리키도록 배열 레퍼런스를 변경
+      this.assignments = arr;
     }
 
     Assignment assignment = new Assignment();
-    assignment.title = Prompt.input("제목? ");
-    assignment.content = Prompt.input("내용? ");
-    assignment.deadline = Prompt.input("제출 마감일? ");
+    assignment.title = this.prompt.input("과제명? ");
+    assignment.content = this.prompt.input("내용? ");
+    assignment.deadline = this.prompt.input("제출 마감일? ");
 
-    assignments[length] = assignment;
-    length++;
+    this.assignments[this.length] = assignment;
+    this.length++;
   }
 
-  static void list() {
-    System.out.println("과제 목록: ");
+  void list() {
+    System.out.println("과제 목록:");
     System.out.printf("%-20s\t%s\n", "과제", "제출마감일");
-    System.out.println("-----------------------------------------------");
 
-    for (int i = 0; i < length; i++) {
-      Assignment assignment = assignments[i];
+    for (int i = 0; i < this.length; i++) {
+      Assignment assignment = this.assignments[i];
       System.out.printf("%-20s\t%s\n", assignment.title, assignment.deadline);
     }
   }
 
+  void view() {
+    System.out.println("과제 조회:");
 
-  static void view() {
-    System.out.println("과제 조회: ");
-    int index = Integer.parseInt(Prompt.input("번호? "));
-    if (index < 0 || index >= length) {
-      System.out.println("과제번호가 유효하지 않습니다.");
+    int index = this.prompt.inputInt("번호? ");
+    if (index < 0 || index >= this.length) {
+      System.out.println("과제 번호가 유효하지 않습니다.");
       return;
     }
 
-    Assignment assignment = assignments[index];
-    System.out.printf("과제명? %s\n ", assignment.title);
-    System.out.printf("내용? %s\n ", assignment.content);
-    System.out.printf("제출 마감일? %s\n ", assignment.deadline);
+    Assignment assignment = this.assignments[index];
+    System.out.printf("과제명: %s\n", assignment.title);
+    System.out.printf("내용: %s\n", assignment.content);
+    System.out.printf("제출 마감일: %s\n", assignment.deadline);
   }
 
+  void modify() {
+    System.out.println("과제 변경:");
 
-  static void modify() {
-    System.out.println("과제 변경: ");
-    int index = Integer.parseInt(Prompt.input("번호? "));
-    if (index < 0 || index >= length) {
-      System.out.println("해당 과제번호가 유효하지 않습니다.");
+    int index = Integer.parseInt(this.prompt.input("번호? "));
+    if (index < 0 || index >= this.length) {
+      System.out.println("과제 번호가 유효하지 않습니다.");
       return;
     }
-    Assignment assignment = assignments[index];
-    assignment.title = Prompt.input("과제명(%s): ", assignment.title);
-    assignment.content = Prompt.input("내용(%s): ", assignment.content);
-    assignment.deadline = Prompt.input("제출 마감일(%s): ", assignment.deadline);
+
+    Assignment assignment = this.assignments[index];
+    assignment.title = this.prompt.input("과제명(%s)? ", assignment.title);
+    assignment.content = this.prompt.input("내용(%s)? ", assignment.content);
+    assignment.deadline = this.prompt.input("제출 마감일(%s)? ", assignment.deadline);
   }
 
-  static void delete() {
-    System.out.println("과제 삭제: ");
+  void delete() {
+    System.out.println("과제 삭제:");
 
-    int index = Integer.parseInt(Prompt.input("번호? "));
-    if (index < 0 || index >= length) {
-      System.out.println("해당 과제번호가 유효하지 않습니다12.");
+    int index = Integer.parseInt(this.prompt.input("번호? "));
+    if (index < 0 || index >= this.length) {
+      System.out.println("과제 번호가 유효하지 않습니다.");
       return;
     }
 
-    for (int i = index; i < (length - 1); i++) {
-      assignments[i] = assignments[i + 1];  //다음 레퍼런스의 값을 삭제하려는 현재 레퍼런스로 이동
+    for (int i = index; i < (this.length - 1); i++) {
+      this.assignments[i] = this.assignments[i + 1]; // 다음 레퍼런스의 값을 삭제하려는 현재 레퍼런스로 이동
     }
-    length--;
-    assignments[length] = null;
+    this.length--;
+    this.assignments[this.length] = null;
   }
 }

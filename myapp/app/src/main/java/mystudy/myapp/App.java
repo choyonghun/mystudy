@@ -3,7 +3,9 @@ package mystudy.myapp;
 public class App {
 
   public static void main(String[] args) {
-    MainMenu.execute();
-    Prompt.close();
+
+    Prompt prompt = new Prompt(System.in);
+    new MainMenu(prompt).execute();
+    prompt.close();
   }
 }
