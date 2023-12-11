@@ -1,4 +1,4 @@
-package mystudy.myapp;
+package mystudy.util;
 
 import java.io.InputStream;
 import java.util.Scanner;

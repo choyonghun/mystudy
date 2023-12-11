@@ -1,19 +1,26 @@
-package mystudy.myapp;
+package mystudy.myapp.menu;
 
-public class AssignmentMenu {
+import mystudy.menu.Menu;
+import mystudy.myapp.vo.Assignment;
+import mystudy.util.Prompt;
 
+public class AssignmentMenu implements Menu {
+
+  // 의존 객체(Dependency Object ==> dependency);
+  // - 클래스가 작업을 수행할 때 사용하는 객체
   Prompt prompt;
+
   String title;
   Assignment[] assignments = new Assignment[3];
   int length = 0;
 
   public AssignmentMenu(String title, Prompt prompt) {
-    this.prompt = prompt;
     this.title = title;
+    this.prompt = prompt;
   }
 
   void printMenu() {
-    System.out.printf("[%s]", this.title);
+    System.out.printf("[%s]\n", this.title);
     System.out.println("1. 등록");
     System.out.println("2. 조회");
     System.out.println("3. 변경");
@@ -22,7 +29,12 @@ public class AssignmentMenu {
     System.out.println("0. 이전");
   }
 
-  void execute() {
+  @Override
+  public String getTitle() {
+    return null;
+  }
+
+  public void execute(Prompt prompt) {
     this.printMenu();
 
     while (true) {
@@ -110,7 +122,7 @@ public class AssignmentMenu {
   void modify() {
     System.out.println("과제 변경:");
 
-    int index = Integer.parseInt(this.prompt.input("번호? "));
+    int index = this.prompt.inputInt("번호? ");
     if (index < 0 || index >= this.length) {
       System.out.println("과제 번호가 유효하지 않습니다.");
       return;
@@ -125,7 +137,7 @@ public class AssignmentMenu {
   void delete() {
     System.out.println("과제 삭제:");
 
-    int index = Integer.parseInt(this.prompt.input("번호? "));
+    int index = this.prompt.inputInt("번호? ");
     if (index < 0 || index >= this.length) {
       System.out.println("과제 번호가 유효하지 않습니다.");
       return;

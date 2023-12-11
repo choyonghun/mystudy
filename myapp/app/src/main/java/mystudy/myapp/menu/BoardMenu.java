@@ -1,6 +1,10 @@
-package mystudy.myapp;
+package mystudy.myapp.menu;
 
-public class BoardMenu {
+import mystudy.menu.Menu;
+import mystudy.myapp.vo.Board;
+import mystudy.util.Prompt;
+
+public class BoardMenu implements Menu {
 
   Board[] boards = new Board[3];
   int length = 0;
@@ -22,7 +26,12 @@ public class BoardMenu {
     System.out.println("0. 이전");
   }
 
-  void execute() {
+  @Override
+  public String getTitle() {
+    return null;
+  }
+
+  public void execute(Prompt prompt) {
     printMenu();
     while (true) {
       String input = this.prompt.input("메인/%s> ", this.title);
