@@ -8,13 +8,6 @@
       <change beforePath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/baekjoon/level01/exam01/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/baekjoon/level01/exam01/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardAddHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardDeleteHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardListHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardModifywHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardModifywHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardViewHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/util/ObjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/ObjectRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

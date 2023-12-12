@@ -55,12 +55,12 @@ public class ObjectRepository {
     return this.objects[index];
   }
 
-  public Object set(int index, Object Object) {
+  public Object set(int index, Object object) {
     if (index < 0 || index >= this.length) {
       return null;
     }
     Object old = this.objects[index];
-    this.objects[index] = Object;
+    this.objects[index] = object;
 
     // 새 객체로 교체하기 전에 이전 객체를 리턴한다.
     // 호출하는 쪽에서 받아 쓰거나 말거나 알아서 해라!

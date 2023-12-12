@@ -5,10 +5,17 @@ package algorithm.test;
 
 public class App {
     public String getGreeting() {
-        return "Hello World!";
-    }
+      Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+      System.out.print("첫 번째 정수 A 입력: ");
+      int A = scanner.nextInt();
+
+      System.out.print("두 번째 정수 B 입력: ");
+      int B = scanner.nextInt();
+
+      int sum = A + B;
+      System.out.println("A + B = " + sum);
+
+      scanner.close();
     }
 }
