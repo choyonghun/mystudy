@@ -1,4 +1,4 @@
-package mystudy.myapp.menu;
+package mystudy.myapp.handler;
 
 import mystudy.menu.Menu;
 import mystudy.myapp.vo.Member;
