@@ -4,6 +4,7 @@ import mystudy.menu.Menu;
 import mystudy.menu.MenuHandler;
 import mystudy.myapp.vo.Board;
 import mystudy.util.AnsiEscape;
+import mystudy.util.ObjectRepository;
 import mystudy.util.Prompt;
 
 // 게시글의 '등록' 메뉴를 선택했을때 작업을 수행하는 클래스
@@ -11,13 +12,13 @@ import mystudy.util.Prompt;
 //
 public class BoardAddHandler implements MenuHandler {
 
-  BoardRepository boardRepository;
+  ObjectRepository objectRepository;
 
   Prompt prompt;
 
   // BoardRepository에 게시글 배열이 들어있다.
-  public BoardAddHandler(BoardRepository boardRepository, Prompt prompt) {
-    this.boardRepository = boardRepository;
+  public BoardAddHandler(ObjectRepository objectRepository, Prompt prompt) {
+    this.objectRepository = objectRepository;
     this.prompt = prompt;
   }
 
@@ -34,6 +35,6 @@ public class BoardAddHandler implements MenuHandler {
     // 목록에 객체를 추가시키는 코드를 BoardRepository가 감췄다. (캡슐화)
     // 대신 목록에 객체를 추가시킬수 있도록 메서드를 제공하고 있다.
     // 따라서 다음과 같이 BoardRepository가 제공하는 메소드를 사용하여 게시글 객체를 추가한다.
-    boardRepository.add(board);
+    objectRepository.add(board);
   }
 }

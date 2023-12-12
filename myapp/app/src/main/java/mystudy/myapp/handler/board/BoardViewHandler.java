@@ -4,6 +4,7 @@ import mystudy.menu.Menu;
 import mystudy.menu.MenuHandler;
 import mystudy.myapp.vo.Board;
 import mystudy.util.AnsiEscape;
+import mystudy.util.ObjectRepository;
 import mystudy.util.Prompt;
 
 // 게시글의 '등록' 메뉴를 선택했을때 작업을 수행하는 클래스
@@ -11,12 +12,12 @@ import mystudy.util.Prompt;
 //
 public class BoardViewHandler implements MenuHandler {
 
-  BoardRepository boardRepository;   // 배열값 넣고 빼고
+  ObjectRepository objectRepository;   // 배열값 넣고 빼고
   Prompt prompt;                     // 정보 입출력 Scanner
 
   // BoardRepository에 게시글 배열이 들어있으니 가져온다.
-  public BoardViewHandler(BoardRepository boardRepository, Prompt prompt) {
-    this.boardRepository = boardRepository;
+  public BoardViewHandler(ObjectRepository objectRepository, Prompt prompt) {
+    this.objectRepository = objectRepository;
     this.prompt = prompt;
   }
 
@@ -26,7 +27,7 @@ public class BoardViewHandler implements MenuHandler {
 
     int index = this.prompt.inputInt("번호? ");
 
-    Board board = this.boardRepository.get(index);  //index에 관한것을 꺼낸다.
+    Board board = (Board) this.objectRepository.get(index);  //index에 관한것을 꺼낸다.
     if (board == null) {
       System.out.println("게시글 번호가 유효하지 않습니다.");
       return;
