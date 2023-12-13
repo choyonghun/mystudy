@@ -4,15 +4,16 @@ import mystudy.menu.Menu;
 import mystudy.menu.MenuHandler;
 import mystudy.myapp.vo.Member;
 import mystudy.util.AnsiEscape;
+import mystudy.util.ObjectRepository;
 import mystudy.util.Prompt;
 
 public class MemberModifyHandler implements MenuHandler {
 
-  MemberRepository memberRepository;
+  ObjectRepository<Member> objectRepository;
   Prompt prompt;
 
-  public MemberModifyHandler(MemberRepository memberRepository, Prompt prompt) {
-    this.memberRepository = memberRepository;
+  public MemberModifyHandler(ObjectRepository<Member> objectRepository, Prompt prompt) {
+    this.objectRepository = objectRepository;
     this.prompt = prompt;
   }
 
@@ -21,7 +22,7 @@ public class MemberModifyHandler implements MenuHandler {
     System.out.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.ANSI_CLEAR, menu.getTitle());
 
     int index = this.prompt.inputInt("번호? ");
-    Member old = this.memberRepository.get(index);
+    Member old = this.objectRepository.get(index);
     if (old == null) {
       System.out.println("회원 번호가 유효하지 않습니다.");
       return;
@@ -33,6 +34,6 @@ public class MemberModifyHandler implements MenuHandler {
     member.password = this.prompt.input("새 암호? ");
     member.createdDate = this.prompt.input("가입일(%s)? ", old.createdDate);
 
-    this.memberRepository.set(index, member);
+    this.objectRepository.set(index, member);
   }
 }

@@ -4,15 +4,16 @@ import mystudy.menu.Menu;
 import mystudy.menu.MenuHandler;
 import mystudy.myapp.vo.Assignment;
 import mystudy.util.AnsiEscape;
+import mystudy.util.ObjectRepository;
 import mystudy.util.Prompt;
 
 public class AssignmentAddHandler implements MenuHandler {
 
-  AssignmentRepository assignmentRepository;
+  ObjectRepository<Assignment> objectRepository;
   Prompt prompt;
 
-  public AssignmentAddHandler(AssignmentRepository assignmentRepository, Prompt prompt) {
-    this.assignmentRepository = assignmentRepository;
+  public AssignmentAddHandler(ObjectRepository<Assignment> objectRepository, Prompt prompt) {
+    this.objectRepository = objectRepository;
     this.prompt = prompt;
   }
 
@@ -25,6 +26,6 @@ public class AssignmentAddHandler implements MenuHandler {
     assignment.content = this.prompt.input("내용? ");
     assignment.deadline = this.prompt.input("제출 마감일? ");
 
-    assignmentRepository.add(assignment);
+    objectRepository.add(assignment);
   }
 }

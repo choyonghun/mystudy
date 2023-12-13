@@ -12,11 +12,11 @@ import mystudy.util.Prompt;
 //
 public class BoardModifywHandler implements MenuHandler {
 
-  ObjectRepository objectRepository;   // 배열값 넣고 빼고
+  ObjectRepository<Board> objectRepository;   // 배열값 넣고 빼고
   Prompt prompt;                     // 정보 입출력 Scanner
 
   // BoardRepository에 게시글 배열이 들어있으니 가져온다.
-  public BoardModifywHandler(ObjectRepository objectRepository, Prompt prompt) {
+  public BoardModifywHandler(ObjectRepository<Board> objectRepository, Prompt prompt) {
     this.objectRepository = objectRepository;
     this.prompt = prompt;
   }
@@ -26,7 +26,9 @@ public class BoardModifywHandler implements MenuHandler {
     System.out.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.ANSI_CLEAR, menu.getTitle());
 
     int index = this.prompt.inputInt("번호? ");
-    Board oldboard = (Board) this.objectRepository.get(index);
+    // 위에 제네릭으로 Board를 지정해주었기 때문에 형변환은 필요가 없다.
+    // Board oldboard = (Board) this.objectRepository.get(index);
+    Board oldboard = this.objectRepository.get(index);
     if (oldboard == null) {
       System.out.println("게시글 번호가 유효하지 않습니다.");
       return;

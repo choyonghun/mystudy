@@ -11,10 +11,10 @@ import mystudy.util.ObjectRepository;
 //
 public class BoardListHandler implements MenuHandler {
 
-  ObjectRepository objectRepository;
+  ObjectRepository<Board> objectRepository;
 
   // BoardRepository에 게시글 배열이 들어있다.
-  public BoardListHandler(ObjectRepository objectRepository) {
+  public BoardListHandler(ObjectRepository<Board> objectRepository) {
     this.objectRepository = objectRepository;
   }
 
@@ -23,10 +23,15 @@ public class BoardListHandler implements MenuHandler {
     System.out.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.ANSI_CLEAR, menu.getTitle());
     System.out.printf("%-20s\t%10s\t%s\n", "Title", "Writer", "Date");
 
+    Board[] boards = new Board[this.objectRepository.size()];
+    this.objectRepository.toArray(boards);
     //Board[] boards = boardRepository.toArray();  =>  boards 대신에 대입해준다.
-    for (Object object : objectRepository.toArray()) {
-      Board board = (Board) object;
-      System.out.printf("%-20s\t%10s\t%s\n", board.title, board.writer, board.createdDate);
+    for (Board board : boards) {
+      // Board board = (Board) object;   //board. 을사용하기 위해 형변환 코드를 적어주었다.
+      System.out.printf("%-20s\t%10s\t%s\n",
+          board.title,     //object 에 들어있는건 Board 객체이다를 말해준다.
+          board.writer,    //object 에 들어있는건 Board 객체이다를 말해준다.
+          board.createdDate);
     }
   }
 }

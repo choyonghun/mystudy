@@ -4,15 +4,16 @@ import mystudy.menu.Menu;
 import mystudy.menu.MenuHandler;
 import mystudy.myapp.vo.Assignment;
 import mystudy.util.AnsiEscape;
+import mystudy.util.ObjectRepository;
 import mystudy.util.Prompt;
 
 public class assignmentViewHandler implements MenuHandler {
 
-  AssignmentRepository assignmentRepository;
+  ObjectRepository<Assignment> objectRepository;
   Prompt prompt;
 
-  public assignmentViewHandler(AssignmentRepository assignmentRepository, Prompt prompt) {
-    this.assignmentRepository = assignmentRepository;
+  public assignmentViewHandler(ObjectRepository<Assignment> objectRepository, Prompt prompt) {
+    this.objectRepository = objectRepository;
     this.prompt = prompt;
   }
 
@@ -22,7 +23,7 @@ public class assignmentViewHandler implements MenuHandler {
 
     int index = this.prompt.inputInt("번호? ");
 
-    Assignment assignment = this.assignmentRepository.get(index);
+    Assignment assignment = this.objectRepository.get(index);
     if (assignment == null) {
       System.out.println("과제 번호가 유효하지 않습니다.");
       return;

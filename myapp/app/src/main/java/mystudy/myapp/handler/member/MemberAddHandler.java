@@ -4,15 +4,16 @@ import mystudy.menu.Menu;
 import mystudy.menu.MenuHandler;
 import mystudy.myapp.vo.Member;
 import mystudy.util.AnsiEscape;
+import mystudy.util.ObjectRepository;
 import mystudy.util.Prompt;
 
 public class MemberAddHandler implements MenuHandler {
 
-  MemberRepository memberRepository;
+  ObjectRepository<Member> objectRepository;
   Prompt prompt;
 
-  public MemberAddHandler(MemberRepository memberRepository, Prompt prompt) {
-    this.memberRepository = memberRepository;
+  public MemberAddHandler(ObjectRepository<Member> objectRepository, Prompt prompt) {
+    this.objectRepository = objectRepository;
     this.prompt = prompt;
   }
 
@@ -26,6 +27,6 @@ public class MemberAddHandler implements MenuHandler {
     member.password = this.prompt.input("암호? ");
     member.createdDate = this.prompt.input("가입일? ");
 
-    memberRepository.add(member);
+    objectRepository.add(member);
   }
 }

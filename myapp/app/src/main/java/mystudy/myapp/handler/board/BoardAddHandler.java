@@ -12,12 +12,12 @@ import mystudy.util.Prompt;
 //
 public class BoardAddHandler implements MenuHandler {
 
-  ObjectRepository objectRepository;
+  ObjectRepository<Board> objectRepository;
 
   Prompt prompt;
 
   // BoardRepository에 게시글 배열이 들어있다.
-  public BoardAddHandler(ObjectRepository objectRepository, Prompt prompt) {
+  public BoardAddHandler(ObjectRepository<Board> objectRepository, Prompt prompt) {
     this.objectRepository = objectRepository;
     this.prompt = prompt;
   }
@@ -36,5 +36,10 @@ public class BoardAddHandler implements MenuHandler {
     // 대신 목록에 객체를 추가시킬수 있도록 메서드를 제공하고 있다.
     // 따라서 다음과 같이 BoardRepository가 제공하는 메소드를 사용하여 게시글 객체를 추가한다.
     objectRepository.add(board);
+
+    // 레퍼런스 선어하는 시점에 지정된 타입이 아닌 값을 넣으려고 하면
+    // 컴파일 오류가 발생한다.
+    // 즉 특정 타입만 사용하도록 제한할 수 있는 문법이 제레릭(generic) 이다.
+    // objectRepository.add(new String("Hello"));
   }
 }

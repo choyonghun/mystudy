@@ -2,6 +2,7 @@ package mystudy.myapp.handler.board;
 
 import mystudy.menu.Menu;
 import mystudy.menu.MenuHandler;
+import mystudy.myapp.vo.Board;
 import mystudy.util.AnsiEscape;
 import mystudy.util.ObjectRepository;
 import mystudy.util.Prompt;
@@ -11,11 +12,11 @@ import mystudy.util.Prompt;
 //
 public class BoardDeleteHandler implements MenuHandler {
 
-  ObjectRepository objectRepository;   // 배열값 넣고 빼고
+  ObjectRepository<Board> objectRepository;   // 배열값 넣고 빼고
   Prompt prompt;                     // 정보 입출력 Scanner
 
   // BoardRepository에 게시글 배열이 들어있으니 가져온다.
-  public BoardDeleteHandler(ObjectRepository objectRepository, Prompt prompt) {
+  public BoardDeleteHandler(ObjectRepository<Board> objectRepository, Prompt prompt) {
     this.objectRepository = objectRepository;
     this.prompt = prompt;
   }

@@ -7,7 +7,6 @@ import mystudy.myapp.handler.assignment.AssignmentAddHandler;
 import mystudy.myapp.handler.assignment.AssignmentDeleteHandler;
 import mystudy.myapp.handler.assignment.AssignmentListHandler;
 import mystudy.myapp.handler.assignment.AssignmentModifyHandler;
-import mystudy.myapp.handler.assignment.AssignmentRepository;
 import mystudy.myapp.handler.assignment.assignmentViewHandler;
 import mystudy.myapp.handler.board.BoardAddHandler;
 import mystudy.myapp.handler.board.BoardDeleteHandler;
@@ -18,8 +17,10 @@ import mystudy.myapp.handler.member.MemberAddHandler;
 import mystudy.myapp.handler.member.MemberDeleteHandler;
 import mystudy.myapp.handler.member.MemberListHandler;
 import mystudy.myapp.handler.member.MemberModifyHandler;
-import mystudy.myapp.handler.member.MemberRepository;
 import mystudy.myapp.handler.member.MemberViewHandler;
+import mystudy.myapp.vo.Assignment;
+import mystudy.myapp.vo.Board;
+import mystudy.myapp.vo.Member;
 import mystudy.util.ObjectRepository;
 import mystudy.util.Prompt;
 
@@ -29,9 +30,10 @@ public class App {
     Prompt prompt = new Prompt(System.in);
     //new MainMenu(prompt).execute();
 
-    ObjectRepository objectRepository = new ObjectRepository();
-    AssignmentRepository assignmentRepository = new AssignmentRepository();
-    MemberRepository memberRepository = new MemberRepository();
+    ObjectRepository<Board> objectRepository = new ObjectRepository<>();
+    ObjectRepository<Assignment> assignmentRepository = new ObjectRepository<>();
+    ObjectRepository<Member> memberRepository = new ObjectRepository<>();
+    ObjectRepository<Board> greetingRepository = new ObjectRepository<>();
 
     MenuGroup mainMenu = new MenuGroup("메인");
 
