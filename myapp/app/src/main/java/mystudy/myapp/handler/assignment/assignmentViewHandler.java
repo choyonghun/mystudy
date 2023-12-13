@@ -1,18 +1,18 @@
 package mystudy.myapp.handler.assignment;
 
+import java.util.ArrayList;
 import mystudy.menu.Menu;
 import mystudy.menu.MenuHandler;
 import mystudy.myapp.vo.Assignment;
 import mystudy.util.AnsiEscape;
-import mystudy.util.ObjectRepository;
 import mystudy.util.Prompt;
 
 public class assignmentViewHandler implements MenuHandler {
 
-  ObjectRepository<Assignment> objectRepository;
+  ArrayList<Assignment> objectRepository;
   Prompt prompt;
 
-  public assignmentViewHandler(ObjectRepository<Assignment> objectRepository, Prompt prompt) {
+  public assignmentViewHandler(ArrayList<Assignment> objectRepository, Prompt prompt) {
     this.objectRepository = objectRepository;
     this.prompt = prompt;
   }

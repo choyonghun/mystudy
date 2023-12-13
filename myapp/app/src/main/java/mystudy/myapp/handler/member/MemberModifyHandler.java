@@ -1,18 +1,18 @@
 package mystudy.myapp.handler.member;
 
+import java.util.ArrayList;
 import mystudy.menu.Menu;
 import mystudy.menu.MenuHandler;
 import mystudy.myapp.vo.Member;
 import mystudy.util.AnsiEscape;
-import mystudy.util.ObjectRepository;
 import mystudy.util.Prompt;
 
 public class MemberModifyHandler implements MenuHandler {
 
-  ObjectRepository<Member> objectRepository;
+  ArrayList<Member> objectRepository;
   Prompt prompt;
 
-  public MemberModifyHandler(ObjectRepository<Member> objectRepository, Prompt prompt) {
+  public MemberModifyHandler(ArrayList<Member> objectRepository, Prompt prompt) {
     this.objectRepository = objectRepository;
     this.prompt = prompt;
   }

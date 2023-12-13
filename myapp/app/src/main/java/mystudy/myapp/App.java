@@ -1,5 +1,6 @@
 package mystudy.myapp;
 
+import java.util.ArrayList;
 import mystudy.menu.MenuGroup;
 import mystudy.menu.MenuHandler;
 import mystudy.menu.MenuItem;
@@ -21,7 +22,6 @@ import mystudy.myapp.handler.member.MemberViewHandler;
 import mystudy.myapp.vo.Assignment;
 import mystudy.myapp.vo.Board;
 import mystudy.myapp.vo.Member;
-import mystudy.util.ObjectRepository;
 import mystudy.util.Prompt;
 
 public class App {
@@ -30,10 +30,10 @@ public class App {
     Prompt prompt = new Prompt(System.in);
     //new MainMenu(prompt).execute();
 
-    ObjectRepository<Board> objectRepository = new ObjectRepository<>();
-    ObjectRepository<Assignment> assignmentRepository = new ObjectRepository<>();
-    ObjectRepository<Member> memberRepository = new ObjectRepository<>();
-    ObjectRepository<Board> greetingRepository = new ObjectRepository<>();
+    ArrayList<Board> objectRepository = new ArrayList<>();
+    ArrayList<Assignment> assignmentRepository = new ArrayList<>();
+    ArrayList<Member> memberRepository = new ArrayList<>();
+    ArrayList<Board> greetingRepository = new ArrayList<>();
 
     MenuGroup mainMenu = new MenuGroup("메인");
 

@@ -1,16 +1,16 @@
 package mystudy.myapp.handler.assignment;
 
+import java.util.ArrayList;
 import mystudy.menu.Menu;
 import mystudy.menu.MenuHandler;
 import mystudy.myapp.vo.Assignment;
 import mystudy.util.AnsiEscape;
-import mystudy.util.ObjectRepository;
 
 public class AssignmentListHandler implements MenuHandler {
 
-  ObjectRepository<Assignment> objectRepository;
+  ArrayList<Assignment> objectRepository;
 
-  public AssignmentListHandler(ObjectRepository<Assignment> objectRepository) {
+  public AssignmentListHandler(ArrayList<Assignment> objectRepository) {
     this.objectRepository = objectRepository;
   }
 

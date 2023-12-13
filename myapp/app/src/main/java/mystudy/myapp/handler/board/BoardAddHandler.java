@@ -1,10 +1,10 @@
 package mystudy.myapp.handler.board;
 
+import java.util.ArrayList;
 import mystudy.menu.Menu;
 import mystudy.menu.MenuHandler;
 import mystudy.myapp.vo.Board;
 import mystudy.util.AnsiEscape;
-import mystudy.util.ObjectRepository;
 import mystudy.util.Prompt;
 
 // 게시글의 '등록' 메뉴를 선택했을때 작업을 수행하는 클래스
@@ -12,12 +12,12 @@ import mystudy.util.Prompt;
 //
 public class BoardAddHandler implements MenuHandler {
 
-  ObjectRepository<Board> objectRepository;
+  ArrayList<Board> objectRepository;
 
   Prompt prompt;
 
   // BoardRepository에 게시글 배열이 들어있다.
-  public BoardAddHandler(ObjectRepository<Board> objectRepository, Prompt prompt) {
+  public BoardAddHandler(ArrayList<Board> objectRepository, Prompt prompt) {
     this.objectRepository = objectRepository;
     this.prompt = prompt;
   }

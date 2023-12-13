@@ -1,5 +1,7 @@
 package mystudy.util;
 
+import java.util.Arrays;
+
 // 게시글 데이터를 보관하는 일을 한다
 public class ObjectRepository<E> {
 
@@ -18,11 +20,18 @@ public class ObjectRepository<E> {
       int oldSize = this.objects.length;
       int newSize = oldSize + (oldSize >> 1);
 
-      Object[] arr = new Object[newSize];
-      for (int i = 0; i < oldSize; i++) {
-        arr[i] = this.objects[i];
-      }
-      this.objects = arr;
+      this.objects = Arrays.copyOf(this.objects, newSize);
+      System.out.printf("새 배열크기: %d\n", this.objects.length);
+
+//      Object[] arr = new Object[newSize];
+////      System.arraycopy(this.objects, 0, arr, 0, oldSize);
+////      System.out.printf("배열크기증가 : %d\n", newSize);
+
+      // 반복문 보다 위에 있는 메소드를 사용한다.
+//      for (int i = 0; i < oldSize; i++) {
+//        arr[i] = this.objects[i];
+//      }
+//      this.objects = arr;
     }
     this.objects[this.length++] = object;
   }
@@ -34,9 +43,12 @@ public class ObjectRepository<E> {
 
     Object deleted = this.objects[index];
 
-    for (int i = index; i < (this.length - 1); i++) {
-      this.objects[i] = this.objects[i + 1];
-    }
+    System.arraycopy(this.objects, index + 1, this.objects, index, this.length - (index + 1));
+
+//    for (int i = index; i < (this.length - 1); i++) {
+//      this.objects[i] = this.objects[i + 1];
+//    }
+
     this.objects[--this.length] = null;
 
     // Board, Member 뭐가 삭제되는지 모르니 E으로 지정해준다. 약간 this. 같은 느낌
@@ -44,17 +56,24 @@ public class ObjectRepository<E> {
   }
 
   public Object[] toArray() {
-    Object[] arr = new Object[this.length];
-    for (int i = 0; i < this.length; i++) {
-      arr[i] = this.objects[i];
-    }
-    return arr;
+    return Arrays.copyOf(this.objects, this.length);
+//    Object[] arr = new Object[this.length];
+//    for (int i = 0; i < this.length; i++) {
+//      arr[i] = this.objects[i];
+//    }
+//    return arr;
   }
 
-  public void toArray(E[] arr) {
-    for (int i = 0; i < this.length; i++) {
-      arr[i] = (E) this.objects[i];
+  public E[] toArray(E[] arr) {
+    if (arr.length >= this.length) {
+      System.arraycopy(this.objects, 0, arr, 0, this.length);
+      return arr;
     }
+    return (E[]) Arrays.copyOf(this.objects, this.length, arr.getClass());
+
+//    for (int i = 0; i < this.length; i++) {
+//      arr[i] = (E) this.objects[i];
+//    }
   }
 
   public E get(int index) {

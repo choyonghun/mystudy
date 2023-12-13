@@ -1,16 +1,16 @@
 package mystudy.myapp.handler.member;
 
+import java.util.ArrayList;
 import mystudy.menu.Menu;
 import mystudy.menu.MenuHandler;
 import mystudy.myapp.vo.Member;
 import mystudy.util.AnsiEscape;
-import mystudy.util.ObjectRepository;
 
 public class MemberListHandler implements MenuHandler {
 
-  ObjectRepository<Member> objectRepository;
+  ArrayList<Member> objectRepository;
 
-  public MemberListHandler(ObjectRepository<Member> objectRepository) {
+  public MemberListHandler(ArrayList<Member> objectRepository) {
     this.objectRepository = objectRepository;
   }
 
