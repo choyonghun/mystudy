@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/baekjoon/level01/exam01/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algorithm-test/app/src/main/java/algorithm/test/baekjoon/level01/exam01/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/oop/ex04/Exam0130.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/oop/ex04/Exam0130.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/oop/ex04/singleton/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/oop/ex04/singleton/Car1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/oop/ex04/singleton/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-basic/app/src/main/java/com/eomcs/oop/ex04/singleton/Test1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentAddHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentDeleteHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentListHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentModifyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentModifyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/assignmentViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/assignmentViewHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardAddHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardDeleteHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardListHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardModifywHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardModifywHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardViewHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberAddHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberDeleteHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberListHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberModifyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberModifyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberViewHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/util/ObjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/ObjectRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +29,12 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -68,6 +60,8 @@
 }</component>
   <component name="ProjectId" id="2YVqoas3HZMyDucRGhaeVfmvbIG" />
   <component name="ProjectViewState">
+    <option name="flattenModules" value="true" />
+    <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
@@ -76,12 +70,14 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/user/git/mystudy/myapp/app/src/main/java/mystudy/myapp&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/user/git/bitcamp-study/myapp/app-12/build.gradle&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;프로젝트&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -160,6 +156,14 @@
         <item itemvalue="Gradle.myapp [build]" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-corretto-17.0.9-8336523bb0d9-93b19daf" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-8336523bb0d9-657b72ed" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
