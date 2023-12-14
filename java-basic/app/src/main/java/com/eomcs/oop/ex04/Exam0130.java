@@ -9,7 +9,7 @@ public class Exam0130 {
     // 생성자가 있다하더라도 접근 권한이 없다면,
     // 생성자를 호출할 수 없다.
     // 이런 경우 new 명령으로 인스턴스를 생성할 수 없다.
-    //    Calendar c = new Calendar(); // 컴파일 오류!
+//        Calendar c = new Calendar(); // 컴파일 오류!
 
     // Calendar 클래스의 경우도 생성자를 protected 로 막고 있다.
     // 즉 new 명령을 통해 바로 인스턴스를 생성할 수 없다.
