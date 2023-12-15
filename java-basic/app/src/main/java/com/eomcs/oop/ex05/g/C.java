@@ -8,7 +8,7 @@ public class C extends B {
     // 다음과 같이 수퍼 클래스의 기본 생성자를 호출하라는 명령을
     // 생성자의 첫 줄에 추가한다.
     //    super(); // 즉 개발자가 붙이지 않으면 자동으로 붙인다.
-
+    
     System.out.println("C() 생성자!");
     this.v3 = 300;
 

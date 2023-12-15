@@ -21,6 +21,16 @@ public class Exam01 {
     obj2.v1 = 1000;
     obj2.v2 = 2000;
     System.out.printf("v2=%d, v1=%d\n", obj2.v2, obj2.v1);
+    System.out.println("---------------------------------");
+    
+    
+    C obj3 = new C();
+    obj3.v1 = 10000;
+    obj3.v3 = 20000;
+    System.out.printf("v3=%d, v1=%d\n", obj3.v3, obj3.v1);
+    System.out.println("---------------------------------");
+    
+    
 
     // B 클래스의 인스턴스 생성 과정
     // 1) B의 수퍼 클래스가 로딩되어 있지 않다면, 수퍼 클래스(A 클래스)를 먼저 로딩한다.
