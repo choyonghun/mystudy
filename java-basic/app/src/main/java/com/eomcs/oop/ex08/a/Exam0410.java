@@ -163,7 +163,7 @@ public class Exam0410 {
 //   - getter만 있는 경우: read only 프로퍼티
 //   - setter만 있는 경우: write only 프로퍼티
 //   - getter/setter 모두 있는 경우: read/write 프로퍼티
-//
+
 
 
 
