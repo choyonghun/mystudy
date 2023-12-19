@@ -4,14 +4,13 @@ import mystudy.util.Prompt;
 
 // Composite 패턴에서 '복합 객체 (Composite 객체)' 역할을 할 클래스
 // - 다른 Menu 객체를 포함한다.
-public class MenuGroup implements Menu {
+public class MenuGroup extends AbstractMenu {
 
-  String title;
-  Menu[] menus = new Menu[10];
-  int menuSize;
+  private Menu[] menus = new Menu[10];
+  private int menuSize;
 
   public MenuGroup(String title) {
-    this.title = title;
+    super(title);
   }
 
 
@@ -20,7 +19,7 @@ public class MenuGroup implements Menu {
     this.printMenu();
 
     while (true) {
-      String input = prompt.input("%s> ", this.title);
+      String input = prompt.input("%s> ", this.getTitle());
 
       if (input.equals("menu")) {
         this.printMenu();
@@ -40,7 +39,7 @@ public class MenuGroup implements Menu {
   }
 
   private void printMenu() {
-    System.out.printf("[%s]\n", this.title);
+    System.out.printf("[%s]\n", this.getTitle());
 
     for (int i = 0; i < this.menuSize; i++) {
       System.out.printf("%d. %s\n", (i + 1), menus[i].getTitle());
@@ -83,11 +82,5 @@ public class MenuGroup implements Menu {
       }
     }
     return -1;
-  }
-
-
-  @Override
-  public String getTitle() {
-    return this.title;
   }
 }

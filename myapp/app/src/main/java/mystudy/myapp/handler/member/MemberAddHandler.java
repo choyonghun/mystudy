@@ -1,31 +1,26 @@
 package mystudy.myapp.handler.member;
 
 import java.util.ArrayList;
-import mystudy.menu.Menu;
-import mystudy.menu.MenuHandler;
+import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Member;
-import mystudy.util.AnsiEscape;
 import mystudy.util.Prompt;
 
-public class MemberAddHandler implements MenuHandler {
+public class MemberAddHandler extends AbstractMenuHandler {
 
-  ArrayList<Member> objectRepository;
-  Prompt prompt;
+  private ArrayList<Member> objectRepository;
 
   public MemberAddHandler(ArrayList<Member> objectRepository, Prompt prompt) {
+    super(prompt);
     this.objectRepository = objectRepository;
-    this.prompt = prompt;
   }
 
   @Override
-  public void action(Menu menu) {
-    System.out.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.ANSI_CLEAR, menu.getTitle());
-
+  protected void action() {
     Member member = new Member();
-    member.email = this.prompt.input("이메일? ");
-    member.name = this.prompt.input("이름? ");
-    member.password = this.prompt.input("암호? ");
-    member.createdDate = this.prompt.input("가입일? ");
+    member.setEmail(this.prompt.input("이메일? "));
+    member.setName(this.prompt.input("이름? "));
+    member.setPassword(this.prompt.input("암호? "));
+    member.setCreatedDate(this.prompt.input("가입일? "));
 
     objectRepository.add(member);
   }

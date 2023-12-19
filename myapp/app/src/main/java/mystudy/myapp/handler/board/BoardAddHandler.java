@@ -1,36 +1,34 @@
 package mystudy.myapp.handler.board;
 
 import java.util.ArrayList;
-import mystudy.menu.Menu;
-import mystudy.menu.MenuHandler;
+import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Board;
-import mystudy.util.AnsiEscape;
 import mystudy.util.Prompt;
 
 // 게시글의 '등록' 메뉴를 선택했을때 작업을 수행하는 클래스
 // - 반드시 MenuHandler 규칙에 따라 클래스를 작성해야 한다.
 //
-public class BoardAddHandler implements MenuHandler {
+public class BoardAddHandler extends AbstractMenuHandler {
 
-  ArrayList<Board> objectRepository;
+  private ArrayList<Board> objectRepository;
 
-  Prompt prompt;
 
   // BoardRepository에 게시글 배열이 들어있다.
   public BoardAddHandler(ArrayList<Board> objectRepository, Prompt prompt) {
+    super(prompt);
+    //super을 생략하게 되면 기본생성자가 없어 오류가 뜨게된다.
     this.objectRepository = objectRepository;
-    this.prompt = prompt;
   }
 
   @Override
-  public void action(Menu menu) {
-    System.out.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.ANSI_CLEAR, menu.getTitle());
-
+  public void action() {
+    // MenuHandler 인터페이스에 선언된 메서드 대신에
+    // AbstractMenuHandler 클래스에 추가된 action() 추상 메서드를 구현한다.
     Board board = new Board();
-    board.title = this.prompt.input("제목? ");
-    board.content = this.prompt.input("내용? ");
-    board.writer = this.prompt.input("작성자? ");
-    board.createdDate = this.prompt.input("작성일? ");
+    board.setTitle(this.prompt.input("제목? "));
+    board.setContent(this.prompt.input("내용? "));
+    board.setWriter(this.prompt.input("작성자? "));
+    board.setCreatedDate(this.prompt.input("작성일? "));
 
     // 목록에 객체를 추가시키는 코드를 BoardRepository가 감췄다. (캡슐화)
     // 대신 목록에 객체를 추가시킬수 있도록 메서드를 제공하고 있다.

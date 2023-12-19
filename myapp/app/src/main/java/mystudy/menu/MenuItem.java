@@ -5,14 +5,13 @@ import mystudy.util.Prompt;
 // Composite 패턴에서 leaf역할을 수행하는 클래스
 // Leaf 란  =>  하위 항목을 포함하지 않는 말단 객체
 // 예를 들어 파일시스템에서 '파일'에 해당한다
-public class MenuItem implements Menu {
+public class MenuItem extends AbstractMenu {
 
-  String title;
-  MenuHandler menuHandler;
+  private MenuHandler menuHandler;
 
   // 제목만 설정
   public MenuItem(String title) {
-    this.title = title;
+    super(title);
   }
 
   // 제목 + handler 같이 설정
@@ -26,10 +25,4 @@ public class MenuItem implements Menu {
       this.menuHandler.action(this);
     }
   }
-
-  @Override
-  public String getTitle() {
-    return this.title;
-  }
-
 }

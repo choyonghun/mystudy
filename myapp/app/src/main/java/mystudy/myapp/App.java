@@ -12,7 +12,7 @@ import mystudy.myapp.handler.assignment.assignmentViewHandler;
 import mystudy.myapp.handler.board.BoardAddHandler;
 import mystudy.myapp.handler.board.BoardDeleteHandler;
 import mystudy.myapp.handler.board.BoardListHandler;
-import mystudy.myapp.handler.board.BoardModifywHandler;
+import mystudy.myapp.handler.board.BoardModifyHandler;
 import mystudy.myapp.handler.board.BoardViewHandler;
 import mystudy.myapp.handler.member.MemberAddHandler;
 import mystudy.myapp.handler.member.MemberDeleteHandler;
@@ -44,7 +44,7 @@ public class App {
         new MenuItem("변경", new AssignmentModifyHandler(assignmentRepository, prompt)));
     assignmentMenu.add(
         new MenuItem("삭제", new AssignmentDeleteHandler(assignmentRepository, prompt)));
-    assignmentMenu.add(new MenuItem("목록", new AssignmentListHandler(assignmentRepository)));
+    assignmentMenu.add(new MenuItem("목록", new AssignmentListHandler(assignmentRepository, prompt)));
     mainMenu.add(assignmentMenu);
 
     //============================================================================
@@ -59,12 +59,12 @@ public class App {
     // 위 3줄을 한줄로 만든것이 지금 밑에 문장이다!
     //boardMenu.add(new MenuItem("등록", new BoardAddHandler());
     boardMenu.add(new MenuItem("조회", new BoardViewHandler(objectRepository, prompt)));
-    boardMenu.add(new MenuItem("변경", new BoardModifywHandler(objectRepository, prompt)));
+    boardMenu.add(new MenuItem("변경", new BoardModifyHandler(objectRepository, prompt)));
 //    BoardModifywHandler handler = new BoardModifywHandler(boardRepository, prompt);
 //    MenuItem menuItem = new MenuItem("변경", handler);
 //    boardMenu.add(menuItem);
     boardMenu.add(new MenuItem("삭제", new BoardDeleteHandler(objectRepository, prompt)));
-    boardMenu.add(new MenuItem("목록", new BoardListHandler(objectRepository)));
+    boardMenu.add(new MenuItem("목록", new BoardListHandler(objectRepository, prompt)));
     mainMenu.add(boardMenu);
 
     //============================================================================
@@ -73,7 +73,7 @@ public class App {
     memberMenu.add(new MenuItem("조회", new MemberViewHandler(memberRepository, prompt)));
     memberMenu.add(new MenuItem("변경", new MemberModifyHandler(memberRepository, prompt)));
     memberMenu.add(new MenuItem("삭제", new MemberDeleteHandler(memberRepository, prompt)));
-    memberMenu.add(new MenuItem("목록", new MemberListHandler(memberRepository)));
+    memberMenu.add(new MenuItem("목록", new MemberListHandler(memberRepository, prompt)));
     mainMenu.add(memberMenu);
 
     //============================================================================

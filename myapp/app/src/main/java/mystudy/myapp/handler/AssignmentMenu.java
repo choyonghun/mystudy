@@ -86,9 +86,9 @@ public class AssignmentMenu implements Menu {
     }
 
     Assignment assignment = new Assignment();
-    assignment.title = this.prompt.input("과제명? ");
-    assignment.content = this.prompt.input("내용? ");
-    assignment.deadline = this.prompt.input("제출 마감일? ");
+    assignment.setTitle(this.prompt.input("과제명? "));
+    assignment.setContent(this.prompt.input("내용? "));
+    assignment.setDeadline(this.prompt.input("제출 마감일? "));
 
     this.assignments[this.length] = assignment;
     this.length++;
@@ -100,7 +100,7 @@ public class AssignmentMenu implements Menu {
 
     for (int i = 0; i < this.length; i++) {
       Assignment assignment = this.assignments[i];
-      System.out.printf("%-20s\t%s\n", assignment.title, assignment.deadline);
+      System.out.printf("%-20s\t%s\n", assignment.getTitle(), assignment.getDeadline());
     }
   }
 
@@ -114,9 +114,9 @@ public class AssignmentMenu implements Menu {
     }
 
     Assignment assignment = this.assignments[index];
-    System.out.printf("과제명: %s\n", assignment.title);
-    System.out.printf("내용: %s\n", assignment.content);
-    System.out.printf("제출 마감일: %s\n", assignment.deadline);
+    System.out.printf("과제명: %s\n", assignment.getTitle());
+    System.out.printf("내용: %s\n", assignment.getContent());
+    System.out.printf("제출 마감일: %s\n", assignment.getDeadline());
   }
 
   void modify() {
@@ -129,9 +129,9 @@ public class AssignmentMenu implements Menu {
     }
 
     Assignment assignment = this.assignments[index];
-    assignment.title = this.prompt.input("과제명(%s)? ", assignment.title);
-    assignment.content = this.prompt.input("내용(%s)? ", assignment.content);
-    assignment.deadline = this.prompt.input("제출 마감일(%s)? ", assignment.deadline);
+    assignment.setTitle(this.prompt.input("과제명(%s)? ", assignment.getTitle()));
+    assignment.setContent(this.prompt.input("내용(%s)? ", assignment.getContent()));
+    assignment.setDeadline(this.prompt.input("제출 마감일(%s)? ", assignment.getDeadline()));
   }
 
   void delete() {

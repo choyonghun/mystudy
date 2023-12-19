@@ -1,26 +1,21 @@
 package mystudy.myapp.handler.member;
 
 import java.util.ArrayList;
-import mystudy.menu.Menu;
-import mystudy.menu.MenuHandler;
+import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Member;
-import mystudy.util.AnsiEscape;
 import mystudy.util.Prompt;
 
-public class MemberDeleteHandler implements MenuHandler {
+public class MemberDeleteHandler extends AbstractMenuHandler {
 
-  ArrayList<Member> objectRepository;
-  Prompt prompt;
+  private ArrayList<Member> objectRepository;
 
   public MemberDeleteHandler(ArrayList<Member> objectRepository, Prompt prompt) {
+    super(prompt);
     this.objectRepository = objectRepository;
-    this.prompt = prompt;
   }
 
   @Override
-  public void action(Menu menu) {
-    System.out.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.ANSI_CLEAR, menu.getTitle());
-
+  protected void action() {
     int index = this.prompt.inputInt("번호? ");
     if (this.objectRepository.remove(index) == null) {
       System.out.println("회원 번호가 유효하지 않습니다.");

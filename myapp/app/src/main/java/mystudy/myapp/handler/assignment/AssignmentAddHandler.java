@@ -1,30 +1,27 @@
 package mystudy.myapp.handler.assignment;
 
 import java.util.ArrayList;
-import mystudy.menu.Menu;
-import mystudy.menu.MenuHandler;
+import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Assignment;
-import mystudy.util.AnsiEscape;
 import mystudy.util.Prompt;
 
-public class AssignmentAddHandler implements MenuHandler {
+// 게시글의 '등록' 메뉴를 선택했을 때 작업을 수행하는 클래스
+// - 반드시 MenuHandler 규칙에 따라 클래스를 작성해야 한다.
+public class AssignmentAddHandler extends AbstractMenuHandler {
 
-  ArrayList<Assignment> objectRepository;
-  Prompt prompt;
+  private ArrayList<Assignment> objectRepository;
 
   public AssignmentAddHandler(ArrayList<Assignment> objectRepository, Prompt prompt) {
+    super(prompt);
     this.objectRepository = objectRepository;
-    this.prompt = prompt;
   }
 
   @Override
-  public void action(Menu menu) {
-    System.out.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.ANSI_CLEAR, menu.getTitle());
-
+  protected void action() {
     Assignment assignment = new Assignment();
-    assignment.title = this.prompt.input("과제명? ");
-    assignment.content = this.prompt.input("내용? ");
-    assignment.deadline = this.prompt.input("제출 마감일? ");
+    assignment.setTitle(this.prompt.input("과제명? "));
+    assignment.setContent(this.prompt.input("내용? "));
+    assignment.setDeadline(this.prompt.input("제출 마감일? "));
 
     objectRepository.add(assignment);
   }

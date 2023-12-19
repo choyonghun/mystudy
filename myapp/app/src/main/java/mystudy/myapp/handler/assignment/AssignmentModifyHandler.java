@@ -1,26 +1,21 @@
 package mystudy.myapp.handler.assignment;
 
 import java.util.ArrayList;
-import mystudy.menu.Menu;
-import mystudy.menu.MenuHandler;
+import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Assignment;
-import mystudy.util.AnsiEscape;
 import mystudy.util.Prompt;
 
-public class AssignmentModifyHandler implements MenuHandler {
+public class AssignmentModifyHandler extends AbstractMenuHandler {
 
-  ArrayList<Assignment> objectRepository;
-  Prompt prompt;
+  private ArrayList<Assignment> objectRepository;
 
   public AssignmentModifyHandler(ArrayList<Assignment> objectRepository, Prompt prompt) {
+    super(prompt);
     this.objectRepository = objectRepository;
-    this.prompt = prompt;
   }
 
   @Override
-  public void action(Menu menu) {
-    System.out.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.ANSI_CLEAR, menu.getTitle());
-
+  protected void action() {
     int index = this.prompt.inputInt("번호? ");
     Assignment oldassignment = this.objectRepository.get(index);
     if (oldassignment == null) {
@@ -29,9 +24,9 @@ public class AssignmentModifyHandler implements MenuHandler {
     }
 
     Assignment assignment = new Assignment();
-    assignment.title = this.prompt.input("과제명(%s)? ", oldassignment.title);
-    assignment.content = this.prompt.input("내용(%s)? ", oldassignment.content);
-    assignment.deadline = this.prompt.input("제출 마감일(%s)? ", oldassignment.deadline);
+    assignment.setTitle(this.prompt.input("과제명(%s)? ", oldassignment.getTitle()));
+    assignment.setContent(this.prompt.input("내용(%s)? ", oldassignment.getContent()));
+    assignment.setDeadline(this.prompt.input("제출 마감일(%s)? ", oldassignment.getDeadline()));
 
     this.objectRepository.set(index, assignment);
 
