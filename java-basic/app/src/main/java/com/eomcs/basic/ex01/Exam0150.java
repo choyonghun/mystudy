@@ -16,15 +16,15 @@ public class Exam0150 {
       this.working = working;
     }
 
-    //    @Override
-    //    public int hashCode() {
-    //      return 100;
-    //    }
+//    @Override
+//    public int hashCode() {
+//      return 100;
+//    }
 
-    //    @Override
-    //    public boolean equals(Object obj) {
-    //      return true;
-    //    }
+//    @Override
+//    public boolean equals(Object obj) {
+//      return true;
+//    }
 
   }
 
