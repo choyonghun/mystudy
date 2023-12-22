@@ -24,14 +24,16 @@ public class BoardViewHandler extends AbstractMenuHandler {
 
     // Board board = (Board) this.objectRepository.get(index);  //Board 객체안 index에 관한것을 꺼낸다.
     Board board = this.objectRepository.get(index);  // 제레릭<Board>를 해주게 되면 형변환을 안해도된다!!
-    if (board == null) {
-      System.out.println("게시글 번호가 유효하지 않습니다.");
-      return;
-    }
 
     System.out.printf("제목: %s\n", board.getTitle());
     System.out.printf("내용: %s\n", board.getContent());
     System.out.printf("작성자: %s\n", board.getWriter());
-    System.out.printf("작성일: %s\n", board.getCreatedDate());
+    System.out.printf("작성일: %tY-%tm-%td %tH:%tM:%tS\n",
+        board.getCreatedDate(),
+        board.getCreatedDate(),
+        board.getCreatedDate(),
+        board.getCreatedDate(),
+        board.getCreatedDate(),
+        board.getCreatedDate());
   }
 }

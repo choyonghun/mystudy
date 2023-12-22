@@ -21,12 +21,15 @@ public class MemberViewHandler extends AbstractMenuHandler {
     // Member 타입을 사용한다고 알려줘야해서 형변환을 해줘야한다
     // (Object)라고 해도 오류는 안나오는데 실행시키면 런타임 에러가 발생한다.
     Member member = this.objectRepository.get(index);
-    if (member == null) {
-      System.out.println("회원 번호가 유효하지 않습니다.");
-      return;
-    }
+
     System.out.printf("이메일: %s\n", member.getEmail());
     System.out.printf("이름: %s\n", member.getName());
-    System.out.printf("가입일: %s\n", member.getCreatedDate());
+    System.out.printf("작성일: %tY-%tm-%td %tH:%tM:%tS\n",
+        member.getCreatedDate(),
+        member.getCreatedDate(),
+        member.getCreatedDate(),
+        member.getCreatedDate(),
+        member.getCreatedDate(),
+        member.getCreatedDate());
   }
 }

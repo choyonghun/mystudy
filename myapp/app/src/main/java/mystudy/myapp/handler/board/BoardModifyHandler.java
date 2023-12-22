@@ -24,16 +24,12 @@ public class BoardModifyHandler extends AbstractMenuHandler {
     // 위에 제네릭으로 Board를 지정해주었기 때문에 형변환은 필요가 없다.
     // Board oldboard = (Board) this.objectRepository.get(index);
     Board oldboard = this.objectRepository.get(index);
-    if (oldboard == null) {
-      System.out.println("게시글 번호가 유효하지 않습니다.");
-      return;
-    }
 
     Board board = new Board();
     board.setTitle(this.prompt.input("제목(%s)? ", oldboard.getTitle()));
     board.setContent(this.prompt.input("내용(%s)? ", oldboard.getContent()));
     board.setWriter(this.prompt.input("작성자(%s)? ", oldboard.getWriter()));
-    board.setCreatedDate(this.prompt.input("작성일(%s)? ", oldboard.getCreatedDate()));
+    board.setCreatedDate(oldboard.getCreatedDate());
 
     this.objectRepository.set(index, board);
   }

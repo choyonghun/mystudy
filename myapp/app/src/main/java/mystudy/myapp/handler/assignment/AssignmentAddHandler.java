@@ -18,11 +18,16 @@ public class AssignmentAddHandler extends AbstractMenuHandler {
 
   @Override
   protected void action() {
-    Assignment assignment = new Assignment();
-    assignment.setTitle(this.prompt.input("과제명? "));
-    assignment.setContent(this.prompt.input("내용? "));
-    assignment.setDeadline(this.prompt.input("제출 마감일? "));
+    try {
+      Assignment assignment = new Assignment();
+      assignment.setTitle(this.prompt.input("과제명? "));
+      assignment.setContent(this.prompt.input("내용? "));
+      assignment.setDeadline(this.prompt.inputDate("제출 마감일? (2023-12-25) "));
+      this.objectRepository.add(assignment);
+    } catch (Exception e) {
+      System.out.println("과제 입력 중 오류 발생!");
+      System.out.println("다시 시도 하시길 바랍니다");
+    }
 
-    objectRepository.add(assignment);
   }
 }

@@ -31,9 +31,14 @@ public class BoardListHandler extends AbstractMenuHandler {
     Board[] boards = this.objectRepository.toArray(new Board[0]);
     // Board board = (Board) object;   //board. 을사용하기 위해 형변환 코드를 적어주었다.
     for (Board board : boards) {
-      System.out.printf("%-20s\t%10s\t%s\n",
+      System.out.printf("%-20s\t%10s\t%tY-%tm-%td %tH:%tM:%tS\n",
           board.getTitle(),     //object 에 들어있는건 Board 객체이다를 말해준다.
           board.getWriter(),    //object 에 들어있는건 Board 객체이다를 말해준다.
+          board.getCreatedDate(),
+          board.getCreatedDate(),
+          board.getCreatedDate(),
+          board.getCreatedDate(),
+          board.getCreatedDate(),
           board.getCreatedDate());
     }
   }

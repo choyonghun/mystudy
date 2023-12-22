@@ -1,5 +1,6 @@
 package mystudy.myapp.handler;
 
+import java.util.Date;
 import mystudy.menu.Menu;
 import mystudy.myapp.vo.Member;
 import mystudy.util.Prompt;
@@ -85,7 +86,7 @@ public class MemberMenu implements Menu {
     member.setEmail(this.prompt.input("이메일? "));
     member.setName(this.prompt.input("이름? "));
     member.setPassword(this.prompt.input("암호? "));
-    member.setCreatedDate(this.prompt.input("가입일? "));
+    member.setCreatedDate(new Date());
 
     this.members[this.length++] = member;
   }
@@ -129,7 +130,7 @@ public class MemberMenu implements Menu {
     member.setEmail(this.prompt.input("이메일(%s)? ", member.getEmail()));
     member.setName(this.prompt.input("이름(%s)? ", member.getName()));
     member.setPassword(this.prompt.input("새 암호? "));
-    member.setCreatedDate(this.prompt.input("가입일(%s)? ", member.getCreatedDate()));
+    member.setCreatedDate(new Date());
   }
 
   void delete() {

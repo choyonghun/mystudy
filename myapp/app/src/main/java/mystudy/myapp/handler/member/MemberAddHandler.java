@@ -1,6 +1,7 @@
 package mystudy.myapp.handler.member;
 
 import java.util.ArrayList;
+import java.util.Date;
 import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Member;
 import mystudy.util.Prompt;
@@ -20,7 +21,7 @@ public class MemberAddHandler extends AbstractMenuHandler {
     member.setEmail(this.prompt.input("이메일? "));
     member.setName(this.prompt.input("이름? "));
     member.setPassword(this.prompt.input("암호? "));
-    member.setCreatedDate(this.prompt.input("가입일? "));
+    member.setCreatedDate(new Date());
 
     objectRepository.add(member);
   }

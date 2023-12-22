@@ -1,6 +1,7 @@
 package mystudy.myapp.handler.board;
 
 import java.util.ArrayList;
+import java.util.Date;
 import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Board;
 import mystudy.util.Prompt;
@@ -28,7 +29,7 @@ public class BoardAddHandler extends AbstractMenuHandler {
     board.setTitle(this.prompt.input("제목? "));
     board.setContent(this.prompt.input("내용? "));
     board.setWriter(this.prompt.input("작성자? "));
-    board.setCreatedDate(this.prompt.input("작성일? "));
+    board.setCreatedDate(new Date());
 
     // 목록에 객체를 추가시키는 코드를 BoardRepository가 감췄다. (캡슐화)
     // 대신 목록에 객체를 추가시킬수 있도록 메서드를 제공하고 있다.
