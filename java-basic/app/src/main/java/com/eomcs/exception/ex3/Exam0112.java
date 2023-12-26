@@ -8,7 +8,7 @@ package com.eomcs.exception.ex3;
 
 public class Exam0112 {
 
-  static void m() {
+  static void m() throws RuntimeException {
     throw new RuntimeException("예외가 발생했습니다!");
   }
 
@@ -21,7 +21,7 @@ public class Exam0112 {
     System.out.println("test() 호출됨!");
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] args)  {
 
     // 애플리케이션 실행의 최후의 보루인 main()에서 예외를 처리하지 않는다면?
 
