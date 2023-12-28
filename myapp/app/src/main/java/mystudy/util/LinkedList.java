@@ -91,7 +91,7 @@ public class LinkedList<E> extends AbstractList<E> {
       while (++cursor < index) {      // currsor를 1씩 증가 시키면서 다음 노드로 업데이트
         currNode = currNode.next;     // 주어진 인덱스를 찾을때 까지 반복
       }                               // 반복문을 나가면 주어진 인덱스의 이전 노드를 가리키게된다.
-      node.next = currNode.next;      // 새로운노드의 next를 현재노드의next로 설정 새로운 노드는 주어진 인덱스이전의 노드의 next에 위치한다.
+      node.next = currNode.next;      // 새로운노드의 next를 현재노드의next로 설정, 새로운 노드는 주어진 인덱스이전의 노드의 next에 위치한다.
       currNode.next = node;           // 주어진 인덱스 이전의 노드next를 새로운 노드로 설정, 새로운 노드가 리스트에 추가된다.
     }
     size++;                           // size 1씩 증가시킨다.
@@ -172,11 +172,13 @@ public class LinkedList<E> extends AbstractList<E> {
 
   public E[] toArray(final E[] arr) {
     E[] values = arr;
-    if (values.length < size) {
-      values = Arrays.copyOf(arr, size);
+
+    if (values.length < size) {               // arr의 길이가 size보다 작은경우
+      values = Arrays.copyOf(arr, size);      // size와 같은 길이로 만든다.
     }
-    int i = 0;
-    Node<E> node = first;
+
+    int i = 0;                  // index값 초기화
+    Node<E> node = first;       // Node배열의 첫번째 값을 node라 한다.
 
     while (node != null) {
       values[i++] = node.value; // values 리스트에 node값을 저장
