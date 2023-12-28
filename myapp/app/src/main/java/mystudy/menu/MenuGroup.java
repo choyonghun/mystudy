@@ -84,7 +84,4 @@ public class MenuGroup extends AbstractMenu {
   public void remove(Menu menu) {
     this.menus.remove(menu);
   }
-
-  // 메뉴 객체가 들어있는 배열의 위치를 알아낸다.
-
 }
