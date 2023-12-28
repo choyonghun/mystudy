@@ -1,15 +1,15 @@
 package mystudy.myapp.handler.member;
 
-import java.util.ArrayList;
 import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Member;
+import mystudy.util.List;
 import mystudy.util.Prompt;
 
 public class MemberDeleteHandler extends AbstractMenuHandler {
 
-  private ArrayList<Member> objectRepository;
+  private List<Member> objectRepository;
 
-  public MemberDeleteHandler(ArrayList<Member> objectRepository, Prompt prompt) {
+  public MemberDeleteHandler(List<Member> objectRepository, Prompt prompt) {
     super(prompt);
     this.objectRepository = objectRepository;
   }

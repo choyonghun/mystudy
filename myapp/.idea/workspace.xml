@@ -5,8 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/AbstractList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/List.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/Queue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/QueueTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/Stack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/StackTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/menu/AbstractMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/menu/AbstractMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/menu/MenuGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/menu/MenuGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/menu/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/menu/MenuItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentAddHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentDeleteHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentListHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentModifyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentModifyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/assignmentViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/assignmentViewHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardAddHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardDeleteHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardListHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardModifyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardModifyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardViewHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberAddHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberAddHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberDeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberDeleteHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberListHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberModifyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberModifyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberViewHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/util/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/LinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/util/ObjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/ArrayList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/util/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +109,7 @@
   "keyToString": {
     "Gradle.myapp [build].executor": "Run",
     "Gradle.myapp [run].executor": "Run",
+    "Gradle.myapp:app [:app:QueueTest.main()].executor": "Run",
     "Gradle.myapp:app [:app:Test.main()].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -119,7 +147,20 @@
       <recent name="mystudy.myapp" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.Test">
+  <component name="RunManager" selected="Gradle.myapp [run]">
+    <configuration name="QueueTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="mystudy.util.QueueTest" />
+      <module name="myapp.app.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="mystudy.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -182,11 +223,13 @@
     <list>
       <item itemvalue="Gradle.myapp [build]" />
       <item itemvalue="Gradle.myapp [run]" />
+      <item itemvalue="애플리케이션.QueueTest" />
       <item itemvalue="애플리케이션.Test" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.myapp [run]" />
+        <item itemvalue="애플리케이션.QueueTest" />
         <item itemvalue="애플리케이션.Test" />
         <item itemvalue="Gradle.myapp [build]" />
       </list>

@@ -1,16 +1,16 @@
 package mystudy.myapp.handler.member;
 
-import java.util.ArrayList;
 import java.util.Date;
 import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Member;
+import mystudy.util.List;
 import mystudy.util.Prompt;
 
 public class MemberAddHandler extends AbstractMenuHandler {
 
-  private ArrayList<Member> objectRepository;
+  private List<Member> objectRepository;
 
-  public MemberAddHandler(ArrayList<Member> objectRepository, Prompt prompt) {
+  public MemberAddHandler(List<Member> objectRepository, Prompt prompt) {
     super(prompt);
     this.objectRepository = objectRepository;
   }

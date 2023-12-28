@@ -1,15 +1,15 @@
 package mystudy.myapp.handler.assignment;
 
-import java.util.ArrayList;
 import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Assignment;
+import mystudy.util.List;
 import mystudy.util.Prompt;
 
 public class AssignmentListHandler extends AbstractMenuHandler {
 
-  private ArrayList<Assignment> objectRepository;
+  private List<Assignment> objectRepository;
 
-  public AssignmentListHandler(ArrayList<Assignment> objectRepositorym, Prompt prompt) {
+  public AssignmentListHandler(List<Assignment> objectRepositorym, Prompt prompt) {
     super(prompt);
     this.objectRepository = objectRepository;
   }

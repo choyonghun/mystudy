@@ -36,8 +36,8 @@ public class Test {
 //    list.remove(0);
 //    list.remove(0);
 
-    Object[] arr = list.toArray();
-    for (Object value : arr) {
+    String[] arr = list.toArray(new String[0]);
+    for (String value : arr) {
       System.out.printf("%s, ", value);
     }
     System.out.println();

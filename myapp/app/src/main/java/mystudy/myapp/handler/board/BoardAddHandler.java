@@ -1,9 +1,9 @@
 package mystudy.myapp.handler.board;
 
-import java.util.ArrayList;
 import java.util.Date;
 import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Board;
+import mystudy.util.List;
 import mystudy.util.Prompt;
 
 // 게시글의 '등록' 메뉴를 선택했을때 작업을 수행하는 클래스
@@ -11,11 +11,11 @@ import mystudy.util.Prompt;
 //
 public class BoardAddHandler extends AbstractMenuHandler {
 
-  private ArrayList<Board> objectRepository;
+  private List<Board> objectRepository;
 
 
   // BoardRepository에 게시글 배열이 들어있다.
-  public BoardAddHandler(ArrayList<Board> objectRepository, Prompt prompt) {
+  public BoardAddHandler(List<Board> objectRepository, Prompt prompt) {
     super(prompt);
     //super을 생략하게 되면 기본생성자가 없어 오류가 뜨게된다.
     this.objectRepository = objectRepository;

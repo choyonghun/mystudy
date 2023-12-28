@@ -1,14 +1,11 @@
 package mystudy.util;
 
-public class LinkedList<E> {
+import java.util.Arrays;
+
+public class LinkedList<E> extends AbstractList<E> {
 
   private Node<E> first;
   private Node<E> last;
-  private int size;
-
-  public int size() {
-    return size;
-  }
 
   public void add(E value) {
     Node<E> node = new Node<>();      // 제네릭 타입 E를 가지는 Node 객체 생성
@@ -46,7 +43,7 @@ public class LinkedList<E> {
     return node.value;                  // 주어진 인덱스에 해당하는 노드값을 반환한다.
   }
 
-  public Object set(int index, E value) {
+  public E set(int index, E value) {
     if (index < 0 || index >= size) {         //0보다 작거나 인덱스가 리스트틔 크기를 벗어나면 예외를 던진다.
       throw new IndexOutOfBoundsException("무효한 인덱스입니다.");
     }
@@ -57,7 +54,7 @@ public class LinkedList<E> {
       node = node.next;                 // 주어진 인덱스에 도달할때까지 반복
     }
 
-    Object old = node.value;            // 현재 노드 값을 old에 저장 변경이전의 값을 기억하기 위한
+    E old = node.value;            // 현재 노드 값을 old에 저장 변경이전의 값을 기억하기 위한
     node.value = value;                 // 현재 노드의 값을 새로운 value으로 변경
     return old;                         // 변경 전의 값을 저장한 old 변수를 리턴시킨다.
   }
@@ -106,16 +103,17 @@ public class LinkedList<E> {
       throw new IndexOutOfBoundsException("무효한 인덱스입니다.");
     }
 
-    E old = null;               //변수 old를 선언하고 초기화 시킨다.
+    Node<E> deleted = null;
+    //E old = null;               //변수 old를 선언하고 초기화 시킨다.
 
     // 1개 일 때
     if (size == 1) {              // 리스트에 노드가 1개일 경우
-      old = first.value;          // 리스트를 비우고 삭제된 노드 값을 old에 저장한다.
+      deleted = first;            // 삭제할 노드를 보관
       first = last = null;
 
       //2개 이상있을때 첫번째꺼를 삭제하고 삭제된 노드값을 old에 저장한다.
     } else if (index == 0) {
-      old = first.value;
+      deleted = first;            // 삭제할 노드를 보관
       first = first.next;
 
       // 중간이나 마지막 모드를 삭제하는 경우
@@ -125,7 +123,8 @@ public class LinkedList<E> {
       while (++cursor < index) {            // currsor를 1씩 증가시키며 현재 노드를 다음 노드로 업데이트 한다.
         currNode = currNode.next;           // 이전 노드를 찾을때 까지 반복한다. 반복문을 나가면 currNode는 인덱스의 이전노드를 가리킨다.
       }
-      old = currNode.next.value;              // 삭제할 노드의 값을 old에 저장한다. currNode.next는 현재노드의 다음노드를 가리킨다
+      deleted = currNode.next;            // 삭제할 노드를 보관
+      //old = currNode.next.value;              // 삭제할 노드의 값을 old에 저장한다. currNode.next는 현재노드의 다음노드를 가리킨다
       // 이것을 통해 삭제할 노드에 접근한다.
       currNode.next = currNode.next.next;     // 삭제할 노드를 건너뒤어 다음 노드로 연결한다.
       // 이것을 통해 삭제할 노드가 리스트에서 제거된다.
@@ -134,7 +133,11 @@ public class LinkedList<E> {
       }
     }
     size--;                                   // 마지막 노드가 삭제되었으니 그 칸은 지운다.
-    return old;                               // 삭제된 값 리턴
+
+    E old = deleted.value;
+    deleted.value = null;           // 가비지가 되기 전에 다른 객체를 참조하던 것을 제거한다.
+    deleted.next = null;            // 가비지가 되기 전에 다른 객체를 참조하던 것을 제거한다.
+    return old;                     // 삭제된 값 리턴
   }
 
 
@@ -165,6 +168,21 @@ public class LinkedList<E> {
 
     size--;                               // 노드가 성공적으로 삭제되면 리스트의 크기를 감소시킨다.
     return true;                          // 메서드가 정상적으로 실행되어 값을 찾아 삭제했으면 true 반환
+  }
+
+  public E[] toArray(final E[] arr) {
+    E[] values = arr;
+    if (values.length < size) {
+      values = Arrays.copyOf(arr, size);
+    }
+    int i = 0;
+    Node<E> node = first;
+
+    while (node != null) {
+      values[i++] = node.value; // values 리스트에 node값을 저장
+      node = node.next;   // 다음 노드로 교체
+    }
+    return values;
   }
 
   // 중첩클래스중첩클래스중첩클래스중첩클래스중첩클래스중첩클래스중첩클래스중첩클래스
