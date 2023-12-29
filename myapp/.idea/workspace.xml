@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/ArrayListIterator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/Iterator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/LinkedListIterator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/menu/MenuGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/menu/MenuGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/assignment/AssignmentListHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/board/BoardListHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/handler/member/MemberListHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/util/ArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/ArrayList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/util/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/LinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/util/List.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/util/List.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +90,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.myapp [build].executor": "Run",
+    "Gradle.myapp [classes].executor": "Run",
     "Gradle.myapp [run].executor": "Run",
     "Gradle.myapp:app [:app:QueueTest.main()].executor": "Run",
     "Gradle.myapp:app [:app:Test.main()].executor": "Run",
@@ -171,6 +181,28 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="myapp [classes]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="classes" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="myapp [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -194,6 +226,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Gradle.myapp [classes]" />
       <item itemvalue="Gradle.myapp [build]" />
       <item itemvalue="Gradle.myapp [run]" />
       <item itemvalue="애플리케이션.QueueTest" />
@@ -202,6 +235,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.myapp [run]" />
+        <item itemvalue="Gradle.myapp [classes]" />
         <item itemvalue="애플리케이션.QueueTest" />
         <item itemvalue="애플리케이션.Test" />
         <item itemvalue="Gradle.myapp [build]" />

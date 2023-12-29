@@ -85,12 +85,117 @@ public class ArrayList<E> extends AbstractList<E> {
     return (E) old;
   }
 
-  // 남의 클래스의 변수에 접근하는 코드가 있으면
-  // 그 코드를 그 클래스로 옮겨라
-  // 상속 받았으니깐 주석처리 해주기!!
-//  public int size() {
-//    return this.size;
+//  2) static 중첩클래스를 사용한 경우
+//  @Override
+//  public Iterator<E> iterator() {
+//    return new IteratorImpl<>(this);   //this는 arraylist 객체를 뜻한다
+//  }
+//
+//
+//  private static class IteratorImpl<E> implements Iterator<E> {
+//
+//    ArrayList<E> list;
+//    int cursor;
+//
+//
+//    public IteratorImpl(ArrayList<E> list) {
+//      this.list = list;
+//    }
+//
+//
+//    @Override
+//    public boolean hasNext() {
+//      return cursor >= 0 && cursor < list.size();
+//    }
+//
+//    @Override
+//    public E next() {
+//      return list.get(cursor++);
+//    }
 //  }
 
-}
+// 3) non-static 중첩클래스를 사용한 경우
+// static 메소드는 this라는 변수가 없다. 인스턴스 변수를 받을 this메소드가 업삳.
+// static 을 떼면 컴파일러가 바깥클래스를 가져오면서 this메소드와 인스턴스 변수를 가져온다.
+//  @Override
+//  public Iterator<E> iterator() {
+//    return new IteratorImpl<>();   //컴파일러는 ()에 바깥클래스 ArrayList를 가리키는 this를 준다.
+//  }
+//
+//  private class IteratorImpl<E> implements Iterator<E> {
+//
+//    int cursor;
+//
+//    @Override
+//    public boolean hasNext() {
+//      return cursor >= 0 && cursor < ArrayList.this.size();
+//      // return false;
+//    }
+//
+//    @Override
+//    public E next() {
+//      return (E) ArrayList.this.get(cursor++);
+//      // return null;
+//    }
+//  }
 
+  // 4) 로컬 클래스를 사용한 경우
+  // 메소드 안에 클래스를 사용하면 그 클래스는 메소드 안에서만 사용 가능하다!
+//  @Override
+//  public Iterator<E> iterator() {
+//    class IteratorImpl<E> implements Iterator<E> {
+//
+//      int cursor;
+//
+//      @Override
+//      public boolean hasNext() {
+//        return cursor >= 0 && cursor < ArrayList.this.size();
+//      }
+//
+//      @Override
+//      public E next() {
+//        return (E) ArrayList.this.get(cursor++);
+//      }
+//    }
+//    return new IteratorImpl<>();
+//  }
+
+//  // 5) 익명 클래스를 사용한 경우
+//  @Override
+//  public Iterator<E> iterator() {
+//    // 익명클래스는 이름이 없기 때문에 정의하는 즉시 인스턴스를 생성해야 한다.
+//    Iterator<E> obj = new Iterator<E>() {
+//      // 로컬 클래스도 non-static nested 클래스처럼
+//      // 바깥 클래스의 인스턴스 주소를 저장하는 코드가 자동으로 추가된다.
+//      int cursor;
+//      @Override
+//      public boolean hasNext() {
+//        return cursor >= 0 && cursor < ArrayList.this.size();
+//      }
+//      @Override
+//      public E next() {
+//        return (E) ArrayList.this.get(cursor++);
+//      }
+//    };
+//    return obj;
+//  }
+
+  // 6) 익명 클래스를 사용한 경우 - 더 간결하게 표현하기
+  @Override
+  public Iterator<E> iterator() {
+    return new Iterator<E>() {
+      int cursor;
+
+      @Override
+      public boolean hasNext() {
+        return cursor >= 0 && cursor < ArrayList.this.size();
+      }
+
+      @Override
+      public E next() {
+        return (E) ArrayList.this.get(cursor++);
+      }
+    };
+  }
+
+}

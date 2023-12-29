@@ -2,6 +2,7 @@ package mystudy.myapp.handler.board;
 
 import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Board;
+import mystudy.util.Iterator;
 import mystudy.util.List;
 import mystudy.util.Prompt;
 
@@ -28,18 +29,30 @@ public class BoardListHandler extends AbstractMenuHandler {
     //Board[] boards = boardRepository.toArray();  =>  boards 대신에 대입해준다.
 
 //    방법2)
-    Board[] boards = this.objectRepository.toArray(new Board[0]);
+//    Board[] boards = this.objectRepository.toArray(new Board[0]);
     // Board board = (Board) object;   //board. 을사용하기 위해 형변환 코드를 적어주었다.
-    for (Board board : boards) {
+
+//    방법3) iterator 사용하면 배열이 필요가 없다.
+    Iterator<Board> iterator = this.objectRepository.iterator();
+
+    while (iterator.hasNext()) {
+      Board board = iterator.next();
       System.out.printf("%-20s\t%10s\t%tY-%tm-%td %tH:%tM:%tS\n",
           board.getTitle(),     //object 에 들어있는건 Board 객체이다를 말해준다.
           board.getWriter(),    //object 에 들어있는건 Board 객체이다를 말해준다.
-          board.getCreatedDate(),
-          board.getCreatedDate(),
-          board.getCreatedDate(),
-          board.getCreatedDate(),
-          board.getCreatedDate(),
           board.getCreatedDate());
     }
+
   }
+//    for (Board board : boards) {
+//      System.out.printf("%-20s\t%10s\t%tY-%tm-%td %tH:%tM:%tS\n",
+//          board.getTitle(),     //object 에 들어있는건 Board 객체이다를 말해준다.
+//          board.getWriter(),    //object 에 들어있는건 Board 객체이다를 말해준다.
+//          board.getCreatedDate(),
+//          board.getCreatedDate(),
+//          board.getCreatedDate(),
+//          board.getCreatedDate(),
+//          board.getCreatedDate(),
+//          board.getCreatedDate());
+//    }
 }

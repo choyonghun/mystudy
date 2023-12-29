@@ -1,5 +1,6 @@
 package mystudy.menu;
 
+import mystudy.util.Iterator;
 import mystudy.util.LinkedList;
 import mystudy.util.List;
 import mystudy.util.Prompt;
@@ -59,8 +60,12 @@ public class MenuGroup extends AbstractMenu {
   private void printMenu() {
     System.out.printf("[%s]\n", this.getTitle());
 
-    for (int i = 0; i < this.menus.size(); i++) {
-      System.out.printf("%d. %s\n", (i + 1), menus.get(i).getTitle());
+    // menus에서 값을 꺼내 iterator 사용한다.
+    Iterator<Menu> iterator = this.menus.iterator();
+    int i = 1;
+    while (iterator.hasNext()) {
+      Menu menu = iterator.next();
+      System.out.printf("%d. %s\n", i++, menu.getTitle());
     }
     System.out.printf("0. %s\n", "이전");
   }

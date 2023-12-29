@@ -2,6 +2,7 @@ package mystudy.myapp.handler.member;
 
 import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Member;
+import mystudy.util.Iterator;
 import mystudy.util.List;
 import mystudy.util.Prompt;
 
@@ -18,11 +19,19 @@ public class MemberListHandler extends AbstractMenuHandler {
   protected void action() {
     System.out.printf("%-10s\t%30s\t%s\n", "이름", "이메일", "가입일");
 
-    Member[] members = new Member[this.objectRepository.size()];
-    this.objectRepository.toArray(members);
-    for (Member member : members) {
+    // iterator을 사용하면 배열은 필요가 없다!
+    Iterator<Member> iterator = this.objectRepository.iterator();
+    while (iterator.hasNext()) {
+      Member member = iterator.next();
       System.out.printf("%-10s\t%30s\t%s\n", member.getName(), member.getEmail(),
           member.getCreatedDate());
     }
+
+//    Member[] members = new Member[this.objectRepository.size()];
+//    this.objectRepository.toArray(members);
+//    for (Member member : members) {
+//      System.out.printf("%-10s\t%30s\t%s\n", member.getName(), member.getEmail(),
+//          member.getCreatedDate());
+//    }
   }
 }
