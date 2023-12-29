@@ -1,7 +1,6 @@
 package mystudy.util;
 
 import java.util.Arrays;
-import org.w3c.dom.Node;
 
 public class LinkedList<E> extends AbstractList<E> {
 
@@ -221,20 +220,21 @@ public class LinkedList<E> extends AbstractList<E> {
 //  }
 //
 
-  // non-static 중첩 클래스로 Iterator 구현하기
-  @Override
-  public Iterator<E> iterator() {
-    return new IteratorImpl<>();
-  }
-
-  // 5) 익명 클래스로 구현하기
-  @Override
-  public Iterator<E> iterator() {
-    Iterator<E> obj = new     private static class Node<E> {
-
-      E value;            // 노드가 저장하는 값
-      Node<E> next;       // 다음 노드를 가리키는 링크
-    };
+// non-static 중첩 클래스로 Iterator 구현하기
+//  @Override
+//  public Iterator<E> iterator() {
+//    return new IteratorImpl<>();
+//  }
+//
+//  // 5) 익명 클래스로 구현하기
+//  @Override
+//  public Iterator<E> iterator() {
+//    Iterator<E> obj = new private static class Node<E> {
+//
+//      E value;            // 노드가 저장하는 값
+//      Node<E> next;       // 다음 노드를 가리키는 링크
+//    }
+//    ;
 
 //    Node<E> cursor;
 //
@@ -278,8 +278,28 @@ public class LinkedList<E> extends AbstractList<E> {
 //    }
 //  }
 
-    // 중첩클래스중첩클래스중첩클래스중첩클래스중첩클래스중첩클래스중첩클래스중첩클래스
-Iterator<E>() {
+  //    중첩클래스중첩클래스중첩클래스중첩클래스중첩클래스중첩클래스중첩클래스중첩클래스
+//    Iterator<E> () {
+//      Node<E> cursor = (Node<E>) LinkedList.this.first;
+//
+//      @Override
+//      public boolean hasNext () {
+//        return cursor != null;
+//      }
+//
+//      @Override
+//      public E next () {
+//        E value = cursor.value;
+//        cursor = cursor.next;
+//        return value;
+//      }
+//    }
+//
+
+  // 6) 익명 클래스로 Iterator 구현하기 - 더 간결하게 표현하기
+  @Override
+  public Iterator<E> iterator() {
+    return new Iterator<E>() {
       Node<E> cursor = (Node<E>) LinkedList.this.first;
 
       @Override
@@ -293,25 +313,12 @@ Iterator<E>() {
         cursor = cursor.next;
         return value;
       }
-    }
+    };
+  }
 
-    // 6) 익명 클래스로 Iterator 구현하기 - 더 간결하게 표현하기
-    @Override
-    public Iterator<E> iterator () {
-      return new Iterator<E>() {
-        Node<E> cursor = (Node<E>) LinkedList.this.first;
+  private static class Node<E> {
 
-        @Override
-        public boolean hasNext() {
-          return cursor != null;
-        }
-
-        @Override
-        public E next() {
-          E value = cursor.value;
-          cursor = cursor.next;
-          return value;
-        }
-      };
-
-    }
+    E value;
+    Node<E> next;
+  }
+}
