@@ -8,6 +8,13 @@ class B2 {
   void m2() {
     System.out.println("B2.v2 = " + this.v2);
   }
+  
+//  static class Y {
+//    void test() {
+//      B2.this.v2 = 100;
+//      B2.this.m2();
+//    }
+//  }
 
   class X {
     // 바깥 객체의 주소를 저장할 빌트인 필드
