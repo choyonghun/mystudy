@@ -37,22 +37,11 @@ public class BoardListHandler extends AbstractMenuHandler {
 
     while (iterator.hasNext()) {
       Board board = iterator.next();
-      System.out.printf("%-20s\t%10s\t%tY-%tm-%td %tH:%tM:%tS\n",
+      System.out.printf("%-20s\t%10s\t%3$tY-%3$tm-%3$td\n",
           board.getTitle(),     //object 에 들어있는건 Board 객체이다를 말해준다.
           board.getWriter(),    //object 에 들어있는건 Board 객체이다를 말해준다.
           board.getCreatedDate());
     }
 
   }
-//    for (Board board : boards) {
-//      System.out.printf("%-20s\t%10s\t%tY-%tm-%td %tH:%tM:%tS\n",
-//          board.getTitle(),     //object 에 들어있는건 Board 객체이다를 말해준다.
-//          board.getWriter(),    //object 에 들어있는건 Board 객체이다를 말해준다.
-//          board.getCreatedDate(),
-//          board.getCreatedDate(),
-//          board.getCreatedDate(),
-//          board.getCreatedDate(),
-//          board.getCreatedDate(),
-//          board.getCreatedDate());
-//    }
 }
