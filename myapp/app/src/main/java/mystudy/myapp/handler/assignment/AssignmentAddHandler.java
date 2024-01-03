@@ -1,8 +1,8 @@
 package mystudy.myapp.handler.assignment;
 
+import java.util.List;
 import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Assignment;
-import mystudy.util.List;
 import mystudy.util.Prompt;
 
 // 게시글의 '등록' 메뉴를 선택했을 때 작업을 수행하는 클래스

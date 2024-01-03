@@ -1,9 +1,9 @@
 package mystudy.myapp.handler.board;
 
+import java.util.Iterator;
+import java.util.List;
 import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Board;
-import mystudy.util.Iterator;
-import mystudy.util.List;
 import mystudy.util.Prompt;
 
 // 게시글의 '등록' 메뉴를 선택했을때 작업을 수행하는 클래스

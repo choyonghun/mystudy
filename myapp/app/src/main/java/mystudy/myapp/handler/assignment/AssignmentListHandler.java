@@ -1,9 +1,9 @@
 package mystudy.myapp.handler.assignment;
 
+import java.util.Iterator;
+import java.util.List;
 import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Assignment;
-import mystudy.util.Iterator;
-import mystudy.util.List;
 import mystudy.util.Prompt;
 
 public class AssignmentListHandler extends AbstractMenuHandler {

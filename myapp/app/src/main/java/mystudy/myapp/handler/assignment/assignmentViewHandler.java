@@ -1,8 +1,8 @@
 package mystudy.myapp.handler.assignment;
 
+import java.util.List;
 import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Assignment;
-import mystudy.util.List;
 import mystudy.util.Prompt;
 
 public class assignmentViewHandler extends AbstractMenuHandler {

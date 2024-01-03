@@ -10,7 +10,7 @@ public interface Menu {
   // abstract => 추상메서드
 
   // 인터페이스나 수퍼 클래스의 메서드를 정의 하겠다고 컴파일러한테 알린다.
-  public abstract void execute(Prompt prompt);
+  void execute(Prompt prompt);
 
-  public abstract String getTitle();
+  String getTitle();
 }

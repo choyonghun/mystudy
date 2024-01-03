@@ -1,7 +1,7 @@
 package mystudy.menu;
 
+import java.util.Stack;
 import mystudy.util.Prompt;
-import mystudy.util.Stack;
 
 // Composite 패턴에서 leaf역할을 수행하는 클래스
 // Leaf 란  =>  하위 항목을 포함하지 않는 말단 객체

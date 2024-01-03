@@ -1,10 +1,10 @@
 package mystudy.menu;
 
-import mystudy.util.Iterator;
-import mystudy.util.LinkedList;
-import mystudy.util.List;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Stack;
 import mystudy.util.Prompt;
-import mystudy.util.Stack;
 
 // Composite 패턴에서 '복합 객체 (Composite 객체)' 역할을 할 클래스
 // - 다른 Menu 객체를 포함한다.

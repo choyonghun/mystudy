@@ -1,6 +1,6 @@
 package mystudy.menu;
 
-import mystudy.util.Stack;
+import java.util.Stack;
 
 public abstract class AbstractMenu implements Menu {
 

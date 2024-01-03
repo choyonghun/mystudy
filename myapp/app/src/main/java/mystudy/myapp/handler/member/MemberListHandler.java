@@ -1,9 +1,9 @@
 package mystudy.myapp.handler.member;
 
+import java.util.Iterator;
+import java.util.List;
 import mystudy.menu.AbstractMenuHandler;
 import mystudy.myapp.vo.Member;
-import mystudy.util.Iterator;
-import mystudy.util.List;
 import mystudy.util.Prompt;
 
 public class MemberListHandler extends AbstractMenuHandler {
