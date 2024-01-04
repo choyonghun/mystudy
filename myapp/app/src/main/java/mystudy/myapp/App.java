@@ -7,8 +7,8 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import mystudy.io.DataInputStream;
-import mystudy.io.DataOutputStream;
+import mystudy.io.BufferedDataInputStream;
+import mystudy.io.BufferedDataOutputStream;
 import mystudy.menu.MenuGroup;
 import mystudy.myapp.handler.HelpHandler;
 import mystudy.myapp.handler.assignment.AssignmentAddHandler;
@@ -105,9 +105,9 @@ public class App {
   }
 
   void loadAssignment() {
-    try (DataInputStream in = new DataInputStream("assignment.data")) {
-
-      int size = in.readShort();
+    try (BufferedDataInputStream in = new BufferedDataInputStream("assignment.data")) {
+      long start = System.currentTimeMillis();
+      int size = in.readInt() / 10;
 
       for (int i = 0; i < size; i++) {
         Assignment assignment = new Assignment();
@@ -116,6 +116,9 @@ public class App {
         assignment.setDeadline(Date.valueOf(in.readUTF()));
         assignmentRepository.add(assignment);
       }
+      long end = System.currentTimeMillis();
+      System.out.printf("걸린시간12 : %d\n", end - start);
+
     } catch (Exception e) {
       System.out.println("과제 데이터 로딩 중 오류 발생!");
       e.printStackTrace();
@@ -123,15 +126,17 @@ public class App {
   }
 
   void saveAssignment() {
-    try (DataOutputStream out = new DataOutputStream("assignment.data")) {
-
-      out.writeShort(assignmentRepository.size());
+    try (BufferedDataOutputStream out = new BufferedDataOutputStream("assignment.data")) {
+      long start = System.currentTimeMillis();
+      out.writeInt(assignmentRepository.size());
 
       for (Assignment assignment : assignmentRepository) {
         out.writeUTF(assignment.getTitle());
         out.writeUTF(assignment.getContent());
         out.writeUTF(assignment.getDeadline().toString());
       }
+      long end = System.currentTimeMillis();
+      System.out.printf("걸린시간 : %d\n", end - start);
 
     } catch (Exception e) {
       System.out.println("과제 데이터 저장 중 오류 발생!");
