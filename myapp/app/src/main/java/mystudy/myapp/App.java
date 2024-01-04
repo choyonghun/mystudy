@@ -1,5 +1,8 @@
 package mystudy.myapp;
 
+import java.io.BufferedInputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.charset.StandardCharsets;
@@ -7,8 +10,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import mystudy.io.BufferedDataInputStream;
-import mystudy.io.BufferedDataOutputStream;
 import mystudy.menu.MenuGroup;
 import mystudy.myapp.handler.HelpHandler;
 import mystudy.myapp.handler.assignment.AssignmentAddHandler;
@@ -105,7 +106,12 @@ public class App {
   }
 
   void loadAssignment() {
-    try (BufferedDataInputStream in = new BufferedDataInputStream("assignment.data")) {
+//    try (DataInputStream in = new DataInputStream(
+//        new BufferedInputStream(new FileInputStream("assignment.data")))) {
+    try (FileInputStream in0 = new FileInputStream("assignment.data");
+        BufferedInputStream in1 = new BufferedInputStream(in0);
+        DataInputStream in = new DataInputStream(in1)) {
+
       long start = System.currentTimeMillis();
       int size = in.readInt() / 10;
 
@@ -126,11 +132,14 @@ public class App {
   }
 
   void saveAssignment() {
-    try (BufferedDataOutputStream out = new BufferedDataOutputStream("assignment.data")) {
+    try (FileOutputStream out0 = new FileOutputStream(
+        "assignment.data"); DataOutputStream out = new DataOutputStream(out0)) {
+
       long start = System.currentTimeMillis();
       out.writeInt(assignmentRepository.size());
 
-      for (Assignment assignment : assignmentRepository) {
+      for (
+          Assignment assignment : assignmentRepository) {
         out.writeUTF(assignment.getTitle());
         out.writeUTF(assignment.getContent());
         out.writeUTF(assignment.getDeadline().toString());
@@ -142,10 +151,12 @@ public class App {
       System.out.println("과제 데이터 저장 중 오류 발생!");
       e.printStackTrace();
     }
+
   }
 
   void loadMember() {
-    try (FileInputStream in = new FileInputStream("member.data")) {
+    try (DataInputStream in = new DataInputStream(
+        new BufferedInputStream(new FileInputStream("member.data")))) {
       byte[] bytes = new byte[60000];
       int size = in.read() << 8 | in.read();
 
@@ -183,7 +194,8 @@ public class App {
   }
 
   void saveMember() {
-    try (FileOutputStream out = new FileOutputStream("member.data")) {
+    try (FileOutputStream out0 = new FileOutputStream(
+        "member.data"); DataOutputStream out = new DataOutputStream(out0)) {
 
       out.write(memberRepository.size() >> 8);
       out.write(memberRepository.size());
@@ -222,7 +234,8 @@ public class App {
   }
 
   void loadBoard() {
-    try (FileInputStream in = new FileInputStream("board.data")) {
+    try (DataInputStream in = new DataInputStream(
+        new BufferedInputStream(new FileInputStream("board.data")))) {
       byte[] bytes = new byte[60000];
       int size = in.read() << 8 | in.read();
 
@@ -260,7 +273,8 @@ public class App {
   }
 
   void saveBoard() {
-    try (FileOutputStream out = new FileOutputStream("board.data")) {
+    try (FileOutputStream out0 = new FileOutputStream(
+        "board.data"); DataOutputStream out = new DataOutputStream(out0)) {
 
       out.write(boardRepository.size() >> 8);
       out.write(boardRepository.size());
@@ -299,7 +313,8 @@ public class App {
   }
 
   void loadGreeting() {
-    try (FileInputStream in = new FileInputStream("greeting.data")) {
+    try (DataInputStream in = new DataInputStream(
+        new BufferedInputStream(new FileInputStream("greeting.data")))) {
       byte[] bytes = new byte[60000];
       int size = in.read() << 8 | in.read();
 
@@ -337,7 +352,8 @@ public class App {
   }
 
   void saveGreeting() {
-    try (FileOutputStream out = new FileOutputStream("greeting.data")) {
+    try (FileOutputStream out0 = new FileOutputStream(
+        "greeting.data"); DataOutputStream out = new DataOutputStream(out0)) {
 
       out.write(greetingRepository.size() >> 8);
       out.write(greetingRepository.size());
