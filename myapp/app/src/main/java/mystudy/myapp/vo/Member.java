@@ -12,6 +12,18 @@ public class Member implements Serializable, CsvString {
   private String password;
   private Date createdDate;
 
+  //팩토리 메서드
+  public static Member createFromCsv(String csv) {
+    String[] values = csv.split(",");
+    Member obj = new Member();
+    obj.setEmail(values[0]);
+    obj.setName(values[1]);
+    obj.setPassword(values[2]);
+    obj.setCreatedDate(new Date(Long.valueOf(values[3])));
+    return obj;
+  }
+
+
   @Override
   public String toCsvSTring() {
     return String.format("%s,%s,%s,%d", this.email, this.name, this.password,

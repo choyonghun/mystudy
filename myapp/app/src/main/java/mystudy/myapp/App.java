@@ -1,14 +1,15 @@
 package mystudy.myapp;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
+import java.io.FileReader;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 import mystudy.menu.MenuGroup;
 import mystudy.myapp.handler.HelpHandler;
 import mystudy.myapp.handler.assignment.AssignmentAddHandler;
@@ -43,10 +44,10 @@ public class App {
   MenuGroup mainMenu;
 
   App() {
-    assignmentRepository = loadData("assignment.data");
-    memberRepository = loadData("member.data");
-    boardRepository = loadData("board.data");
-    greetingRepository = loadData("greeting.data");
+    assignmentRepository = loadData("assignment.csv", Assignment.class);
+    memberRepository = loadData("member.csv", Member.class);
+    boardRepository = loadData("board.csv", Board.class);
+    greetingRepository = loadData("greeting.csv", Board.class);
     prepareMenu();
   }
 
@@ -104,11 +105,23 @@ public class App {
     saveData("greeting.csv", greetingRepository);
   }
 
-  <E> List<E> loadData(String filepath) {
-    try (ObjectInputStream in = new ObjectInputStream(
-        new BufferedInputStream(new FileInputStream(filepath)))) {
+  <E> List<E> loadData(String filepath, Class<E> clazz) {
+    // 0) 객체를 저장할 List를 준비한다
+    ArrayList<E> list = new ArrayList<>();
 
-      return (List<E>) in.readObject();
+    try (Scanner in = new Scanner(new FileReader(filepath))) {
+      // 1) 클래스 정보를 가지고 기본 생성자를 알아낸다.
+      Method factoryMethod = clazz.getMethod("createFromCsv", String.class);
+
+      while (true) {
+        // 2) 팩토리 메서드에 CSV 문자열을 전달하고 객체를 리턴받는다.
+        E obj = (E) factoryMethod.invoke(null, in.nextLine());
+        // 3) 생성한 객체를 List에 저장한다.
+        list.add(obj);
+      }
+
+    } catch (NoSuchElementException e) {
+      System.out.printf("%s 파일 로딩 완료!@!#\n", filepath);
 
     } catch (Exception e) {
       System.out.printf("%s 파일 로딩 중 오류 발생!\n", filepath);
