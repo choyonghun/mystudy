@@ -1,13 +1,11 @@
 package mystudy.myapp;
 
 import java.io.BufferedInputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.nio.charset.StandardCharsets;
-import java.sql.Date;
-import java.util.ArrayList;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.List;
 import mystudy.menu.MenuGroup;
@@ -36,19 +34,19 @@ public class App {
 
   Prompt prompt = new Prompt(System.in);
 
-  List<Board> boardRepository = new LinkedList<>();
-  List<Assignment> assignmentRepository = new LinkedList<>();
-  List<Member> memberRepository = new ArrayList<>();
-  List<Board> greetingRepository = new ArrayList<>();
+  List<Board> boardRepository;
+  List<Assignment> assignmentRepository;
+  List<Member> memberRepository;
+  List<Board> greetingRepository;
 
   MenuGroup mainMenu;
 
   App() {
-    prepareMenu();
     loadAssignment();
     loadMember();
     loadBoard();
     loadGreeting();
+    prepareMenu();
   }
 
   public static void main(String[] args) throws Exception {
@@ -106,126 +104,67 @@ public class App {
   }
 
   void loadAssignment() {
-//    try (DataInputStream in = new DataInputStream(
-//        new BufferedInputStream(new FileInputStream("assignment.data")))) {
     try (FileInputStream in0 = new FileInputStream("assignment.data");
         BufferedInputStream in1 = new BufferedInputStream(in0);
-        DataInputStream in = new DataInputStream(in1)) {
+        ObjectInputStream in = new ObjectInputStream(in1)) {
 
-      long start = System.currentTimeMillis();
-      int size = in.readInt() / 10;
-
-      for (int i = 0; i < size; i++) {
-        Assignment assignment = new Assignment();
-        assignment.setTitle(in.readUTF());
-        assignment.setContent(in.readUTF());
-        assignment.setDeadline(Date.valueOf(in.readUTF()));
-        assignmentRepository.add(assignment);
-      }
-      long end = System.currentTimeMillis();
-      System.out.printf("걸린시간12 : %d\n", end - start);
+      assignmentRepository = (List<Assignment>) in.readObject();
 
     } catch (Exception e) {
+      assignmentRepository = new LinkedList<>();  //file을 읽을수 없으면 빈 객체를 만들어준다.
       System.out.println("과제 데이터 로딩 중 오류 발생!");
       e.printStackTrace();
     }
   }
 
   void saveAssignment() {
-    try (FileOutputStream out0 = new FileOutputStream(
-        "assignment.data"); DataOutputStream out = new DataOutputStream(out0)) {
+    try (FileOutputStream out0 = new FileOutputStream("assignment.data");
+        BufferedOutputStream out1 = new BufferedOutputStream(out0);
+        ObjectOutputStream out = new ObjectOutputStream(out1)) {
 
-      long start = System.currentTimeMillis();
-      out.writeInt(assignmentRepository.size());
-
-      for (
-          Assignment assignment : assignmentRepository) {
-        out.writeUTF(assignment.getTitle());
-        out.writeUTF(assignment.getContent());
-        out.writeUTF(assignment.getDeadline().toString());
-      }
-      long end = System.currentTimeMillis();
-      System.out.printf("걸린시간 : %d\n", end - start);
+      out.writeObject(assignmentRepository);
 
     } catch (Exception e) {
       System.out.println("과제 데이터 저장 중 오류 발생!");
       e.printStackTrace();
     }
-
   }
 
   void loadMember() {
-    try (DataInputStream in = new DataInputStream(
+    try (ObjectInputStream in = new ObjectInputStream(
         new BufferedInputStream(new FileInputStream("member.data")))) {
-      byte[] bytes = new byte[60000];
-      int size = in.read() << 8 | in.read();
 
-      for (int i = 0; i < size; i++) {
-        Member member = new Member();
+      memberRepository = (List<Member>) in.readObject();
 
-        int len = in.read() << 8 | in.read();
-        in.read(bytes, 0, len);
-        member.setName(new String(bytes, 0, len, StandardCharsets.UTF_8));
-
-        len = in.read() << 8 | in.read();
-        in.read(bytes, 0, len);
-        member.setEmail(new String(bytes, 0, len, StandardCharsets.UTF_8));
-
-        len = in.read() << 8 | in.read();
-        in.read(bytes, 0, len);
-        member.setPassword(new String(bytes, 0, len, StandardCharsets.UTF_8));
-
-        long date = ((long) in.read() << 56) |
-            ((long) in.read() << 42) |
-            ((long) in.read() << 40) |
-            ((long) in.read() << 32) |
-            ((long) in.read() << 24) |
-            ((long) in.read() << 16) |
-            ((long) in.read() << 8) |
-            in.read();
-        member.setCreatedDate(new java.util.Date(date));
-
-        memberRepository.add(member);
-      }
+//      int size = in.readShort();
+//      for (int i = 0; i < size; i++) {
+//        Member member = new Member();
+//        member.setName(in.readUTF());
+//        member.setEmail(in.readUTF());
+//        member.setPassword(in.readUTF());
+//        member.setCreatedDate(new java.util.Date(in.readLong()));
+//        memberRepository.add(member);
+//      }
     } catch (Exception e) {
+      memberRepository = new LinkedList<>();
       System.out.println("회원 데이터 로딩 중 오류 발생!");
       e.printStackTrace();
     }
   }
 
   void saveMember() {
-    try (FileOutputStream out0 = new FileOutputStream(
-        "member.data"); DataOutputStream out = new DataOutputStream(out0)) {
+    try (ObjectOutputStream out = new ObjectOutputStream(
+        new BufferedOutputStream(new FileOutputStream("member.data")))) {
 
-      out.write(memberRepository.size() >> 8);
-      out.write(memberRepository.size());
+      out.writeObject(memberRepository);
 
-      for (Member member : memberRepository) {
-        byte[] bytes = member.getName().getBytes(StandardCharsets.UTF_8);
-        out.write(bytes.length >> 8);
-        out.write(bytes.length);
-        out.write(bytes);
-
-        bytes = member.getEmail().getBytes(StandardCharsets.UTF_8);
-        out.write(bytes.length >> 8);
-        out.write(bytes.length);
-        out.write(bytes);
-
-        bytes = member.getPassword().getBytes(StandardCharsets.UTF_8);
-        out.write(bytes.length >> 8);
-        out.write(bytes.length);
-        out.write(bytes);
-
-        long date = member.getCreatedDate().getTime();
-        out.write((int) (date >> 56));
-        out.write((int) (date >> 48));
-        out.write((int) (date >> 40));
-        out.write((int) (date >> 32));
-        out.write((int) (date >> 24));
-        out.write((int) (date >> 16));
-        out.write((int) (date >> 8));
-        out.write((int) date);
-      }
+//      out.writeShort(memberRepository.size());
+//      for (Member member : memberRepository) {
+//        out.writeUTF(member.getName());
+//        out.writeUTF(member.getEmail());
+//        out.writeUTF(member.getPassword());
+//        out.writeLong(member.getCreatedDate().getTime());
+//      }
 
     } catch (Exception e) {
       System.out.println("회원 데이터 저장 중 오류 발생!");
@@ -234,78 +173,40 @@ public class App {
   }
 
   void loadBoard() {
-    try (DataInputStream in = new DataInputStream(
+    try (ObjectInputStream in = new ObjectInputStream(
         new BufferedInputStream(new FileInputStream("board.data")))) {
-      byte[] bytes = new byte[60000];
-      int size = in.read() << 8 | in.read();
 
-      for (int i = 0; i < size; i++) {
-        Board board = new Board();
+      boardRepository = (List<Board>) in.readObject();
 
-        int len = in.read() << 8 | in.read();
-        in.read(bytes, 0, len);
-        board.setTitle(new String(bytes, 0, len, StandardCharsets.UTF_8));
-
-        len = in.read() << 8 | in.read();
-        in.read(bytes, 0, len);
-        board.setContent(new String(bytes, 0, len, StandardCharsets.UTF_8));
-
-        len = in.read() << 8 | in.read();
-        in.read(bytes, 0, len);
-        board.setWriter(new String(bytes, 0, len, StandardCharsets.UTF_8));
-
-        long date = ((long) in.read() << 56) |
-            ((long) in.read() << 42) |
-            ((long) in.read() << 40) |
-            ((long) in.read() << 32) |
-            ((long) in.read() << 24) |
-            ((long) in.read() << 16) |
-            ((long) in.read() << 8) |
-            in.read();
-        board.setCreatedDate(new java.util.Date(date));
-
-        boardRepository.add(board);
-      }
+//      int size = in.readShort();
+//      for (int i = 0; i < size; i++) {
+//        Board board = new Board();
+//        board.setTitle(in.readUTF());
+//        board.setContent(in.readUTF());
+//        board.setWriter(in.readUTF());
+//        board.setCreatedDate(new java.util.Date(in.readLong()));
+//        boardRepository.add(board);
+//      }
     } catch (Exception e) {
+      boardRepository = new LinkedList<>();
       System.out.println("게시글 데이터 로딩 중 오류 발생!");
       e.printStackTrace();
     }
   }
 
   void saveBoard() {
-    try (FileOutputStream out0 = new FileOutputStream(
-        "board.data"); DataOutputStream out = new DataOutputStream(out0)) {
+    try (ObjectOutputStream out = new ObjectOutputStream(
+        new BufferedOutputStream(new FileOutputStream("board.data")))) {
 
-      out.write(boardRepository.size() >> 8);
-      out.write(boardRepository.size());
+      out.writeObject(boardRepository);
 
-      for (Board board : boardRepository) {
-        byte[] bytes = board.getTitle().getBytes(StandardCharsets.UTF_8);
-        out.write(bytes.length >> 8);
-        out.write(bytes.length);
-        out.write(bytes);
-
-        bytes = board.getContent().getBytes(StandardCharsets.UTF_8);
-        out.write(bytes.length >> 8);
-        out.write(bytes.length);
-        out.write(bytes);
-
-        bytes = board.getWriter().getBytes(StandardCharsets.UTF_8);
-        out.write(bytes.length >> 8);
-        out.write(bytes.length);
-        out.write(bytes);
-
-        long date = board.getCreatedDate().getTime();
-        out.write((int) (date >> 56));
-        out.write((int) (date >> 48));
-        out.write((int) (date >> 40));
-        out.write((int) (date >> 32));
-        out.write((int) (date >> 24));
-        out.write((int) (date >> 16));
-        out.write((int) (date >> 8));
-        out.write((int) date);
-      }
-
+//      out.writeShort(boardRepository.size());
+//      for (Board board : boardRepository) {
+//        out.writeUTF(board.getTitle());
+//        out.writeUTF(board.getContent());
+//        out.writeUTF(board.getWriter());
+//        out.writeLong(board.getCreatedDate().getTime());
+//      }
     } catch (Exception e) {
       System.out.println("게시글 데이터 저장 중 오류 발생!");
       e.printStackTrace();
@@ -313,77 +214,39 @@ public class App {
   }
 
   void loadGreeting() {
-    try (DataInputStream in = new DataInputStream(
+    try (ObjectInputStream in = new ObjectInputStream(
         new BufferedInputStream(new FileInputStream("greeting.data")))) {
-      byte[] bytes = new byte[60000];
-      int size = in.read() << 8 | in.read();
+      greetingRepository = (List<Board>) in.readObject();
 
-      for (int i = 0; i < size; i++) {
-        Board board = new Board();
-
-        int len = in.read() << 8 | in.read();
-        in.read(bytes, 0, len);
-        board.setTitle(new String(bytes, 0, len, StandardCharsets.UTF_8));
-
-        len = in.read() << 8 | in.read();
-        in.read(bytes, 0, len);
-        board.setContent(new String(bytes, 0, len, StandardCharsets.UTF_8));
-
-        len = in.read() << 8 | in.read();
-        in.read(bytes, 0, len);
-        board.setWriter(new String(bytes, 0, len, StandardCharsets.UTF_8));
-
-        long date = ((long) in.read() << 56) |
-            ((long) in.read() << 42) |
-            ((long) in.read() << 40) |
-            ((long) in.read() << 32) |
-            ((long) in.read() << 24) |
-            ((long) in.read() << 16) |
-            ((long) in.read() << 8) |
-            in.read();
-        board.setCreatedDate(new java.util.Date(date));
-
-        greetingRepository.add(board);
-      }
+//      int size = in.readShort();
+//      for (int i = 0; i < size; i++) {
+//        Board board = new Board();
+//        board.setTitle(in.readUTF());
+//        board.setContent(in.readUTF());
+//        board.setWriter(in.readUTF());
+//        board.setCreatedDate(new java.util.Date(in.readLong()));
+//        greetingRepository.add(board);
+//      }
     } catch (Exception e) {
+      greetingRepository = new LinkedList<>();
       System.out.println("가입인사 데이터 로딩 중 오류 발생!");
       e.printStackTrace();
     }
   }
 
   void saveGreeting() {
-    try (FileOutputStream out0 = new FileOutputStream(
-        "greeting.data"); DataOutputStream out = new DataOutputStream(out0)) {
+    try (ObjectOutputStream out = new ObjectOutputStream(
+        new BufferedOutputStream(new FileOutputStream("greeting.data")))) {
 
-      out.write(greetingRepository.size() >> 8);
-      out.write(greetingRepository.size());
+      out.writeObject(greetingRepository);
 
-      for (Board board : greetingRepository) {
-        byte[] bytes = board.getTitle().getBytes(StandardCharsets.UTF_8);
-        out.write(bytes.length >> 8);
-        out.write(bytes.length);
-        out.write(bytes);
-
-        bytes = board.getContent().getBytes(StandardCharsets.UTF_8);
-        out.write(bytes.length >> 8);
-        out.write(bytes.length);
-        out.write(bytes);
-
-        bytes = board.getWriter().getBytes(StandardCharsets.UTF_8);
-        out.write(bytes.length >> 8);
-        out.write(bytes.length);
-        out.write(bytes);
-
-        long date = board.getCreatedDate().getTime();
-        out.write((int) (date >> 56));
-        out.write((int) (date >> 48));
-        out.write((int) (date >> 40));
-        out.write((int) (date >> 32));
-        out.write((int) (date >> 24));
-        out.write((int) (date >> 16));
-        out.write((int) (date >> 8));
-        out.write((int) date);
-      }
+//      out.writeShort(greetingRepository.size());
+//      for (Board board : greetingRepository) {
+//        out.writeUTF(board.getTitle());
+//        out.writeUTF(board.getContent());
+//        out.writeUTF(board.getWriter());
+//        out.writeLong(board.getCreatedDate().getTime());
+//      }
 
     } catch (Exception e) {
       System.out.println("가입인사 데이터 저장 중 오류 발생!");
