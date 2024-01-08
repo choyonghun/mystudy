@@ -12,7 +12,7 @@ import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
-public class Exam0113 {
+public class Exam0118 {
   public static void main(String[] args) {
 
     // 1) 객체 준비
@@ -29,6 +29,10 @@ public class Exam0113 {
     // 2) JSON 처리 객체 준비
     GsonBuilder builder = new GsonBuilder();
 
+    // 람다(lambda) 문법을 적용하여 인터페이스 구현체 만들기
+    // 추상 메서드가 한개인 인터페이스(functional interface) 라면 
+    // 람다 문법 적용하여 코드를 간결하게 바꿀수 있다.
+    //
     // Date타입을 JSON 문자열로 변환해줄 어댑터 등록
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     builder.registerTypeAdapter(Date.class, new JsonSerializer<Date>() {

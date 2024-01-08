@@ -12,6 +12,7 @@ public class Exam0121 {
 
     // 2) JSON 처리 객체 준비
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+    // Gson gson = new Gson();     // 실행오류! yyyy-MM-dd 형식으로 된 날짜를 인식하지 못해서 오류발생.
 
     // 3) JSON 문자열을 가지고 객체 만들기
     Member m = gson.fromJson(jsonStr, Member.class);
