@@ -22,6 +22,9 @@ public class Exam0110 {
 
     // 3) 객체의 값을 JSON 문자열로 얻기
     String jsonStr = gson.toJson(m);
+    
+    //  String jsonStr = new Gson().toJson(m);  한줄로 처리 가능!
+    // System.out.println(new Gson().toJson(m));
 
     System.out.println(jsonStr);
   }

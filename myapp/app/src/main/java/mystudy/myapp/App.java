@@ -108,7 +108,7 @@ public class App {
 
     try (BufferedReader in = new BufferedReader(new FileReader(filepath))) {
 
-      // 파일에서 JSON 문자열을 모두 읽어서 버퍼에 저장한다
+      // 파일에서 JSON 문자열을 모두 읽어서 버퍼에 저장한다.
       StringBuilder strBuilder = new StringBuilder();
       String str;
       while ((str = in.readLine()) != null) {
@@ -119,9 +119,6 @@ public class App {
       return (List<E>) new GsonBuilder().setDateFormat("yyyy-MM-dd").create().fromJson(
           strBuilder.toString(),
           TypeToken.getParameterized(ArrayList.class, clazz));
-
-//    } catch (NoSuchElementException e) {
-//      System.out.printf("%s 파일 로딩 완료!@!#\n", filepath);
 
     } catch (Exception e) {
       System.out.printf("%s 파일 로딩 중 오류 발생!\n", filepath);
@@ -134,8 +131,6 @@ public class App {
     try (BufferedWriter out = new BufferedWriter(new FileWriter(filepath))) {
 
       out.write(new GsonBuilder().setDateFormat("yyyy-MM-dd").create().toJson(dataList));
-      // Gson 만들객체 만들고, 날짜플러그인 설정하고, 괄호안 형식으로 Json객체를 만들어, 컬렉션데이터를 Json객체로 만들어
-      // write 파일로 출력한다!
 
     } catch (Exception e) {
       System.out.printf("%s 파일 저장 중 오류 발생!\n", filepath);
