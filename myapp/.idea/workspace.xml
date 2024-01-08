@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assignment.csv" beforeDir="false" afterPath="$PROJECT_DIR$/app/assignment.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/board.csv" beforeDir="false" afterPath="$PROJECT_DIR$/app/board.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/greeting.csv" beforeDir="false" afterPath="$PROJECT_DIR$/app/greeting.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/member.csv" beforeDir="false" afterPath="$PROJECT_DIR$/app/member.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/vo/Assignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/vo/Assignment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/vo/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/vo/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/vo/CsvString.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/vo/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/mystudy/myapp/vo/Member.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +102,7 @@
     "project.structure.last.edited": "프로젝트",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.fileTypes",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
     "애플리케이션.Test.executor": "Run"
   }
 }]]></component>

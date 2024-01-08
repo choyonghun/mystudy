@@ -1,9 +1,8 @@
 package mystudy.myapp;
 
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
+import com.google.gson.Gson;
 import java.io.FileReader;
-import java.io.ObjectOutputStream;
+import java.io.FileWriter;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -131,10 +130,12 @@ public class App {
   }
 
   void saveData(String filepath, List<?> dataList) {
-    try (ObjectOutputStream out = new ObjectOutputStream(
-        new BufferedOutputStream(new FileOutputStream(filepath)))) {
+    try (FileWriter out = new FileWriter(filepath)) {
 
-      out.writeObject(dataList);
+      Gson gson = new Gson();
+      String gsonData = gson.toJson(dataList);
+      System.out.println(gsonData);
+      System.out.println("-----------------------------------");
 
     } catch (Exception e) {
       System.out.printf("%s 파일 저장 중 오류 발생!\n", filepath);

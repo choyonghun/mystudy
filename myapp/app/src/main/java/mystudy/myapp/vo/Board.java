@@ -3,7 +3,7 @@ package mystudy.myapp.vo;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Board implements Serializable, CsvString {
+public class Board implements Serializable {
 
   private static final long serialVersionUID = 100L;
 
@@ -23,12 +23,6 @@ public class Board implements Serializable, CsvString {
     return obj;
   }
 
-
-  @Override
-  public String toCsvSTring() {
-    return String.format("%s,%s,%s,%d", this.title, this.content, this.writer,
-        this.createdDate.getTime());
-  }
 
   public String getTitle() {
     return title;
