@@ -24,7 +24,6 @@ public class Exam0621 {
       public Member deserialize(JsonElement json, Type typeOfT,
           JsonDeserializationContext context) throws JsonParseException {
 
-        // jsonObject 는 MAP<>객체 와 같은 뜻을 가지고 있다.
         JsonObject jsonObject = json.getAsJsonObject();
 
         if (jsonObject.get("position") != null) {

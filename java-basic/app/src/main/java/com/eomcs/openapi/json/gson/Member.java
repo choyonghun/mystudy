@@ -10,15 +10,7 @@ public class Member {
   private String photo;
   private String tel;
   private Date registeredDate;
-  private String School;
-
-  public String getSchool() {
-    return School;
-  }
-
-  public void setSchool(String school) {
-    School = school;
-  }
+  private School school;
 
   @Override
   public String toString() {
@@ -68,4 +60,13 @@ public class Member {
   public void setRegisteredDate(Date registeredDate) {
     this.registeredDate = registeredDate;
   }
+
+  public School getSchool() {
+    return school;
+  }
+
+  public void setSchool(School school) {
+    this.school = school;
+  }
+
 }

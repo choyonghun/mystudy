@@ -29,7 +29,7 @@ public class Exam0113 {
     // 2) JSON 처리 객체 준비
     GsonBuilder builder = new GsonBuilder();
 
-    // Date타입을 JSON 문자열로 변환해줄 어댑터 등록
+    // Date 타입을 JSON 문자열로 변환해줄 어댑터 등록
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     builder.registerTypeAdapter(Date.class, new JsonSerializer<Date>() {
       @Override
@@ -37,15 +37,15 @@ public class Exam0113 {
         return new JsonPrimitive(dateFormat.format(src));
       }
     });
-    
-    //School 타입을 JSON 문자열로 변환해줄 어댑터 등록
-    builder.registerTypeAdapter(School.class, JsonSerializer<School>() {
+
+    // School 타입을 JSON 문자열로 변환해줄 어댑터 등록
+    builder.registerTypeAdapter(School.class, new JsonSerializer<School>() {
       @Override
       public JsonElement serialize(School src, Type typeOfSrc, JsonSerializationContext context) {
-        return new JsonPrimitive(dateFormat.format(src));
+        return new JsonPrimitive(String.format("%s(%s)", src.level, src.name));
       }
     });
-    
+
     Gson gson = builder.create();
 
     // 3) 객체의 값을 JSON 문자열로 얻기
