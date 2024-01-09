@@ -8,6 +8,10 @@ public class Exam0540 {
     public static int plus(int a, int b) {
       return a + b;
     }
+    
+    public static int plus2() {
+      return 100;
+    }
 
     public static int minus(int a, int b) {
       return a - b;
@@ -55,6 +59,10 @@ public class Exam0540 {
   }
 
   static interface Calculator9 {
+    int compute(int a, int b, int c);
+  }
+
+  static interface Calculator10 {
     int compute(int a, int b, int c);
   }
 
@@ -133,6 +141,8 @@ public class Exam0540 {
     //        // 그러나 plus()는 int 파라미터가 두 개만 있다.
     //      }
     //    };
+    
+//    Calculator9 c99 = MyCalculator::plus2;    // 컴파일 오류
 
     // 메서드 레퍼런스를 지정할 때 파라미터 타입 규칙:
     // => 인터페이스 규칙에 따라 받은 값을

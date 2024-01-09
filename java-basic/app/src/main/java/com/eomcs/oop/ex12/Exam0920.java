@@ -17,9 +17,17 @@ public class Exam0920 {
     class MyConsumer<T> implements Consumer<T> {
       @Override
       public void accept(T item) {
+        // List에 대해 반복문을 돌면서 각 항목에 대해 처리할 작업이 있다면
+        // 이 메서드에 작성한다.
+        // 이 메서드에 작성하라
         System.out.println(item);
       }
     }
     names.forEach(new MyConsumer<String>());
   }
+  //forEach() 메서드는 대략적으로 다음과 같이 구현되어 있다. 
+  //
+  // public void forEach(Customer< ? super E > action) {
+  //      for( E value : this ) {
+  
 }
