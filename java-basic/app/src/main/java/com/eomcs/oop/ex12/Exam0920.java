@@ -19,7 +19,6 @@ public class Exam0920 {
       public void accept(T item) {
         // List에 대해 반복문을 돌면서 각 항목에 대해 처리할 작업이 있다면
         // 이 메서드에 작성한다.
-        // 이 메서드에 작성하라
         System.out.println(item);
       }
     }
