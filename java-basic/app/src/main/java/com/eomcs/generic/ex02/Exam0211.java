@@ -8,10 +8,10 @@ public class Exam0211 {
     // 레퍼런스를 선언할 때 제네릭 타입을 지정하지 않으면 
     // 객체 생성시 어떤 제네릭 타입을 지정하더라도 상관없다.
     ArrayList list1; 
-    //    list1 = new ArrayList();
-    //    list1 = new ArrayList<>();
-    //    list1 = new ArrayList<Object>();
-    //    list1 = new ArrayList<String>();
+//        list1 = new ArrayList();
+//        list1 = new ArrayList<>();
+//        list1 = new ArrayList<Object>();
+//        list1 = new ArrayList<String>();
     list1 = new ArrayList<Member>();
 
     //=> 레퍼런스를 선언할 때 제네릭 타입을 지정하지 않으면 

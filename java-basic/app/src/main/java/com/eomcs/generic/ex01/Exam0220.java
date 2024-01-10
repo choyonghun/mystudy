@@ -15,6 +15,7 @@ class ObjectBox {
   public void set(Object value) {
     this.value = value;
   }
+  // Object는 어떤거라도 다 get/set이 가능하다!
 }
 
 public class Exam0220 {

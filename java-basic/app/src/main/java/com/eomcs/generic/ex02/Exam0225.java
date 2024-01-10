@@ -35,8 +35,8 @@ public class Exam0225 {
     // 타입이 결정되지 않은 상태에서도 유효한 코드라면 컴파일을 해준다.
     // 타입이 결정되지 않아 유효한지 아닌지 결정할 수 없는 코드라면 컴파일 오류이다.
     //
-    //    list.add(new Object()); // 컴파일 오류!
-    //    list.add(new A());
+//        list.add(new Object()); // 컴파일 오류!
+//        list.add(new A());      // 컴파일 오류!
     list.add(new B1()); // OK
     list.add(new C()); // OK
 

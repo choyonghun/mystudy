@@ -12,6 +12,7 @@ public class Board implements Serializable {
   private String writer;
   private Date createdDate;
 
+
   //팩토리 메서드
   public static Board createFromCsv(String csv) {
     String[] values = csv.split(",");
@@ -54,5 +55,15 @@ public class Board implements Serializable {
 
   public void setCreatedDate(Date createdDate) {
     this.createdDate = createdDate;
+  }
+
+  @Override
+  public String toString() {
+    return "Board{" +
+        "title='" + title + '\'' +
+        ", content='" + content + '\'' +
+        ", writer='" + writer + '\'' +
+        ", createdDate=" + createdDate +
+        '}';
   }
 }
