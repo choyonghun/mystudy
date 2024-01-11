@@ -1,18 +1,18 @@
 package mystudy.myapp.handler.member;
 
 import java.util.Date;
-import java.util.List;
 import mystudy.menu.AbstractMenuHandler;
+import mystudy.myapp.dao.MemberDao;
 import mystudy.myapp.vo.Member;
 import mystudy.util.Prompt;
 
 public class MemberAddHandler extends AbstractMenuHandler {
 
-  private List<Member> objectRepository;
+  private MemberDao memberDao;
 
-  public MemberAddHandler(List<Member> objectRepository, Prompt prompt) {
+  public MemberAddHandler(MemberDao memberDao, Prompt prompt) {
     super(prompt);
-    this.objectRepository = objectRepository;
+    this.memberDao = memberDao;
   }
 
   @Override
@@ -23,6 +23,6 @@ public class MemberAddHandler extends AbstractMenuHandler {
     member.setPassword(this.prompt.input("암호? "));
     member.setCreatedDate(new Date());
 
-    objectRepository.add(member);
+    memberDao.add(member);
   }
 }

@@ -1,30 +1,35 @@
 package mystudy.myapp.handler.assignment;
 
-import java.util.List;
 import mystudy.menu.AbstractMenuHandler;
+import mystudy.myapp.dao.AssignmentDao;
 import mystudy.myapp.vo.Assignment;
 import mystudy.util.Prompt;
 
 public class AssignmentModifyHandler extends AbstractMenuHandler {
 
-  private List<Assignment> objectRepository;
+  private AssignmentDao assignmentdao;
 
-  public AssignmentModifyHandler(List<Assignment> objectRepository, Prompt prompt) {
+  public AssignmentModifyHandler(AssignmentDao assignmentdao, Prompt prompt) {
     super(prompt);
-    this.objectRepository = objectRepository;
+    this.assignmentdao = assignmentdao;
   }
 
   @Override
   protected void action() {
     try {
-      int index = this.prompt.inputInt("번호? ");
-      Assignment old = this.objectRepository.get(index);
-      Assignment assignment = new Assignment();
-      assignment.setTitle(this.prompt.input("과제명(%s)? ", old.getTitle()));
-      assignment.setContent(this.prompt.input("내용(%s)? ", old.getContent()));
-      assignment.setDeadline(this.prompt.inputDate("제출 마감일(%s)? ", old.getDeadline()));
+      int no = this.prompt.inputInt("번호? ");
+      Assignment oldAssignment = this.assignmentdao.findBy(no);
+      if (oldAssignment == null) {
+        System.out.println("과제 번호가 유효하지 않습니다.");
+        return;
+      }
 
-      this.objectRepository.set(index, assignment);
+      Assignment assignment = new Assignment();
+      assignment.setTitle(this.prompt.input("과제명(%s)? ", oldAssignment.getTitle()));
+      assignment.setContent(this.prompt.input("내용(%s)? ", oldAssignment.getContent()));
+      assignment.setDeadline(this.prompt.inputDate("제출 마감일(%s)? ", oldAssignment.getDeadline()));
+
+      assignmentdao.update(assignment);
 
 //    } catch (NumberFormatException e) {
 //      System.out.println("숫자를 입력하세요");

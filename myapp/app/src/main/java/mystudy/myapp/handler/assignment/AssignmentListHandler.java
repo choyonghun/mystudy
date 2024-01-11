@@ -1,32 +1,32 @@
 package mystudy.myapp.handler.assignment;
 
-import java.util.Iterator;
 import java.util.List;
 import mystudy.menu.AbstractMenuHandler;
+import mystudy.myapp.dao.AssignmentDao;
 import mystudy.myapp.vo.Assignment;
 import mystudy.util.Prompt;
 
 public class AssignmentListHandler extends AbstractMenuHandler {
 
-  private List<Assignment> objectRepository;
+  private AssignmentDao assignmentdao;
 
-  public AssignmentListHandler(List<Assignment> objectRepository, Prompt prompt) {
+  public AssignmentListHandler(AssignmentDao assignmentdao, Prompt prompt) {
     super(prompt);
-    this.objectRepository = objectRepository;
+    this.assignmentdao = assignmentdao;
   }
 
   @Override
   protected void action() {
-    System.out.printf("%-20s\t%s\n", "과제", "제출마감일");
+    System.out.printf("%-4s\t%-20s\t%s\n", "No", "과제", "제출마감일");
 
-    Iterator<Assignment> iterator = this.objectRepository.iterator();
+    List<Assignment> list = assignmentdao.findAll();
 //    iterator을 사용하면 배열을 사용 안해도된다.
 //    Assignment[] assignments = new Assignment[this.objectRepository.size()];
 //    this.objectRepository.toArray(assignments);
 
-    while (iterator.hasNext()) {
-      Assignment assignment = iterator.next();
-      System.out.printf("%-20s\t%s\n", assignment.getTitle(), assignment.getDeadline());
+    for (Assignment assignment : list) {
+      System.out.printf("%-4d\t%-20s\t%s\n", assignment.getNo(), assignment.getTitle(),
+          assignment.getDeadline());
     }
   }
 }

@@ -1,4 +1,4 @@
-package mystudy.myapp.dao;
+package mystudy.myapp.dao.json;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -8,12 +8,19 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
+import mystudy.myapp.dao.DaoException;
 
 public abstract class AbstractDao<T> {
 
-  ArrayList<T> list;
+  protected ArrayList<T> list;
+  private String filepath;
 
-  void loadData(String filepath) {
+  public AbstractDao(String filepath) {
+    this.filepath = filepath;
+    loadData();
+  }
+
+  protected void loadData() {
 
     try (BufferedReader in = new BufferedReader(new FileReader(filepath))) {
 
@@ -26,7 +33,7 @@ public abstract class AbstractDao<T> {
 
       // DAO 객체가 다루는 데이터의 클래스 정보를 알아낸다.
       // 타입 파라미터 T가 가리키느 클래스가 무엇인지 알아낸다.
-      Class<?> dataType = (Class) ((ParameterizedType) this.getClass()  // 이 메서드를 호출한 클래스의 정보를 알아낸다
+      Class<T> dataType = (Class<T>) ((ParameterizedType) this.getClass()  // 이 메서드를 호출한 클래스의 정보를 알아낸다
           .getGenericSuperclass()            // AbstractDao 클래스의 정보를 알아낸다.
       ).getActualTypeArguments()[0];         // AbstractDao 에 전달한 제네릭 타입의 클래스 정보를 알아낸다
 
@@ -41,7 +48,7 @@ public abstract class AbstractDao<T> {
     }
   }
 
-  void saveData(String filepath) {
+  protected void saveData() {
     try (BufferedWriter out = new BufferedWriter(new FileWriter(filepath))) {
       out.write(new GsonBuilder().setDateFormat("yyyy-MM-dd").create().toJson(list));
     } catch (Exception e) {

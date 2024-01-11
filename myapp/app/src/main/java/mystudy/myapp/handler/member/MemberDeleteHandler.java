@@ -1,22 +1,25 @@
 package mystudy.myapp.handler.member;
 
-import java.util.List;
 import mystudy.menu.AbstractMenuHandler;
-import mystudy.myapp.vo.Member;
+import mystudy.myapp.dao.MemberDao;
 import mystudy.util.Prompt;
 
 public class MemberDeleteHandler extends AbstractMenuHandler {
 
-  private List<Member> objectRepository;
+  private MemberDao memberDao;
 
-  public MemberDeleteHandler(List<Member> objectRepository, Prompt prompt) {
+  public MemberDeleteHandler(MemberDao memberDao, Prompt prompt) {
     super(prompt);
-    this.objectRepository = objectRepository;
+    this.memberDao = memberDao;
   }
 
   @Override
   protected void action() {
     int index = this.prompt.inputInt("번호? ");
-    this.objectRepository.remove(index);
+    if (memberDao.delete(index) == 0) {
+      System.out.println("멤버 번호가 유효하지 않습니다.");
+    } else {
+      System.out.println("삭제했습니다.");
+    }
   }
 }

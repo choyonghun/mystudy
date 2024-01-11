@@ -1,8 +1,7 @@
 package mystudy.myapp.handler.board;
 
-import java.util.List;
 import mystudy.menu.AbstractMenuHandler;
-import mystudy.myapp.vo.Board;
+import mystudy.myapp.dao.BoardDao;
 import mystudy.util.Prompt;
 
 // 게시글의 '등록' 메뉴를 선택했을때 작업을 수행하는 클래스
@@ -10,17 +9,21 @@ import mystudy.util.Prompt;
 //
 public class BoardDeleteHandler extends AbstractMenuHandler {
 
-  private List<Board> objectRepository;   // 배열값 넣고 빼고
+  private BoardDao boardDao;   // 배열값 넣고 빼고
 
   // BoardRepository에 게시글 배열이 들어있으니 가져온다.
-  public BoardDeleteHandler(List<Board> objectRepository, Prompt prompt) {
+  public BoardDeleteHandler(BoardDao boardDao, Prompt prompt) {
     super(prompt);
-    this.objectRepository = objectRepository;
+    this.boardDao = boardDao;
   }
 
   @Override
   protected void action() {
     int index = this.prompt.inputInt("번호? ");
-    this.objectRepository.remove(index);
+    if (boardDao.delete(index) == 0) {
+      System.out.println("게시글 번호가 유효하지 않습니다.");
+    } else {
+      System.out.println("삭제했습니다.");
+    }
   }
 }

@@ -1,8 +1,8 @@
 package mystudy.myapp.handler.board;
 
 import java.util.Date;
-import java.util.List;
 import mystudy.menu.AbstractMenuHandler;
+import mystudy.myapp.dao.BoardDao;
 import mystudy.myapp.vo.Board;
 import mystudy.util.Prompt;
 
@@ -11,14 +11,14 @@ import mystudy.util.Prompt;
 //
 public class BoardAddHandler extends AbstractMenuHandler {
 
-  private List<Board> objectRepository;
+  private BoardDao boardDao;
 
 
   // BoardRepository에 게시글 배열이 들어있다.
-  public BoardAddHandler(List<Board> objectRepository, Prompt prompt) {
+  public BoardAddHandler(BoardDao boardDao, Prompt prompt) {
     super(prompt);
     //super을 생략하게 되면 기본생성자가 없어 오류가 뜨게된다.
-    this.objectRepository = objectRepository;
+    this.boardDao = boardDao;
   }
 
   @Override
@@ -34,7 +34,7 @@ public class BoardAddHandler extends AbstractMenuHandler {
     // 목록에 객체를 추가시키는 코드를 BoardRepository가 감췄다. (캡슐화)
     // 대신 목록에 객체를 추가시킬수 있도록 메서드를 제공하고 있다.
     // 따라서 다음과 같이 BoardRepository가 제공하는 메소드를 사용하여 게시글 객체를 추가한다.
-    objectRepository.add(board);
+    boardDao.add(board);
 
     // 레퍼런스 선어하는 시점에 지정된 타입이 아닌 값을 넣으려고 하면
     // 컴파일 오류가 발생한다.

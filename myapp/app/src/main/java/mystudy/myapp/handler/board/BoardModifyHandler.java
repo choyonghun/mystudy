@@ -1,7 +1,7 @@
 package mystudy.myapp.handler.board;
 
-import java.util.List;
 import mystudy.menu.AbstractMenuHandler;
+import mystudy.myapp.dao.BoardDao;
 import mystudy.myapp.vo.Board;
 import mystudy.util.Prompt;
 
@@ -10,27 +10,31 @@ import mystudy.util.Prompt;
 //
 public class BoardModifyHandler extends AbstractMenuHandler {
 
-  private List<Board> objectRepository;   // 배열값 넣고 빼고
+  private BoardDao boardDao;   // 배열값 넣고 빼고
 
   // BoardRepository에 게시글 배열이 들어있으니 가져온다.
-  public BoardModifyHandler(List<Board> objectRepository, Prompt prompt) {
+  public BoardModifyHandler(BoardDao boardDao, Prompt prompt) {
     super(prompt);
-    this.objectRepository = objectRepository;
+    this.boardDao = boardDao;
   }
 
   @Override
   protected void action() {
-    int index = this.prompt.inputInt("번호? ");
-    // 위에 제네릭으로 Board를 지정해주었기 때문에 형변환은 필요가 없다.
-    // Board oldboard = (Board) this.objectRepository.get(index);
-    Board oldboard = this.objectRepository.get(index);
+    int no = this.prompt.inputInt("번호? ");
 
-    Board board = new Board();
+    Board oldboard = this.boardDao.findBy(no);
+    if (oldboard == null) {
+      System.out.println("게시글 번호가 유효하지 않습니다.");
+      return;
+    }
+
+    Board board = new Board();  // 기존 게시글의 번호를 그대로 설정한다.
     board.setTitle(this.prompt.input("제목(%s)? ", oldboard.getTitle()));
     board.setContent(this.prompt.input("내용(%s)? ", oldboard.getContent()));
     board.setWriter(this.prompt.input("작성자(%s)? ", oldboard.getWriter()));
     board.setCreatedDate(oldboard.getCreatedDate());
 
-    this.objectRepository.set(index, board);
+    boardDao.update(board);
+    System.out.println("게시글 변경 했습니다!@");
   }
 }

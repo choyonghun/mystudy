@@ -1,8 +1,8 @@
 package mystudy.myapp.handler.board;
 
-import java.util.Iterator;
 import java.util.List;
 import mystudy.menu.AbstractMenuHandler;
+import mystudy.myapp.dao.BoardDao;
 import mystudy.myapp.vo.Board;
 import mystudy.util.Prompt;
 
@@ -11,17 +11,17 @@ import mystudy.util.Prompt;
 //
 public class BoardListHandler extends AbstractMenuHandler {
 
-  private List<Board> objectRepository;
+  private BoardDao boardDao;
 
   // BoardRepository에 게시글 배열이 들어있다.
-  public BoardListHandler(List<Board> objectRepository, Prompt prompt) {
+  public BoardListHandler(BoardDao boardDao, Prompt prompt) {
     super(prompt);
-    this.objectRepository = objectRepository;
+    this.boardDao = boardDao;
   }
 
   @Override
   protected void action() {
-    System.out.printf("%-20s\t%10s\t%s\n", "Title", "Writer", "Date");
+    System.out.printf("%-4s\t%-20s\t%10s\t%s\n", "No", "Title", "Writer", "Date");
 
 //    방법1)
 //    Board[] boards = new Board[this.objectRepository.size()];
@@ -33,15 +33,14 @@ public class BoardListHandler extends AbstractMenuHandler {
     // Board board = (Board) object;   //board. 을사용하기 위해 형변환 코드를 적어주었다.
 
 //    방법3) iterator 사용하면 배열이 필요가 없다.
-    Iterator<Board> iterator = this.objectRepository.iterator();
+    List<Board> list = boardDao.findAll();
 
-    while (iterator.hasNext()) {
-      Board board = iterator.next();
-      System.out.printf("%-20s\t%10s\t%3$tY-%3$tm-%3$td\n",
+    for (Board board : list) {
+      System.out.printf("%-4d\t%-20s\t%10s\t%4$tY-%4$tm-%4$td\n",
+          board.getNo(),
           board.getTitle(),     //object 에 들어있는건 Board 객체이다를 말해준다.
           board.getWriter(),    //object 에 들어있는건 Board 객체이다를 말해준다.
           board.getCreatedDate());
     }
-
   }
 }

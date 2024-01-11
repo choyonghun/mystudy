@@ -7,22 +7,34 @@ public class Member implements Serializable {
 
   private static final long serialVersionUID = 100L;
 
+  private int no;
   private String email;
   private String name;
   private String password;
   private Date createdDate;
 
-  //팩토리 메서드
-  public static Member createFromCsv(String csv) {
-    String[] values = csv.split(",");
-    Member obj = new Member();
-    obj.setEmail(values[0]);
-    obj.setName(values[1]);
-    obj.setPassword(values[2]);
-    obj.setCreatedDate(new Date(Long.valueOf(values[3])));
-    return obj;
+  public Member() {
+    this.no = no;
   }
 
+  @Override
+  public String toString() {
+    return "Member{" +
+        "no=" + no +
+        ", email='" + email + '\'' +
+        ", name='" + name + '\'' +
+        ", password='" + password + '\'' +
+        ", createdDate=" + createdDate +
+        '}';
+  }
+
+  public int getNo() {
+    return no;
+  }
+
+  public void setNo(int no) {
+    this.no = no;
+  }
 
   public String getEmail() {
     return email;
@@ -56,13 +68,4 @@ public class Member implements Serializable {
     this.createdDate = createdDate;
   }
 
-  @Override
-  public String toString() {
-    return "Member{" +
-        "email='" + email + '\'' +
-        ", name='" + name + '\'' +
-        ", password='" + password + '\'' +
-        ", createdDate=" + createdDate +
-        '}';
-  }
 }
