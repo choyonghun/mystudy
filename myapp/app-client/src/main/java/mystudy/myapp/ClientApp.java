@@ -1,16 +1,11 @@
 package mystudy.myapp;
 
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.net.Socket;
 import mystudy.menu.MenuGroup;
 import mystudy.myapp.dao.AssignmentDao;
 import mystudy.myapp.dao.BoardDao;
+import mystudy.myapp.dao.DaoProxyGenerator;
 import mystudy.myapp.dao.MemberDao;
-import mystudy.myapp.dao.network.AssignmentDaoImpl;
-import mystudy.myapp.dao.network.BoardDaoImpl;
-import mystudy.myapp.dao.network.MemberDaoImpl;
 import mystudy.myapp.handler.HelpHandler;
 import mystudy.myapp.handler.assignment.AssignmentAddHandler;
 import mystudy.myapp.handler.assignment.AssignmentDeleteHandler;
@@ -32,17 +27,12 @@ import mystudy.util.Prompt;
 public class ClientApp {
 
   Prompt prompt = new Prompt(System.in);
-
   BoardDao boardDao;
   BoardDao greetingDao;
   AssignmentDao assignmentDao;
   MemberDao memberDao;
-
   MenuGroup mainMenu;
 
-  Socket socket;
-  DataInputStream in;
-  DataOutputStream out;
 
   ClientApp() {
     prepareNetwork();
@@ -56,16 +46,12 @@ public class ClientApp {
 
   void prepareNetwork() {
     try {
-      socket = new Socket("localhost", 8888);
-      System.out.println("서버와 연결되었음!");
+      DaoProxyGenerator daoGenerator = new DaoProxyGenerator("192.168.0.12", 8888);
 
-      in = new DataInputStream(socket.getInputStream());
-      out = new DataOutputStream(socket.getOutputStream());
-
-      boardDao = new BoardDaoImpl("board", in, out);
-      greetingDao = new BoardDaoImpl("greeting", in, out);
-      assignmentDao = new AssignmentDaoImpl("assignment", in, out);
-      memberDao = new MemberDaoImpl("member", in, out);
+      boardDao = daoGenerator.create(BoardDao.class, "board");
+      greetingDao = daoGenerator.create(BoardDao.class, "greeting");
+      assignmentDao = daoGenerator.create(AssignmentDao.class, "assignment");
+      memberDao = daoGenerator.create(MemberDao.class, "member");
 
     } catch (Exception e) {
       System.out.println("통신 오류!");
@@ -112,25 +98,10 @@ public class ClientApp {
       try {
         mainMenu.execute(prompt);
         prompt.close();
-        close();
         break;
       } catch (Exception e) {
         System.out.println("예외 발생!");
       }
-    }
-  }
-
-  void close() {
-    try (Socket socket = this.socket;
-        DataInputStream in = this.in;
-        DataOutputStream out = this.out) {
-
-      out.writeUTF("quit");
-      System.out.println(in.readUTF());
-
-    } catch (Exception e) {
-      // 서버와 연결을 끊는 과정에서 예외가 발생한 경우 무시한다.
-      // 왜? 따로 처리할 것이 없다.
     }
   }
 }

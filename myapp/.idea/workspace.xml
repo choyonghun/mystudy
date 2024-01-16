@@ -5,39 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app-server/src/main/java/mystudy/RequestException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-api/src/main/java/mystudy/myapp/dao/DaoProxyGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app-client/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-api/src/main/java/mystudy/myapp/dao/network/AssignmentDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-api/src/main/java/mystudy/myapp/dao/network/BoardDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-api/src/main/java/mystudy/myapp/dao/network/MemberDaoImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/ClientApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/ClientApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/dao/AssignmentDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/dao/BoardDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/dao/DaoException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/dao/MemberDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/dao/json/AbstractDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/dao/json/AssignmentDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-api/src/main/java/mystudy/myapp/dao/network/AssignmentDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/dao/json/BoardDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-api/src/main/java/mystudy/myapp/dao/network/BoardDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/dao/json/MemberDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-api/src/main/java/mystudy/myapp/dao/network/MemberDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/dao/network/BoardDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/AssignmentMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/HelpMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/MainMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/MemberMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/vo/Assignment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/vo/Board.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/vo/Member.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/ServerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/ServerApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/dao/AssignmentDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/dao/BoardDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/dao/DaoException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/dao/MemberDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/vo/Assignment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/vo/Board.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/vo/Member.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/mystudy/util/AnsiEscape.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/mystudy/util/Prompt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +67,25 @@
                 <item name="myapp" type="f1a62948:ProjectNode" />
                 <item name="app-client" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="app-server" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="app-server" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="app-server" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -183,29 +175,7 @@
       <recent name="mystudy.myapp" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.myapp:app-client [build]">
-    <configuration name="myapp [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Gradle.myapp:app-client [run]">
     <configuration name="myapp:app-api [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -250,6 +220,28 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="myapp:app-client [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/app-client" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="myapp:app-common [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -272,7 +264,7 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="myapp:app-server [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="myapp:app-server [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/app-server" />
@@ -283,7 +275,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value="run" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -295,19 +287,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Gradle.myapp [clean]" />
+      <item itemvalue="Gradle.myapp:app-client [run]" />
+      <item itemvalue="Gradle.myapp:app-server [run]" />
       <item itemvalue="Gradle.myapp:app-common [build]" />
       <item itemvalue="Gradle.myapp:app-api [build]" />
       <item itemvalue="Gradle.myapp:app-client [build]" />
-      <item itemvalue="Gradle.myapp:app-server [build]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.myapp:app-client [run]" />
+        <item itemvalue="Gradle.myapp:app-server [run]" />
         <item itemvalue="Gradle.myapp:app-client [build]" />
         <item itemvalue="Gradle.myapp:app-api [build]" />
         <item itemvalue="Gradle.myapp:app-common [build]" />
-        <item itemvalue="Gradle.myapp:app-server [build]" />
-        <item itemvalue="Gradle.myapp [clean]" />
       </list>
     </recent_temporary>
   </component>
