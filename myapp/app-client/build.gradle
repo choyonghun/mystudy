@@ -28,7 +28,7 @@ java {
 }
 
 application {
-    mainClass = 'mystudy.myapp.ClientApp'
+    mainClass = 'bitcamp.myapp.ClientApp'
 }
 
 tasks.named('test') {

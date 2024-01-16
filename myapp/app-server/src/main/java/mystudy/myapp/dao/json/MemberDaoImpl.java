@@ -1,8 +1,9 @@
 package mystudy.myapp.dao.json;
 
+
+import bitcamp.myapp.dao.MemberDao;
+import bitcamp.myapp.vo.Member;
 import java.util.List;
-import mystudy.myapp.dao.MemberDao;
-import mystudy.myapp.vo.Member;
 
 public class MemberDaoImpl extends AbstractDao<Member> implements MemberDao {
 

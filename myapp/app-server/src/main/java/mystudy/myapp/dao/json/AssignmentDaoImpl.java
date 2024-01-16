@@ -1,8 +1,8 @@
 package mystudy.myapp.dao.json;
 
+import bitcamp.myapp.dao.AssignmentDao;
+import bitcamp.myapp.vo.Assignment;
 import java.util.List;
-import mystudy.myapp.dao.AssignmentDao;
-import mystudy.myapp.vo.Assignment;
 
 public class AssignmentDaoImpl extends AbstractDao<Assignment> implements AssignmentDao {
 

@@ -1,8 +1,8 @@
 package mystudy.myapp.dao.json;
 
+import bitcamp.myapp.dao.BoardDao;
+import bitcamp.myapp.vo.Board;
 import java.util.List;
-import mystudy.myapp.dao.BoardDao;
-import mystudy.myapp.vo.Board;
 
 public class BoardDaoImpl extends AbstractDao<Board> implements BoardDao {
   // BoardDao의 키워드르 사용하면 해당 인터페이스의 메서드를 구현하겠다.

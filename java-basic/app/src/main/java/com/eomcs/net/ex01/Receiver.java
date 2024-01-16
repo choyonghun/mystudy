@@ -40,7 +40,7 @@ public class Receiver {
     Scanner in = new Scanner(socket.getInputStream());
     System.out.println("데이터 송수신을 위한 입출력 스트림 준비!");
 
-    keyscan.nextLine(); // 클라이언트가 보낸 문자열을 읽지 않고 대기함!
+    //keyscan.nextLine(); // 클라이언트가 보낸 문자열을 읽지 않고 대기함!
 
     // 4) 상대편이 보낸 문자열을 한 줄 읽는다.
     // => 상대편이 한 줄의 데이터를 보낼 때까지 리턴하지 않는다.

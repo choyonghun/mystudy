@@ -1,5 +1,6 @@
 package mystudy.myapp.dao;
 
+import bitcamp.myapp.dao.DaoException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.DataInputStream;

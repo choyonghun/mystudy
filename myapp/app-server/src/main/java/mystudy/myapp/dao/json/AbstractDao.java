@@ -1,5 +1,6 @@
 package mystudy.myapp.dao.json;
 
+import bitcamp.myapp.dao.DaoException;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
@@ -8,7 +9,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
-import mystudy.myapp.dao.DaoException;
 
 public abstract class AbstractDao<T> {
 
