@@ -20,6 +20,7 @@ public class Exam0731 {
 
   static void printClasses(File dir, String packageName) {
 
+    // 디렉토리 파일 이거나 .class 파일만 선택한다.
     File[] files = dir.listFiles(new FileFilter() {
       @Override
       public boolean accept(File pathname) {
