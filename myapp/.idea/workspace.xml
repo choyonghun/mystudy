@@ -6,58 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-api/src/main/java/mystudy/myapp/dao/DaoProxyGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-api/src/main/java/mystudy/myapp/dao/DaoProxyGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app-client/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app-client/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/menu/AbstractMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/menu/AbstractMenuHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/menu/Menu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/menu/MenuGroup.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/menu/MenuHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/menu/MenuItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/ClientApp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/HelpHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/assignment/AssignmentAddHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/assignment/AssignmentDeleteHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/assignment/AssignmentListHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/assignment/AssignmentModifyHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/assignment/AssignmentViewHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/board/BoardAddHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/board/BoardDeleteHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/board/BoardListHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/board/BoardModifyHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/board/BoardViewHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/member/MemberAddHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/member/MemberDeleteHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/member/MemberListHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/member/MemberModifyHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/myapp/handler/member/MemberViewHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/util/AnsiEscape.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/main/java/mystudy/util/Prompt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-client/src/test/java/mystudy/myapp/AppTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-common/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app-common/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-common/src/main/java/mystudy/myapp/dao/AssignmentDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-common/src/main/java/mystudy/myapp/dao/BoardDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-common/src/main/java/mystudy/myapp/dao/DaoException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-common/src/main/java/mystudy/myapp/dao/MemberDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-common/src/main/java/mystudy/myapp/dao/json/AbstractDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-common/src/main/java/mystudy/myapp/dao/json/AssignmentDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-common/src/main/java/mystudy/myapp/dao/json/BoardDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-common/src/main/java/mystudy/myapp/dao/json/MemberDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-common/src/main/java/mystudy/myapp/vo/Assignment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-common/src/main/java/mystudy/myapp/vo/Board.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-common/src/main/java/mystudy/myapp/vo/Member.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-common/src/test/java/mystudy/myapp/AppTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/assignment.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/assignment.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/board.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/board.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/greeting.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/greeting.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/member.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/member.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/dao/json/AbstractDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/dao/json/AbstractDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/dao/json/AssignmentDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/dao/json/AssignmentDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/dao/json/BoardDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/dao/json/BoardDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/dao/json/MemberDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-server/src/main/java/mystudy/myapp/dao/json/MemberDaoImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
