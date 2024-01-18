@@ -23,8 +23,6 @@ public class Exam0710_01 {
     File dir = new File(".");
     System.out.println(dir.getCanonicalPath());
   }
-
-
 }
 
 
