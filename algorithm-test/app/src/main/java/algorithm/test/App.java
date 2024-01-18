@@ -3,18 +3,25 @@
  */
 package algorithm.test;
 
+import java.util.Scanner;
+
 public class App {
     public String getGreeting() {
       Scanner scanner = new Scanner(System.in);
 
-      System.out.print("첫 번째 정수 A 입력: ");
-      int A = scanner.nextInt();
 
-      System.out.print("두 번째 정수 B 입력: ");
-      int B = scanner.nextInt();
+      int c = scanner.nextInt();
+      int arr[] = new int[c];
+      
+      for (int i = 0; i < c; i++)  {
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+        arr[c] = A + B;
+    }
 
-      int sum = A + B;
-      System.out.println("A + B = " + sum);
+    for (int i : arr) {
+        System.out.println(c);
+    }
 
       scanner.close();
     }

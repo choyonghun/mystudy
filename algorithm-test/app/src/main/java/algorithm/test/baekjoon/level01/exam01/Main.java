@@ -4,12 +4,20 @@ import java.util.Scanner;
 
 public class Main {
       public static void main(String[] args) {
-          Scanner sc = new Scanner(System.in);
-          int A = sc.nextInt();
-
-          for (int i = 1; i < 10; i++) {
-            System.out.println(A+" * "+i+" = "+(A*i));
-          }
+        Scanner scanner = new Scanner(System.in);
+        
+        int c = scanner.nextInt();
+        int arr[] = new int[c];
+        
+        for (int i = 0; i < c; i++)  {
+          int A = scanner.nextInt();
+          int B = scanner.nextInt();
+          arr[i] = A + B;
       }
+        scanner.close();
+
+      for (int i : arr) {
+          System.out.println(i);
+      }
+   }
 }
-//int B = sc.nextInt();          
