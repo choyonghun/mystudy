@@ -98,5 +98,3 @@ public class CalcServer2 {
     }
   }
 }
-
-

@@ -23,19 +23,25 @@ public class CalcClient2 {
 
       try (Socket socket = new Socket("localhost", 8888);
           DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-          DataInputStream in = new DataInputStream(socket.getInputStream()) ) {
+          DataInputStream in = new DataInputStream(socket.getInputStream())) {
 
+        // => 서버에 클라이언트 아이디를 보낸다.
         out.writeLong(clientId);
-        
+
         // => 서버에 연산자와 값을 보낸다.
         out.writeUTF(op);
         out.writeInt(value);
         out.flush();
 
-        clientId = in.readLong();
-        
+        // => 서버에서 보낸 클라이언트 아이디를 읽는다.
+        long id = in.readLong();
+        if (clientId != id) { // 기존에 저장된 ID와 서버에서 받은 아이디가 다르다면 
+          clientId = id; // 서버에서 받은 ID를 clientId로 사용한다.
+        }
+
+        // => 서버에서 보낸 결과를 읽는다.
         System.out.println(in.readUTF());
-        
+
       } catch (Exception e) {
         System.out.println("서버와 통신 중 오류 발생!");
       }
@@ -49,5 +55,3 @@ public class CalcClient2 {
     keyScan.close();
   }
 }
-
-
