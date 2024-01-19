@@ -6,7 +6,7 @@ import java.io.DataOutputStream;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class CalcClient {
+public class CalcClient2 {
   public static void main(String[] args) throws Exception {
     Scanner keyScan = new Scanner(System.in);
 
@@ -23,14 +23,18 @@ public class CalcClient {
 
       try (Socket socket = new Socket("localhost", 8888);
           DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-          Scanner in = new Scanner(socket.getInputStream())) {
+          DataInputStream in = new DataInputStream(socket.getInputStream()) ) {
 
+        out.writeLong(clientId);
+        
         // => 서버에 연산자와 값을 보낸다.
         out.writeUTF(op);
         out.writeInt(value);
+        out.flush();
 
-        String str = in.nextLine();
-        System.out.println(str);
+        clientId = in.readLong();
+        
+        System.out.println(in.readUTF());
         
       } catch (Exception e) {
         System.out.println("서버와 통신 중 오류 발생!");

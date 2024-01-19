@@ -39,9 +39,21 @@ public class ServerApp {
     try (ServerSocket serverSocket = new ServerSocket(8888)) {
 
       System.out.println("서버 실행!");
+      //기존 방식 : main 스레드에서 실행
+      // service(severSocket.accept();
 
+      // 서버 실행
       while (true) {
-        service(serverSocket.accept());
+        Socket socket = serverSocket.accept();
+        new Thread(() -> {
+          try {
+            service(socket);
+          } catch (Exception e) {
+            System.out.println("클라이언트 요청 처리 중 오류 발생!");
+            e.printStackTrace();
+          }
+
+        }).start();
       }
 
     } catch (Exception e) {

@@ -27,7 +27,6 @@ public class Server0210 {
           if (name.equals("stop")) {
             out.println("Goodbye!");
             out.flush();
-            break loop;
           } else {
             out.printf("%s 님 반갑습니다!\n", name);
             out.flush();

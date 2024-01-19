@@ -1,4 +1,4 @@
-// stateless 방식 - 계산기 서버 만들기 + 서버쪽에 계산 결과 유지하기
+// stateless 방식에서 클라이언트를 구분하고 작업 결과를 유지하는 방법
 package com.eomcs.net.ex04.stateless2;
 
 import java.io.DataInputStream;
@@ -8,7 +8,7 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CalcServer {
+public class CalcServer2 {
 
   // 각 클라이언트의 작업 결과를 보관할 맵 객체
   // => Map<clientID, result>
