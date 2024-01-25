@@ -14,9 +14,11 @@ import mystudy.RequestException;
 import mystudy.myapp.dao.json.AssignmentDaoImpl;
 import mystudy.myapp.dao.json.BoardDaoImpl;
 import mystudy.myapp.dao.json.MemberDaoImpl;
+import mystudy.util.ThreadPool;
 
 public class ServerApp {
 
+  ThreadPool threadPool = new ThreadPool();
   HashMap<String, Object> daoMap = new HashMap<>();
   Gson gson;
 
@@ -41,7 +43,8 @@ public class ServerApp {
       System.out.println("서버 실행!");
 
       while (true) {
-        service(serverSocket.accept());
+        Socket socket = serverSocket.accept();
+        threadPool.get().setWorker(() -> service(socket));
       }
 
     } catch (Exception e) {
@@ -56,14 +59,14 @@ public class ServerApp {
         DataInputStream in = new DataInputStream(socket.getInputStream());
         DataOutputStream out = new DataOutputStream(socket.getOutputStream())) {
 
-      System.out.println("클라이언트와 연결됨!");
+      System.out.printf("[%s] 클라이언트와 연결됨!\n", Thread.currentThread().getName());
 
       processRequest(in, out);
 
-      System.out.println("클라이언트 연결 종료!");
+      System.out.printf("[%s] 클라이언트 연결 종료!\n", Thread.currentThread().getName());
 
     } catch (Exception e) {
-      System.out.println("클라이언트 연결 오류!");
+      System.out.printf("[%s] 클라이언트 연결 오류!\n", Thread.currentThread().getName());
     }
   }
 

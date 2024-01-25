@@ -39,6 +39,8 @@ public class Exam0230 {
     executorService.execute(new MyRunnable(9000));
     executorService.execute(new MyRunnable(2000));
     executorService.execute(new MyRunnable(4000));
+    
+    executorService.shutdown();
 
     System.out.println("main() 종료!");
   }

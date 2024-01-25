@@ -46,7 +46,7 @@ public class Exam0210 {
     //
     executorService.execute(new MyRunnable(2000));
     executorService.execute(new MyRunnable(4000));
-
+    
     System.out.println("main() 종료!");
   }
 }

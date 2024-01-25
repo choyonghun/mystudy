@@ -49,6 +49,10 @@ public class Exam0220 {
     // 작업을 끝낸 스레드가 요청한 작업을 처리한다.
     //
     executorService.execute(new MyRunnable(4000));
+    executorService.execute(new MyRunnable(4000));
+    executorService.execute(new MyRunnable(4000));
+    
+    executorService.shutdown();
 
     System.out.println("main() 종료!");
   }

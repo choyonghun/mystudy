@@ -22,7 +22,7 @@ public class Exam0120 {
           while (true) {
             // 사용자가 카운트 값을 입력할 시간을 주기 위해
             // 10초 정도 스레드를 멈춘다.
-            Thread.sleep(10000);
+            Thread.sleep(2000);
 
             System.out.println("카운트 시작!");
             for (int i = count; i > 0; i--) {
