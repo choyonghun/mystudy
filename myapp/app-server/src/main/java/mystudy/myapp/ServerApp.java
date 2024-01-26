@@ -10,15 +10,16 @@ import java.lang.reflect.Parameter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import mystudy.RequestException;
 import mystudy.myapp.dao.json.AssignmentDaoImpl;
 import mystudy.myapp.dao.json.BoardDaoImpl;
 import mystudy.myapp.dao.json.MemberDaoImpl;
-import mystudy.util.ThreadPool;
 
 public class ServerApp {
 
-  ThreadPool threadPool = new ThreadPool();
+  ExecutorService executorService = Executors.newCachedThreadPool();
   HashMap<String, Object> daoMap = new HashMap<>();
   Gson gson;
 
@@ -44,7 +45,7 @@ public class ServerApp {
 
       while (true) {
         Socket socket = serverSocket.accept();
-        threadPool.get().setWorker(() -> service(socket));
+        executorService.execute(() -> service(socket));
       }
 
     } catch (Exception e) {
