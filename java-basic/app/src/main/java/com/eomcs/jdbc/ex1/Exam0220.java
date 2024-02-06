@@ -13,7 +13,7 @@ public class Exam0220 {
     try (java.sql.Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb", // jdbcURL
         "study", // username
-        "1111" // password
+        "Bitcamp!@#123" // password
         );) {
 
       System.out.println("DBMS와 연결됨!");

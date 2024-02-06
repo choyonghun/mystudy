@@ -1,12 +1,10 @@
 // JDBC 드라이버 준비 - DriverManager가 Driver 구현체를 자동 로딩
 package com.eomcs.jdbc.ex1;
 
-import java.sql.DriverManager;
-
 public class Exam0140 {
 
   public static void main(String[] args) {
-
+    
     // JDBC 드라이버 등록 방법4: Driver 구현체 자동 로딩
     // => DriverManager를 사용할 때,
     //    DriverManager 는 다음 절차에 따라 Driver 구현체를 찾아서 자동으로 로딩한다.
@@ -41,8 +39,8 @@ public class Exam0140 {
       //       - JVM 프로퍼티 "jdbc.drivers" 이름으로 등록된 Driver 구현체가 있다면 그 클래스를 로딩한다. 
       //    2) 등록된 Driver 구현체 목록에서 해당 드라이버를 찾아 리턴한다.
       //    
-      java.sql.Driver driver = DriverManager.getDriver("jdbc:mariadb://");
-      System.out.println(driver);
+//      java.sql.Driver driver = DriverManager.getDriver("jdbc:mariadb://");
+//      System.out.println(driver);
 
     } catch (Exception e) {
       e.printStackTrace();

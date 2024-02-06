@@ -28,7 +28,7 @@ public class Exam0210 {
       con = DriverManager.getConnection(
           "jdbc:mysql://localhost:3306/studydb", // jdbcURL
           "study", // username
-          "1111" // password
+          "Bitcamp!@#123" // password
           );
       // => DriverManager는 등록된 java.sql.Driver 구현체 중에서
       //    jdbc url에 지정된 DBMS의 Driver 객체를 찾는다.
@@ -58,7 +58,7 @@ public class Exam0210 {
       // 자원해제
       // => 파일과 마찬가지로 DBMS에 연결한 후 더이상 사용하지 않으면 연결을 해제해야 한다.
       try {
-        con.close();
+       // con.close();
       } catch (Exception e) {
         // 연결 해제하다가 발생된 예외는 무시한다.
         // 왜? 이런 오류는 애플리케이션에서 처리할 방법이 없다.
