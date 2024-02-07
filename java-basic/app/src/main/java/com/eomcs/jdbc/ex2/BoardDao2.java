@@ -12,7 +12,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoardDao {
+public class BoardDao2 {
+  Connection con;
+  
+  public BoardDao2(String jdbcUrl, String username, String password) throws Exception {
+    con = DriverManager.getConnection(jdbcUrl, username, password);
+  }
+  
   public int delete(int no) throws Exception {
     try (Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");

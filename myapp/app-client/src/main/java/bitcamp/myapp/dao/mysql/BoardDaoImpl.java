@@ -4,8 +4,8 @@ import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.Board;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,11 +22,15 @@ public class BoardDaoImpl implements BoardDao {
 
   @Override
   public int update(Board board) {
-    try {
-      Statement stmt = con.createStatement();
-      return stmt.executeUpdate(String.format(
-          "update boards set title='%s', content='%s',writer='%s' where board_no=%d",
-          board.getTitle(), board.getContent(), board.getWriter(), board.getNo()));
+    try (PreparedStatement pstmt = con.prepareStatement(
+        "update boards set title=?, content=?, writer=? where board_no=?")) {
+
+      pstmt.setString(1, board.getTitle());
+      pstmt.setString(2, board.getContent());
+      pstmt.setString(3, board.getWriter());
+      pstmt.setInt(4, board.getNo());
+
+      return pstmt.executeUpdate();
 
     } catch (Exception e) {
       throw new DaoException("데이터 입력 오류", e);
@@ -35,15 +39,15 @@ public class BoardDaoImpl implements BoardDao {
 
   @Override
   public void add(Board board) {
-    try {
+    try (PreparedStatement pstmt = con.prepareStatement(
+        "insert into boards(title, content, writer, category) values(?, ?, ?, ?)")) {
 
-      Statement stmt = con.createStatement();
-//      String sql = String.format(
-//          "insert into boards(title, content, writer) values('%s', '%s', '%s')",
-//          board.getTitle(), board.getContent(), board.getWriter());
-      stmt.executeUpdate(String.format(
-          "insert into boards(title, content, writer, category) values('%s', '%s', '%s', '%d')",
-          board.getTitle(), board.getContent(), board.getWriter(), this.category));
+      pstmt.setString(1, board.getTitle());
+      pstmt.setString(2, board.getContent());
+      pstmt.setString(3, board.getWriter());
+      pstmt.setInt(4, board.getNo());
+
+      pstmt.executeUpdate();
 
     } catch (Exception e) {
       throw new DaoException("데이터 입력 오류", e);
@@ -52,9 +56,11 @@ public class BoardDaoImpl implements BoardDao {
 
   @Override
   public int delete(int no) {
-    try {
-      Statement stmt = con.createStatement();
-      return stmt.executeUpdate(String.format("delete from boards where board_no=%d", no));
+    try (PreparedStatement pstmt = con.prepareStatement(
+        "delete from boards where board_no=?")) {
+      pstmt.setInt(1, no);
+
+      return pstmt.executeUpdate();
 
     } catch (Exception e) {
       throw new DaoException("게시글 번호가 유효하지 않습니다.", e);
@@ -63,10 +69,9 @@ public class BoardDaoImpl implements BoardDao {
 
   @Override
   public List<Board> findAll() {
-    try {
-
-      Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("select * from boards where category=" + this.category);
+    try (PreparedStatement pstmt = con.prepareStatement(
+        "select board_no, title, content, writer, created_date from boards order by board_no desc");
+        ResultSet rs = pstmt.executeQuery()) {
 
       ArrayList<Board> list = new ArrayList<>();
 
@@ -89,22 +94,23 @@ public class BoardDaoImpl implements BoardDao {
 
   @Override
   public Board findBy(int no) {
-    try {
+    try (PreparedStatement pstmt = con.prepareStatement(
+        "select * from boards where board_no=?")) {
+      pstmt.setInt(1, no);
 
-      Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("select * from boards where board_no = " + no);
+      try (ResultSet rs = pstmt.executeQuery()) {
+        if (rs.next()) {
+          Board board = new Board();
+          board.setNo(rs.getInt("board_no"));
+          board.setTitle(rs.getString("title"));
+          board.setContent(rs.getString("content"));
+          board.setWriter(rs.getString("writer"));
+          board.setCreatedDate(rs.getDate("created_date"));
 
-      if (rs.next()) {
-        Board board = new Board();
-        board.setNo(rs.getInt("board_no"));
-        board.setTitle(rs.getString("title"));
-        board.setContent(rs.getString("content"));
-        board.setWriter(rs.getString("writer"));
-        board.setCreatedDate(rs.getDate("created_date"));
-
-        return board;
+          return board;
+        }
+        return null;
       }
-      return null;
 
     } catch (Exception e) {
       throw new DaoException("데이터 가져오기 오류", e);
