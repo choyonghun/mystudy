@@ -2,24 +2,19 @@ package bitcamp.util;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.sql.Date;
-import java.util.Scanner;
+import java.util.Stack;
 
 public class Prompt implements AutoCloseable {
 
-  Scanner keyIn;
+  Stack<String> breadcrumb = new Stack<>();
+
   private DataInputStream in;
   private DataOutputStream out;
   private StringWriter stringWriter = new StringWriter();
   private PrintWriter writer = new PrintWriter(stringWriter);
-
-
-  public Prompt(InputStream in) {
-    keyIn = new Scanner(in);
-  }
 
   public Prompt(DataInputStream in, DataOutputStream out) {
     this.in = in;
@@ -27,7 +22,13 @@ public class Prompt implements AutoCloseable {
   }
 
   public String input(String str, Object... args) {
-    return keyIn.nextLine();
+    try {
+      printf(str, args);
+      end();
+      return in.readUTF();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
   }
 
   public int inputInt(String str, Object... args) {
@@ -46,7 +47,7 @@ public class Prompt implements AutoCloseable {
     return Date.valueOf(this.input(str, args));
   }
 
-// -----------------------------------------------------------------------------------------
+  // ------------------------------------------------------------
 
   public void print(String str) {
     writer.print(str);
@@ -62,11 +63,11 @@ public class Prompt implements AutoCloseable {
 
   public void end() throws Exception {
     // PrintWriter를 통해 출력한 내용은 StringWriter에 쌓여있다.
-    // StringWriter에 쌓여있는 문자열을 꺼낸다.
+    // StringWriter에 쌓여있는 있는 문자열을 꺼낸다.
     StringBuffer buf = stringWriter.getBuffer();
     String content = buf.toString();
 
-    //StringWriter에 쌓여있는 문자열을 꺼낸 후 버퍼를 다시 0으로 초기화 시킨다.
+    // StringWriter에 쌓여있는 문자열을 꺼낸 후 버퍼를 다시 0으로 초기화시킨다.
     buf.setLength(0);
 
     // 버퍼에서 꺼낸 문자열을 클라이언트로 전송한다.
@@ -74,30 +75,20 @@ public class Prompt implements AutoCloseable {
     out.writeUTF(content);
   }
 
-  public String input() throws Exception {
-    end();
-    // 클라이언트에서 읽어들인다.
-    return in.readUTF();
-  }
-
-  public int inputInt() throws Exception {
-    return Integer.parseInt(this.input());
-  }
-
-  public float inputFloat() throws Exception {
-    return Float.parseFloat(this.input());
-  }
-
-  public boolean inputBoolean() throws Exception {
-    return Boolean.parseBoolean(this.input());
-  }
-
-  public Date inputDate() throws Exception {
-    return Date.valueOf(this.input());
-  }
-
   public void close() throws Exception {
     writer.close();
     stringWriter.close();
+  }
+
+  public void pushPath(String path) {
+    breadcrumb.push(path);
+  }
+
+  public String popPath() {
+    return breadcrumb.pop();
+  }
+
+  public String getFullPath() {
+    return String.join("/", breadcrumb.toArray(new String[0]));
   }
 }

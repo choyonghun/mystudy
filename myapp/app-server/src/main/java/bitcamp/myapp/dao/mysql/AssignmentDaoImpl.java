@@ -20,7 +20,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
   @Override
   public void add(Assignment assignment) {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "insert into assignments(title, content, deadline) values(?, ?, ?)")) {
+        "insert into assignments(title,content,deadline) values(?,?,?)")) {
 
       pstmt.setString(1, assignment.getTitle());
       pstmt.setString(2, assignment.getContent());
@@ -29,7 +29,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
       pstmt.executeUpdate();
 
     } catch (Exception e) {
-      throw new DaoException("데이터 추가 오류", e);
+      throw new DaoException("데이터 입력 오류", e);
     }
   }
 
@@ -42,7 +42,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
       return pstmt.executeUpdate();
 
     } catch (Exception e) {
-      throw new DaoException("과제 번호가 유효하지 않습니다.", e);
+      throw new DaoException("데이터 삭제 오류", e);
     }
   }
 
@@ -65,7 +65,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
       return list;
 
     } catch (Exception e) {
-      throw new DaoException("과제데이터 가져오기 오류", e);
+      throw new DaoException("데이터 가져오기 오류", e);
     }
   }
 
@@ -73,23 +73,24 @@ public class AssignmentDaoImpl implements AssignmentDao {
   public Assignment findBy(int no) {
     try (PreparedStatement pstmt = con.prepareStatement(
         "select * from assignments where assignment_no=?")) {
+
       pstmt.setInt(1, no);
 
       try (ResultSet rs = pstmt.executeQuery()) {
+
         if (rs.next()) {
           Assignment assignment = new Assignment();
           assignment.setNo(rs.getInt("assignment_no"));
           assignment.setTitle(rs.getString("title"));
           assignment.setContent(rs.getString("content"));
-          assignment.setDeadline(rs.getDate("deadline_date"));
-
+          assignment.setDeadline(rs.getDate("deadline"));
           return assignment;
         }
         return null;
       }
 
     } catch (Exception e) {
-      throw new DaoException("과제 가져오기 오류", e);
+      throw new DaoException("데이터 가져오기 오류", e);
     }
   }
 
@@ -106,7 +107,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
       return pstmt.executeUpdate();
 
     } catch (Exception e) {
-      throw new DaoException("과제 입력 오류", e);
+      throw new DaoException("데이터 변경 오류", e);
     }
   }
 }
