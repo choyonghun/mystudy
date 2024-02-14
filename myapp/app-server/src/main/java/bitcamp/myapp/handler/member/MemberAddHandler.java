@@ -16,12 +16,17 @@ public class MemberAddHandler extends AbstractMenuHandler {
 
   @Override
   protected void action(Prompt prompt) {
-    Member member = new Member();
-    member.setEmail(prompt.input("이메일? "));
-    member.setName(prompt.input("이름? "));
-    member.setPassword(prompt.input("암호? "));
-    member.setCreatedDate(new Date());
+    try {
+      Member member = new Member();
+      member.setEmail(prompt.input("이메일? "));
+      member.setName(prompt.input("이름? "));
+      member.setPassword(prompt.input("암호? "));
+      member.setCreatedDate(new Date());
 
-    memberDao.add(member);
+      memberDao.add(member);
+
+    } catch (Exception e) {
+      prompt.println("등록 오류!");
+    }
   }
 }

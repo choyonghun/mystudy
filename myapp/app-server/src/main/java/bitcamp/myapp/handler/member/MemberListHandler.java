@@ -16,16 +16,20 @@ public class MemberListHandler extends AbstractMenuHandler {
 
   @Override
   protected void action(Prompt prompt) {
-    prompt.printf("%-4s\t%-10s\t%30s\t%s\n", "번호", "이름", "이메일", "가입일");
+    try {
+      prompt.printf("%-4s\t%-10s\t%30s\t%s\n", "번호", "이름", "이메일", "가입일");
 
-    List<Member> list = memberDao.findAll();
+      List<Member> list = memberDao.findAll();
 
-    for (Member member : list) {
-      prompt.printf("%-4d\t%-10s\t%30s\t%4$tY-%4$tm-%4$td\n",
-          member.getNo(),
-          member.getName(),
-          member.getEmail(),
-          member.getCreatedDate());
+      for (Member member : list) {
+        prompt.printf("%-4d\t%-10s\t%30s\t%4$tY-%4$tm-%4$td\n",
+            member.getNo(),
+            member.getName(),
+            member.getEmail(),
+            member.getCreatedDate());
+      }
+    } catch (Exception e) {
+      prompt.println("목록 오류!");
     }
   }
 }

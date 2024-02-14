@@ -3,14 +3,13 @@ package bitcamp.myapp.handler.assignment;
 import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.vo.Assignment;
-import bitcamp.util.DBConnectionPool;
 import bitcamp.util.Prompt;
 
 public class AssignmentViewHandler extends AbstractMenuHandler {
 
   private AssignmentDao assignmentDao;
 
-  public AssignmentViewHandler(DBConnectionPool connectionPool, AssignmentDao assignmentDao) {
+  public AssignmentViewHandler(AssignmentDao assignmentDao) {
     this.assignmentDao = assignmentDao;
   }
 
@@ -31,6 +30,7 @@ public class AssignmentViewHandler extends AbstractMenuHandler {
 
     } catch (Exception e) {
       prompt.println("조회 오류!");
+
     }
   }
 

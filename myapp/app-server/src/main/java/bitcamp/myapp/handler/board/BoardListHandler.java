@@ -16,16 +16,20 @@ public class BoardListHandler extends AbstractMenuHandler {
 
   @Override
   protected void action(Prompt prompt) {
-    prompt.printf("%-4s\t%-20s\t%10s\t%s\n", "No", "Title", "Writer", "Date");
+    try {
+      prompt.printf("%-4s\t%-20s\t%10s\t%s\t%s\n", "No", "Title", "Writer", "Date", "Files");
 
-    List<Board> list = boardDao.findAll();
+      List<Board> list = boardDao.findAll();
 
-    for (Board board : list) {
-      prompt.printf("%-4d\t%-20s\t%10s\t%4$tY-%4$tm-%4$td\n",
-          board.getNo(),
-          board.getTitle(),
-          board.getWriter(),
-          board.getCreatedDate());
+      for (Board board : list) {
+        prompt.printf("%-4d\t%-20s\t%10s\t%4$tY-%4$tm-%4$td\n",
+            board.getNo(),
+            board.getTitle(),
+            board.getWriter(),
+            board.getCreatedDate());
+      }
+    } catch (Exception e) {
+      prompt.println("목록 오류!");
     }
   }
 }
