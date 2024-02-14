@@ -22,7 +22,7 @@ public class AttachedFileDaoImpl implements AttachedFileDao {
   public void add(AttachedFile file) {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "insert into boards(file_path, board_no) values(?,?)")) {
+            "insert into board_files(file_path,board_no) values(?,?)")) {
 
       pstmt.setString(1, file.getFilePath());
       pstmt.setInt(2, file.getBoardNo());
@@ -36,16 +36,16 @@ public class AttachedFileDaoImpl implements AttachedFileDao {
 
   @Override
   public int addAll(List<AttachedFile> files) {
-
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "insert into boards(file_path, board_no) values(?,?)")) {
+            "insert into board_files(file_path,board_no) values(?,?)")) {
 
       for (AttachedFile file : files) {
         pstmt.setString(1, file.getFilePath());
         pstmt.setInt(2, file.getBoardNo());
         pstmt.executeUpdate();
       }
+
       return files.size();
 
     } catch (Exception e) {
@@ -94,8 +94,8 @@ public class AttachedFileDaoImpl implements AttachedFileDao {
 
         while (rs.next()) {
           AttachedFile file = new AttachedFile();
-          file.setNo(rs.getInt("board_no"));
-          file.setFilePath(rs.getString("title"));
+          file.setNo(rs.getInt("file_no"));
+          file.setFilePath(rs.getString("file_path"));
           file.setBoardNo(rs.getInt("board_no"));
 
           list.add(file);

@@ -1,12 +1,14 @@
 package bitcamp.myapp.handler.board;
 
 import bitcamp.menu.AbstractMenuHandler;
+import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.Board;
 import bitcamp.util.Prompt;
 
 public class BoardModifyHandler extends AbstractMenuHandler {
 
+  private AttachedFileDao attachedFileDao;
   private BoardDao boardDao;
 
   public BoardModifyHandler(BoardDao boardDao) {

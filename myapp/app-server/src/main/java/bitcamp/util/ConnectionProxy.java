@@ -30,6 +30,13 @@ public class ConnectionProxy implements Connection {
     this.connectionPool = connectionPool;
   }
 
+  public void realClose() {
+    try {
+      original.close();
+    } catch (Exception e) {
+    }
+  }
+
   @Override
   public void close() throws SQLException {
     if (original.getAutoCommit()) {
@@ -341,8 +348,5 @@ public class ConnectionProxy implements Connection {
   @Override
   public boolean isWrapperFor(Class<?> iface) throws SQLException {
     return original.isWrapperFor(iface);
-  }
-
-  public void realClose() {
   }
 }

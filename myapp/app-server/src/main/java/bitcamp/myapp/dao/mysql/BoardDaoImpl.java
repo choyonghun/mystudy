@@ -40,6 +40,7 @@ public class BoardDaoImpl implements BoardDao {
         board.setNo(keyRs.getInt(1));
       }
 
+
     } catch (Exception e) {
       throw new DaoException("데이터 입력 오류", e);
     }
@@ -62,16 +63,20 @@ public class BoardDaoImpl implements BoardDao {
   public List<Board> findAll() {
     try (Connection con = connectionPool.getConnection();
         PreparedStatement pstmt = con.prepareStatement(
-            "select board_no, title, writer, created_date"
-                + " from boards where category=? order by board_no desc")) {
-/*
-select b.board_no, b.title, b.writer, b.created_date, bf.file_no, bf.file_path
-from boards b
-  inner join board_file bf on b.board_no = bf.board_no
-where b.category=?
-group by b.board_no
-order by board_no desc;
-*/
+            "select\n"
+                + "  b.board_no,\n"
+                + "  b.title,\n"
+                + "  b.writer,\n"
+                + "  b.created_date,\n"
+                + "  count(file_no) file_count\n"
+                + "from\n"
+                + "  boards b left outer join board_files bf on b.board_no=bf.board_no\n"
+                + "where\n"
+                + "  b.category=?\n"
+                + "group by\n"
+                + "  board_no\n"
+                + "order by\n"
+                + "  board_no desc")) {
 
       pstmt.setInt(1, category);
 
@@ -85,6 +90,7 @@ order by board_no desc;
           board.setTitle(rs.getString("title"));
           board.setWriter(rs.getString("writer"));
           board.setCreatedDate(rs.getDate("created_date"));
+          board.setFileCount(rs.getInt("file_count"));
 
           list.add(board);
         }

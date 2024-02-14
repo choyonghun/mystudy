@@ -31,13 +31,12 @@ public class BoardAddHandler extends AbstractMenuHandler {
 
     ArrayList<AttachedFile> files = new ArrayList<>();
     while (true) {
-      String filepath = prompt.input("파일?(종료: 그냥엔터) ");
+      String filepath = prompt.input("파일?(종료: 그냥 엔터) ");
       if (filepath.length() == 0) {
         break;
       }
       files.add(new AttachedFile().filePath(filepath));
     }
-    board.setFiles(files);
 
     try {
       txManager.startTransaction();
@@ -59,7 +58,7 @@ public class BoardAddHandler extends AbstractMenuHandler {
         txManager.rollback();
       } catch (Exception e2) {
       }
-      prompt.println("게시글 등록 오류!!");
+      prompt.println("게시글 등록 오류!");
     }
   }
 }

@@ -31,5 +31,4 @@ public class TransactionManager {
     con.close();
     System.out.printf("[%s] 트랜잭션 종료\n", Thread.currentThread().getName());
   }
-
 }

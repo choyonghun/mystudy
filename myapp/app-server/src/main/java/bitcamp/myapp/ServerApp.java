@@ -48,6 +48,7 @@ public class ServerApp {
   AssignmentDao assignmentDao;
   MemberDao memberDao;
   AttachedFileDao attachedFileDao;
+
   MenuGroup mainMenu;
 
   ServerApp() {
@@ -70,7 +71,6 @@ public class ServerApp {
           "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
       txManager = new TransactionManager(connectionPool);
 
-      // 구현체 생성
       boardDao = new BoardDaoImpl(connectionPool, 1);
       greetingDao = new BoardDaoImpl(connectionPool, 2);
       assignmentDao = new AssignmentDaoImpl(connectionPool);
@@ -125,10 +125,12 @@ public class ServerApp {
         Socket socket = serverSocket.accept();
         executorService.execute(() -> processRequest(socket));
       }
-
     } catch (Exception e) {
       System.out.println("서버 소켓 생성 오류!");
       e.printStackTrace();
+
+    } finally {
+      connectionPool.closeAll();
     }
   }
 

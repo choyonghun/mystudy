@@ -10,13 +10,12 @@ insert into boards(board_no,title,content,writer,category)
 insert into boards(board_no,title,content,writer,category)
   values(5, '제목5','내용5','윤봉길', 2);
 
-
---board_files 테이블 데이터
-insert into board_files(file_no, file_path, board_no) values
-  (1, 'a1.gif', 1),  (2, 'a2.gif', 1),  (3, 'a3.gif', 1),
-  (4, 'b1.gif', 2),  (5, 'b2.gif', 2),
-  (6, 'c1.gif', 4),  (7, 'c2.gif', 4),  (8, 'c3.gif', 4),  (9, 'c4.gif', 4),
-  (10, 'd1.gif', 5);
+-- board_files 테이블 데이터
+insert into board_files(file_no,file_path,board_no) values
+  (1,'a1.gif', 1), (2,'a2.gif', 1), (3,'a3.gif', 1),
+  (4,'b1.gif', 2), (5,'b2.gif', 2),
+  (6,'c1.gif', 4), (7,'c2.gif', 4), (8,'c3.gif', 4), (9,'c4.gif', 4),
+  (10,'d1.gif', 5);
 
 
 

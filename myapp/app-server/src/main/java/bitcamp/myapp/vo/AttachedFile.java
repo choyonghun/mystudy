@@ -6,7 +6,6 @@ public class AttachedFile {
   private String filePath;
   private int boardNo;
 
-
   public int getNo() {
     return no;
   }
@@ -35,5 +34,4 @@ public class AttachedFile {
     this.filePath = filePath;
     return this;
   }
-
 }
