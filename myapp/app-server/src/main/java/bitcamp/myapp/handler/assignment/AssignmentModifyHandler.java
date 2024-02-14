@@ -3,13 +3,14 @@ package bitcamp.myapp.handler.assignment;
 import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.vo.Assignment;
+import bitcamp.util.DBConnectionPool;
 import bitcamp.util.Prompt;
 
 public class AssignmentModifyHandler extends AbstractMenuHandler {
 
   private AssignmentDao assignmentDao;
 
-  public AssignmentModifyHandler(AssignmentDao assignmentDao) {
+  public AssignmentModifyHandler(DBConnectionPool connectionPool, AssignmentDao assignmentDao) {
     this.assignmentDao = assignmentDao;
   }
 
