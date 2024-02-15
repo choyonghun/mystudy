@@ -10,12 +10,12 @@ import java.util.List;
 
 public class BoardViewHandler extends AbstractMenuHandler {
 
-  AttachedFileDao attachedFileDao;
-
+  private AttachedFileDao attachedFileDao;
   private BoardDao boardDao;
 
-  public BoardViewHandler(BoardDao boardDao) {
+  public BoardViewHandler(BoardDao boardDao, AttachedFileDao attachedFileDao) {
     this.boardDao = boardDao;
+    this.attachedFileDao = attachedFileDao;
   }
 
   @Override
@@ -36,7 +36,7 @@ public class BoardViewHandler extends AbstractMenuHandler {
       prompt.printf("내용: %s\n", board.getContent());
       prompt.printf("작성자: %s\n", board.getWriter());
       prompt.printf("작성일: %1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS\n", board.getCreatedDate());
-      prompt.println("첨부파일: ");
+      prompt.println("첨부파일:");
 
       for (AttachedFile file : files) {
         prompt.printf("  %s\n", file.getFilePath());

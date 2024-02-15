@@ -11,11 +11,12 @@ import java.util.List;
 
 public class BoardModifyHandler extends AbstractMenuHandler {
 
-  private AttachedFileDao attachedFileDao;
   private BoardDao boardDao;
+  private AttachedFileDao attachedFileDao;
 
-  public BoardModifyHandler(BoardDao boardDao) {
+  public BoardModifyHandler(BoardDao boardDao, AttachedFileDao attachedFileDao) {
     this.boardDao = boardDao;
+    this.attachedFileDao = attachedFileDao;
   }
 
   @Override
@@ -46,11 +47,11 @@ public class BoardModifyHandler extends AbstractMenuHandler {
 
       List<AttachedFile> newFiles = new ArrayList<>();
       while (true) {
-        String filepath = prompt.input("추가할 파일?(종료: 그냥엔터");
+        String filepath = prompt.input("추가할 파일?(종료: 그냥 엔터) ");
         if (filepath.length() == 0) {
           break;
         }
-        newFiles.add(new AttachedFile().filePath().);
+        newFiles.add(new AttachedFile().filePath(filepath).boardNo(no));
       }
 
       boardDao.update(board);
