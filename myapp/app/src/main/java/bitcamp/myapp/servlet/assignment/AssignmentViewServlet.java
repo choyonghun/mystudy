@@ -59,7 +59,7 @@ public class AssignmentViewServlet extends HttpServlet {
       out.printf("  내용: <textarea name='content'>%s</textarea>\n", assignment.getContent());
       out.println("</div>");
       out.println("<div>");
-      out.printf("  제출마감일: <input name='deadline' type='text' value='%s'>\n",
+      out.printf("  제출마감일: <input name='deadline' type='date' value='%s'>\n",
           assignment.getDeadline());
       out.println("</div>");
       out.println("<div>");
