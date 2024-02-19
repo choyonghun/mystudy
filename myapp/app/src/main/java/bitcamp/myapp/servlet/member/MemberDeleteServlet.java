@@ -1,8 +1,6 @@
 package bitcamp.myapp.servlet.member;
 
 import bitcamp.myapp.dao.MemberDao;
-import bitcamp.myapp.dao.mysql.MemberDaoImpl;
-import bitcamp.util.DBConnectionPool;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,10 +14,9 @@ public class MemberDeleteServlet extends HttpServlet {
 
   private MemberDao memberDao;
 
-  public MemberDeleteServlet() {
-    DBConnectionPool connectionPool = new DBConnectionPool(
-        "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-    this.memberDao = new MemberDaoImpl(connectionPool);
+  @Override
+  public void init() {
+    this.memberDao = (MemberDao) this.getServletContext().getAttribute("memberDao");
   }
 
   @Override
@@ -44,7 +41,7 @@ public class MemberDeleteServlet extends HttpServlet {
       if (memberDao.delete(no) == -1) {
         out.println("<p>회원 번호가 유효하지 않습니다.</p>");
       } else {
-        out.println("<p>회원을 삭제하였습니다.</p>");
+        out.println("<p>회원을 삭제했습니다.</p>");
       }
 
     } catch (Exception e) {

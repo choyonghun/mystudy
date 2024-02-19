@@ -7,16 +7,21 @@
 <body>
 <h1>과제 관리 시스템</h1>
 
-<h2>로그인</h2>
+<h2>과제</h2>
 
-<form action="/auth/login">
+<form action="/assignment/add">
   <div>
-    이메일: <input name="email" type="text">
+    과제: <input name="title" type="text">
   </div>
   <div>
-    암호: <input name="password" type="password">
+    내용: <textarea name="content"></textarea>
   </div>
-  <button>로그인</button>
+  <div>
+    제출 마감일: <input name="deadline" type="date">
+  </div>
+  <div>
+    <button>등록</button>
+  </div>
 </form>
 
 </body>
