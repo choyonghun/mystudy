@@ -51,6 +51,7 @@ public class App {
 
   TransactionManager txManager;
   DBConnectionPool connectionPool;
+
   BoardDao boardDao;
   BoardDao greetingDao;
   AssignmentDao assignmentDao;
@@ -69,13 +70,17 @@ public class App {
 
     // 톰캣 서버를 구동시키는 객체 준비
     Tomcat tomcat = new Tomcat();
+
     // 서버의 포트 번호 설정
     tomcat.setPort(8888);
+
     // 톰캣 서버를 실행하는 동안 사용할 임시 폴더 지정
     tomcat.setBaseDir("./temp");
+
     // 톰캣 서버의 연결 정보를 설정
     Connector connector = tomcat.getConnector();
     connector.setURIEncoding("UTF-8");
+
     // 톰캣 서버에 배포할 웹 애플리케이션의 환경 정보 준비
     StandardContext ctx = (StandardContext) tomcat.addWebapp(
         "/", // 컨텍스트 경로(웹 애플리케이션 경로)
@@ -85,6 +90,7 @@ public class App {
 
     // 웹 애플리케이션 기타 정보 설정
     WebResourceRoot resources = new StandardRoot(ctx);
+
     // 웹 애플리케이션의 서블릿 클래스 등록
     resources.addPreResources(new DirResourceSet(
         resources, // 루트 웹 애플리케이션 정보
@@ -95,7 +101,7 @@ public class App {
 
     // 웹 애플리케이션 설정 정보를 웹 애플리케이션 환경 정보에 등록
     ctx.setResources(resources);
-    
+
     // 톰캣 서버 구동
     tomcat.start();
 
@@ -103,7 +109,6 @@ public class App {
     tomcat.getServer().await();
 
     System.out.println("서버 종료!");
-
   }
 
   void prepareDatabase() {

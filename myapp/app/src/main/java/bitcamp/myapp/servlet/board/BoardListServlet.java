@@ -53,7 +53,7 @@ public class BoardListServlet extends GenericServlet {
 
       for (Board board : list) {
         out.printf(
-            "<tr> <td>%d</td> <td><a href='/board/view?no=%1$d'>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%d</td> </tr>\n",
+            "<tr> <td>%d</td> <td><a href='/board/view?no=%1$d'>%s</a></td> <td>%s</td> <td>%s</td> <td>%d</td> </tr>\n",
             board.getNo(),
             board.getTitle(),
             board.getWriter().getName(),
@@ -75,4 +75,3 @@ public class BoardListServlet extends GenericServlet {
     out.println("</html>");
   }
 }
-

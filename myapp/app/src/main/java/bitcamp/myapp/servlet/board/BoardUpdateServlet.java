@@ -28,7 +28,6 @@ public class BoardUpdateServlet extends HttpServlet {
   public BoardUpdateServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-
     txManager = new TransactionManager(connectionPool);
     this.boardDao = new BoardDaoImpl(connectionPool, 1);
     this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
@@ -63,7 +62,7 @@ public class BoardUpdateServlet extends HttpServlet {
 
       Board board = boardDao.findBy(no);
       if (board == null) {
-        out.println("게시글 번호가 유효하지 않습니다.");
+        out.println("<p>게시글 번호가 유효하지 않습니다.</p>");
         out.println("</body>");
         out.println("</html>");
         return;
@@ -85,10 +84,9 @@ public class BoardUpdateServlet extends HttpServlet {
 
       txManager.startTransaction();
 
-      boardDao.add(board);
+      boardDao.update(board);
 
       if (attachedFiles.size() > 0) {
-        // 첨부파일 객체에 게시글 번호 저장
         for (AttachedFile attachedFile : attachedFiles) {
           attachedFile.setBoardNo(board.getNo());
         }
@@ -97,17 +95,20 @@ public class BoardUpdateServlet extends HttpServlet {
 
       txManager.commit();
 
-      out.println("<p>게시글 변경 완료!!</p>");
+      out.println("<p>게시글을 변경했습니다.</p>");
+
     } catch (Exception e) {
       try {
         txManager.rollback();
       } catch (Exception e2) {
       }
-      out.println("<p>게시글 변경 오류!</p>");
+      out.println("<p>게시글 등록 오류!</p>");
+      out.println("<pre>");
+      e.printStackTrace(out);
+      out.println("</pre>");
     }
 
     out.println("</body>");
     out.println("</html>");
   }
 }
-

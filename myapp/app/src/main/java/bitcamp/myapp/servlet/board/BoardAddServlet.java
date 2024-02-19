@@ -28,7 +28,6 @@ public class BoardAddServlet extends HttpServlet {
   public BoardAddServlet() {
     DBConnectionPool connectionPool = new DBConnectionPool(
         "jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-
     txManager = new TransactionManager(connectionPool);
     this.boardDao = new BoardDaoImpl(connectionPool, 1);
     this.attachedFileDao = new AttachedFileDaoImpl(connectionPool);
@@ -80,7 +79,6 @@ public class BoardAddServlet extends HttpServlet {
       boardDao.add(board);
 
       if (attachedFiles.size() > 0) {
-        // 첨부파일 객체에 게시글 번호 저장
         for (AttachedFile attachedFile : attachedFiles) {
           attachedFile.setBoardNo(board.getNo());
         }
@@ -89,17 +87,20 @@ public class BoardAddServlet extends HttpServlet {
 
       txManager.commit();
 
-      out.println("<p>게시글 등록 완료!!</p>");
+      out.println("<p>게시글을 등록했습니다.</p>");
+
     } catch (Exception e) {
       try {
         txManager.rollback();
       } catch (Exception e2) {
       }
       out.println("<p>게시글 등록 오류!</p>");
+      out.println("<pre>");
+      e.printStackTrace(out);
+      out.println("</pre>");
     }
 
     out.println("</body>");
     out.println("</html>");
   }
 }
-

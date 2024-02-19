@@ -30,7 +30,7 @@ public class BoardViewServlet extends HttpServlet {
   }
 
   @Override
-  public void service(HttpServletRequest request, HttpServletResponse response)
+  protected void service(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
     response.setContentType("text/html;charset=UTF-8");
@@ -50,7 +50,7 @@ public class BoardViewServlet extends HttpServlet {
 
       Board board = boardDao.findBy(no);
       if (board == null) {
-        out.println("게시글 번호가 유효하지 않습니다.");
+        out.println("<p>게시글 번호가 유효하지 않습니다.</p>");
         out.println("</body>");
         out.println("</html>");
         return;
@@ -60,48 +60,41 @@ public class BoardViewServlet extends HttpServlet {
 
       out.println("<form action='/board/update'>");
       out.println("<div>");
-      out.printf("번호: <input readonly name='no' type='text' value ='%s'>\n ", board.getNo());
+      out.printf("  번호: <input readonly name='no' type='text' value='%d'>\n", board.getNo());
       out.println("</div>");
       out.println("<div>");
-      out.printf("제목: <input name='title' type='text' value ='%s'>\n ", board.getTitle());
+      out.printf("  제목: <input name='title' type='text' value='%s'>\n", board.getTitle());
       out.println("</div>");
       out.println("<div>");
-      out.printf(" 내용: <textarea name='content'>%s</textarea>\n", board.getContent());
+      out.printf("  내용: <textarea name='content'>%s</textarea>\n", board.getContent());
       out.println("</div>");
       out.println("<div>");
-      out.println("첨부파일: <input multiple name='files' type='file'>");
+      out.printf("  작성자: <input readonly type='text' value='%s'>\n", board.getWriter().getName());
       out.println("</div>");
       out.println("<div>");
-      out.println(" <button>등록</button>");
-      out.println(" </div>");
+      out.println("  첨부파일: <input multiple name='files' type='file'>");
+      out.println("  <ul>");
+      for (AttachedFile file : files) {
+        out.printf("    <li>%s <a href='/board/file/delete?no=%d'>삭제</a></li>\n",
+            file.getFilePath(),
+            file.getNo());
+      }
+      out.println("  </ul>");
+      out.println("</div>");
+      out.println("<div>");
+      out.println("  <button>변경</button>");
+      out.printf("  <a href='/board/delete?no=%d'>[삭제]</a>\n", no);
+      out.println("</div>");
       out.println("</form>");
 
-      prompt.printf("번호: %d\n", board.getNo());
-      prompt.printf("제목: %s\n", board.getTitle());
-      prompt.printf("내용: %s\n", board.getContent());
-      prompt.printf("작성자: %s\n", board.getWriter().getName());
-      prompt.printf("작성일: %1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS\n", board.getCreatedDate());
-      prompt.println("첨부파일:");
-
-      for (AttachedFile file : files) {
-        prompt.printf("  %s\n", file.getFilePath());
-      }
-
     } catch (Exception e) {
-      prompt.println("조회 오류!");
+      out.println("<p>조회 오류!</p>");
+      out.println("<pre>");
+      e.printStackTrace(out);
+      out.println("</pre>");
     }
+
+    out.println("</body>");
+    out.println("</html>");
   }
 }
-/*
-[조회]
-번호? 7
-번호: 7
-제목: a2
-내용: aa2
-작성자: a
-작성일: 2024-02-14 00:00:00
-첨부파일:
-  a1.gif
-  a2.gif
-  a3.gif
- */
