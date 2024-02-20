@@ -6,7 +6,6 @@ import java.sql.Date;
 public class Assignment implements Serializable {
 
   private static final long serialVersionUID = 100L;
-
   private int no;
   private String title;
   private String content;
