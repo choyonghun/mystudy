@@ -8,7 +8,6 @@ import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
 
-
 public class App {
 
   public static void main(String[] args) throws Exception {

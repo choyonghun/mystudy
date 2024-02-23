@@ -4,7 +4,6 @@ import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Board;
-import bitcamp.util.TransactionManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -17,20 +16,18 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/board/view")
 public class BoardViewServlet extends HttpServlet {
 
-  private TransactionManager txManager;
   private BoardDao boardDao;
   private AttachedFileDao attachedFileDao;
 
   @Override
   public void init() {
-    txManager = (TransactionManager) this.getServletContext().getAttribute("txManager");
     this.boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
     this.attachedFileDao = (AttachedFileDao) this.getServletContext()
         .getAttribute("attachedFileDao");
   }
 
   @Override
-  protected void service(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
     int category = Integer.valueOf(request.getParameter("category"));
@@ -61,7 +58,7 @@ public class BoardViewServlet extends HttpServlet {
 
       List<AttachedFile> files = attachedFileDao.findAllByBoardNo(no);
 
-      out.println("<form action='/board/update'>");
+      out.println("<form action='/board/update' method='post'>");
       out.printf("<input name='category' type='hidden' value='%d'>\n", category);
       out.println("<div>");
       out.printf("  번호: <input readonly name='no' type='text' value='%d'>\n", board.getNo());
