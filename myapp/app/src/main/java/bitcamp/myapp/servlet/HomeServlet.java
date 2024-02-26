@@ -1,6 +1,5 @@
-package bitcamp.myapp.servlet.member;
+package bitcamp.myapp.servlet;
 
-import bitcamp.myapp.dao.MemberDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -9,15 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/delete")
-public class MemberDeleteServlet extends HttpServlet {
-
-  private MemberDao memberDao;
-
-  @Override
-  public void init() {
-    this.memberDao = (MemberDao) this.getServletContext().getAttribute("memberDao");
-  }
+@WebServlet("/index.html")
+public class HomeServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,25 +25,13 @@ public class MemberDeleteServlet extends HttpServlet {
     out.println("  <title>비트캠프 데브옵스 5기</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>회원</h1>");
 
-    try {
-      int no = Integer.parseInt(request.getParameter("no"));
+    request.getRequestDispatcher("/header").include(request, response);
 
-      if (memberDao.delete(no) == -1) {
-        out.println("<p>회원 번호가 유효하지 않습니다.</p>");
-        response.setHeader("Refresh", "1;url=list");
-      } else {
-        response.sendRedirect("list");
-        return;
-      }
+    out.println("<h1>과제 관리 시스템</h1>");
+    out.println("<p>환영합니다! 교육 센터 과제 관리 시스템입니다.</p>");
 
-    } catch (Exception e) {
-      out.println("<p>삭제 오류!</p>");
-      out.println("<pre>");
-      e.printStackTrace(out);
-      out.println("</pre>");
-    }
+    request.getRequestDispatcher("/footer").include(request, response);
 
     out.println("</body>");
     out.println("</html>");

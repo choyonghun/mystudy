@@ -42,6 +42,9 @@ public class BoardAddServlet extends HttpServlet {
 
     out.println("<!DOCTYPE html>");
     out.println("<html lang='en'>");
+
+    request.getRequestDispatcher("/header").include(request, response);
+
     out.println("<head>");
     out.println("  <meta charset='UTF-8'>");
     out.println("  <title>비트캠프 데브옵스 5기</title>");
@@ -68,6 +71,8 @@ public class BoardAddServlet extends HttpServlet {
     out.println("  <button>등록</button>");
     out.println("</div>");
     out.println("</form>");
+
+    request.getRequestDispatcher("/footer").include(request, response);
 
     out.println("</body>");
     out.println("</html>");
@@ -134,7 +139,8 @@ public class BoardAddServlet extends HttpServlet {
 
       txManager.commit();
 
-      out.println("<p>등록했습니다.</p>");
+      response.sendRedirect("/board/list?category=" + category);
+      return;
 
     } catch (Exception e) {
       try {
