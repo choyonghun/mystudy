@@ -286,10 +286,10 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.myapp:app [run]" />
-      <item itemvalue="Gradle.myapp:app-client [run]" />
-      <item itemvalue="Gradle.myapp:app-server [run]" />
       <item itemvalue="Gradle.myapp:app-api [build]" />
       <item itemvalue="Gradle.myapp:app-client [build]" />
+      <item itemvalue="Gradle.myapp:app-client [run]" />
+      <item itemvalue="Gradle.myapp:app-server [run]" />
     </list>
     <recent_temporary>
       <list>
