@@ -41,7 +41,7 @@ public class MemberAddServlet extends HttpServlet {
 
     out.println("<h2>회원</h2>");
 
-    out.println("<form action='/member/add' method='post'>");
+    out.println("<form action='/member/add' method='post' enctype='multipart/form-data'>");
     out.println("  <div>");
     out.println("        이메일: <input name='email' type='text'>");
     out.println("  </div>");
@@ -50,6 +50,9 @@ public class MemberAddServlet extends HttpServlet {
     out.println("  </div>");
     out.println("  <div>");
     out.println("        암호: <input name='password' type='password'>");
+    out.println("  </div>");
+    out.println("  <div>");
+    out.println("        사진: <input name='photo' type='file'>");
     out.println("  </div>");
     out.println("  <div>");
     out.println("    <button>등록</button>");
