@@ -25,6 +25,7 @@ public class MemberDeleteServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+
     try {
       int no = Integer.parseInt(request.getParameter("no"));
       Member member = memberDao.findBy(no);
@@ -34,6 +35,7 @@ public class MemberDeleteServlet extends HttpServlet {
 
       memberDao.delete(no);
       String filename = member.getPhoto();
+
       if (filename != null) {
         new File(this.uploadDir + "/" + filename).delete();
       }
@@ -42,7 +44,7 @@ public class MemberDeleteServlet extends HttpServlet {
     } catch (Exception e) {
       request.setAttribute("message", "삭제 오류!");
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
     }
   }
 }

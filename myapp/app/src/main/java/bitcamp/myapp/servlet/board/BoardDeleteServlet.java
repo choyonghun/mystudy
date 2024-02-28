@@ -37,6 +37,7 @@ public class BoardDeleteServlet extends HttpServlet {
       throws ServletException, IOException {
 
     String title = "";
+
     try {
       int category = Integer.valueOf(request.getParameter("category"));
       title = category == 1 ? "게시글" : "가입인사";
@@ -75,7 +76,7 @@ public class BoardDeleteServlet extends HttpServlet {
       }
       request.setAttribute("message", String.format("%s 삭제 오류!", title));
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
     }
   }
 }
