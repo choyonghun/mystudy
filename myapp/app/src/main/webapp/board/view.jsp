@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
-<%@ page import="java.util.List"%>
-<%@ page import="bitcamp.myapp.vo.Board"%>
-<%@ page import="bitcamp.myapp.vo.AttachedFile"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang='en'>
-<head>
+  <head>
   <meta charset='UTF-8'>
   <title>비트캠프 데브옵스 5기</title>
 </head>
@@ -14,37 +12,44 @@
 <jsp:include page="/header.jsp"></jsp:include>
 
 <%
+  String boardName = (String) request.getAttribute("boardName");
+  int category = (int) request.getAttribute("category");
   Board board = (Board) request.getAttribute("board");
 %>
 
-<%
-      String title = "";
-      int category = Integer.valueOf(request.getParameter("category"));
-      title = category == 1 ? "게시글" : "가입인사";
-%>
-
-<h1><%=title%></h1>
-
+<h1><${boardName}></h1>
 <form action='/board/update' method='post' enctype='multipart/form-data'>
-  <input name='category' type='hidden' value='<%=category%>'>
+  <input name='category' type='hidden' value='${category}'>
+  <div>
+    번호: <input readonly name='no' type='text' value='${board.no}'>
+  </div>
+  <div>
+    제목: <input name='title' type='text' value='${board.title}'>
+  </div>
+  <div>
+    내용: <textarea name='content'><${board.content}></textarea>
+  </div>
+  <div>
+    작성자: <input readonly type='text' value='${board.writer.name}'>
+  </div>
 
-<div>
-    번호: <input readonly name='no' type='text' value='<%=board.getNo()%>'>
-</div>
-<div>
-    제목: <input name='title' type='text' value='<%=board.getTitle()%>'>
-</div>
-<div>
-    내용: <textarea name='content'><%=board.getContent()%></textarea>
-</div>
-<div>
-    작성자: <input readonly type='text' value='<%=board.getWriter().getName()%>'>
-</div>
+  <c:if test="${category == 1}">
+    <div>
+      첨부파일: <input multiple name='files' type='file'>
+      <ul>
+      <c:forEach items="${files}" type='file'>
 
-<div>
-  <button>변경</button>
-  <a href='/board/delete?category=<%=category%>&no=<%=board.getNo()%>'>[삭제]</a>
-</div>
+        <li><a href='/upload/board/${file.filepath}'>${file.filepath}</a>
+          [<a href='/board/file/delete?category=${category}&no=${file.no}'>삭제</a>]</li>
+      </c:forEach>
+      </ul>
+    </div>
+  </c:if>
+
+  <div>
+    <button>변경</button>
+    <a href='/board/delete?category=${category}>&no=<${board.no}'>[삭제]</a>
+  </div>
 </form>
 
 <jsp:include page="/footer.jsp"></jsp:include>
