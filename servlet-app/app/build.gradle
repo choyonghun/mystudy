@@ -15,6 +15,9 @@ dependencies {
 
     testImplementation libs.junit.jupiter
 
+    // JSTL 라이브러리
+    implementation 'javax.servlet:jstl:1.2'
+
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     implementation libs.guava
 }
