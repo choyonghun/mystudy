@@ -5,7 +5,6 @@ import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
-import bitcamp.util.Component;
 import bitcamp.util.TransactionManager;
 import java.io.File;
 import java.util.ArrayList;
@@ -14,6 +13,7 @@ import java.util.Map;
 import java.util.UUID;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import org.springframework.stereotype.Component;
 
 @Component
 public class BoardController {
@@ -27,7 +27,7 @@ public class BoardController {
       TransactionManager txManager,
       BoardDao boardDao,
       AttachedFileDao attachedFileDao) {
-
+    System.out.println("BoardController() 호출됨!");
     this.txManager = txManager;
     this.boardDao = boardDao;
     this.attachedFileDao = attachedFileDao;
