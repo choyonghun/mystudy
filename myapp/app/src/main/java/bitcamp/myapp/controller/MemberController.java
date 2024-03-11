@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MemberController {
 
   private MemberDao memberDao;
-  private String uploadDir = "";
+  private String uploadDir;
 
   public MemberController(MemberDao memberDao, ServletContext sc) {
     System.out.println("MemberController() 호출됨!");

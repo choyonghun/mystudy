@@ -24,12 +24,12 @@ public class BoardController {
   private TransactionManager txManager;
   private BoardDao boardDao;
   private AttachedFileDao attachedFileDao;
-  private String uploadDir = "";
+  private String uploadDir;
 
   public BoardController(
       TransactionManager txManager,
       BoardDao boardDao,
-      AttachedFileDao attachedFileDao
+      AttachedFileDao attachedFileDao,
       ServletContext sc) {
     System.out.println("BoardController() 호출됨!");
     this.txManager = txManager;
@@ -51,7 +51,7 @@ public class BoardController {
   @RequestMapping("/board/add")
   public String add(
       Board board,
-      @RequestParam("files") Part[] files,
+      @RequestParam(value = "attachedFiles", required = false) Part[] files,
       HttpSession session,
       Map<String, Object> map) throws Exception {
 
@@ -134,7 +134,7 @@ public class BoardController {
   @RequestMapping("/board/update")
   public String update(
       Board board,
-      @RequestParam("files") Part[] files,
+      @RequestParam(value = "attachedFiles", required = false) Part[] files,
       HttpSession session,
       Map<String, Object> map) throws Exception {
 
