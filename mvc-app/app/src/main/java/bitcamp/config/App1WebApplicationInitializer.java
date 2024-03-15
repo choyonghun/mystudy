@@ -1,18 +1,10 @@
 package bitcamp.config;
 
-import javax.servlet.Registration.Dynamic;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.web.context.AbstractContextLoaderInitializer;
-import org.springframework.web.context.ContextLoaderListener;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration.Dynamic;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class AdminDispatcherServletInitializer  extends
+public class App1WebApplicationInitializer extends
     AbstractAnnotationConfigDispatcherServletInitializer {
 
   @Override
@@ -26,15 +18,24 @@ public class AdminDispatcherServletInitializer  extends
   @Override
   protected Class<?>[] getServletConfigClasses() {
     // DispatcherServlet 의 IoC 컨테이너가 사용할 Java Config 클래스를 리턴한다.
-    return new Class<?>[] {AdminConfig.class};
+    return new Class<?>[] {App1Config.class};
   }
   @Override
   protected String[] getServletMappings() {
-    return new String[] {"/admin/*"};
+    return new String[] {"/app1/*"};
   }
 
   @Override
   protected String getServletName() {
-    return "admin";
+    return "app1";
+  }
+
+  @Override
+  protected void customizeRegistration(Dynamic registration) {
+    registration.setMultipartConfig(new MultipartConfigElement(
+        ".temp",
+        1024*1024*10,
+        1024*1024*100,
+        1024*1024*1));
   }
 }
