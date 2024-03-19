@@ -1,12 +1,16 @@
 package bitcamp.app1;
 
+import bitcamp.SpringUtils;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.http.Part;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,29 +18,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-
 @Controller
 @RequestMapping("/c04_8")
 public class Controller04_8 {
 
+  private static Log log = LogFactory.getLog(Controller04_8.class);
+
   // ServletContext는 메서드의 아규먼트로 받을 수 없다.
   // 의존 객체로 주입 받아야 한다.
+  //@Autowired
+  //ServletContext sc;
+
   @Autowired
-  ServletContext sc;
+  ApplicationContext ctx;
 
-  // 클라이언트가 멀티파트 형식으로 전송한 데이터를 꺼내기
-  // => Servlet API에서 제공하는 Part를 사용하거나
-  //    또는 Spring에서 제공하는 MultipartFile 타입의 아규먼트를 선언하면 된다.
-  //
-  // 주의!
-  // => DispatcherServlet을 web.xml을 통해 배치했다면,
-  //    <multipart-config/> 태그를 추가해야 한다.
-  // => WebApplicationInitializer를 통해 DispatcherServlet을 배치했다면,
-  //    App1WebApplicationInitializer 클래스를 참고하라!
-  //
-
-  // 테스트:
-  // http://.../html/app1/c04_8.html
   @PostMapping(value = "h1", produces = "text/html;charset=UTF-8")
   @ResponseBody
   public String handler1(
@@ -45,11 +40,13 @@ public class Controller04_8 {
       Part photo // Servlet API의 객체
   ) throws Exception {
 
+    //SpringUtils.printBeanList(ctx);
+
     String filename = null;
     if (photo != null && photo.getSize() > 0) {
       filename = UUID.randomUUID().toString();
-      String path = sc.getRealPath("/upload/" + filename);
-      photo.write(path);
+      //String path = sc.getRealPath("/upload/" + filename);
+      //photo.write(path);
     }
 
     return "<html><head><title>c04_8/h1</title></head><body>" + "<h1>업로드 결과</h1>" + "<p>이름:" + name
@@ -61,11 +58,6 @@ public class Controller04_8 {
         + "</body></html>";
   }
 
-  // MultipartFile로 멀티파트 데이터를 받으려면,
-  // Spring WebMVC 설정에서 MultipartResolver 객체를 등록해야 한다.
-  //
-  // 테스트:
-  // http://.../html/app1/c04_8.html
   @PostMapping(value = "h2", produces = "text/html;charset=UTF-8")
   @ResponseBody
   public String handler2(//
@@ -77,8 +69,8 @@ public class Controller04_8 {
     String filename = null;
     if (photo != null && !photo.isEmpty()) {
       filename = UUID.randomUUID().toString();
-      String path = sc.getRealPath("/upload/" + filename);
-      photo.transferTo(new File(path));
+      //String path = sc.getRealPath("/upload/" + filename);
+      //photo.transferTo(new File(path));
     }
 
     return "<html><head><title>c04_8/h2</title></head><body>" + "<h1>업로드 결과</h1>" + "<p>이름:" + name
@@ -90,8 +82,6 @@ public class Controller04_8 {
         + "</body></html>";
   }
 
-  // 테스트:
-  // http://.../html/app1/c04_8.html
   @PostMapping(value = "h3", produces = "text/html;charset=UTF-8")
   @ResponseBody
   public String handler3(//
@@ -111,16 +101,13 @@ public class Controller04_8 {
     for (MultipartFile f : photo) {
       if (!f.isEmpty()) {
         String filename = UUID.randomUUID().toString();
-        String path = sc.getRealPath("/html/app1/" + filename);
-        f.transferTo(new File(path));
-        out.printf("<p><img src='../../html/app1/%s'></p>\n", filename);
+        //String path = sc.getRealPath("/upload/" + filename);
+        //f.transferTo(new File(path));
+        out.printf("<p><img src='../../upload/%s'></p>\n", filename);
       }
     }
     out.println("</body></html>");
 
     return out0.toString();
   }
-
 }
-
-

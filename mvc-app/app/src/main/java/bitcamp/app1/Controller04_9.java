@@ -1,6 +1,5 @@
 package bitcamp.app1;
 
-
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import org.springframework.stereotype.Controller;
@@ -12,12 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/c04_9")
 public class Controller04_9 {
-
-  // 클라이언트가 보낸 데이터를 통째로 받기
-  // => request handler의 아규먼트 앞에 @RequestBody를 붙이면 된다.
-
-  // 테스트:
-  //    http://.../html/app1/c04_9.html
   @PostMapping(value="h1", produces="text/html;charset=UTF-8")
   @ResponseBody
   public String handler1(
@@ -37,5 +30,4 @@ public class Controller04_9 {
     out.println("</body></html>");
     return out0.toString();
   }
-
 }

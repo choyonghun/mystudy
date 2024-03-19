@@ -1,20 +1,22 @@
 package bitcamp.config;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class App2WebApplicationInitializer extends
     AbstractAnnotationConfigDispatcherServletInitializer {
 
+  private static Log log = LogFactory.getLog(App2WebApplicationInitializer.class);
+
   @Override
   protected Class<?>[] getRootConfigClasses() {
-    // ContextLoaderListener 의 IoC 컨테이너가 사용할 Java Config 클래스를 리턴한다.
     return null;
   }
 
   @Override
   protected Class<?>[] getServletConfigClasses() {
-    // DispatcherServlet 의 IoC 컨테이너가 사용할 Java Config 클래스를 리턴한다.
-    return new Class<?>[] {App2Config.class};
+    return new Class[] {App2Config.class};
   }
 
   @Override

@@ -1,6 +1,5 @@
 package bitcamp.app1;
 
-
 import java.io.PrintWriter;
 import java.net.URLEncoder;
 import javax.servlet.http.Cookie;
@@ -14,12 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/c04_7")
 public class Controller04_7 {
-
-  // 클라이언트가 보낸 쿠키 꺼내기
-  // => @CookieValue(쿠키명) 애노테이션을 request handler의 아규먼트 앞에 붙인다.
-
-  // 테스트:
-  // http://.../c04_7/h1
   @GetMapping("h1")
   @ResponseBody
   public void handler1(
@@ -42,8 +35,6 @@ public class Controller04_7 {
     out.println("send cookie!");
   }
 
-  // 테스트:
-  // http://.../c04_7/h2
   @GetMapping(value = "h2", produces = "text/plain;charset=UTF-8")
   @ResponseBody
   public String handler2(
@@ -91,7 +82,4 @@ public class Controller04_7 {
         "name1=%s\n name2=%s\n name2=%s\n name3=%s\n age=%d\n", //
         name1, name2, namex, name3, age);
   }
-
 }
-
-
