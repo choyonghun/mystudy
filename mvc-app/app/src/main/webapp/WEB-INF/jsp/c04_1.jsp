@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>c04_1</title>
 </head>
 <body>
-<h1>/WEB-INF/jsp/c01_2/h3.jsp</h1>
-이름 = ${name}<br>
-나이 = ${age}<br>
+<h1>/jsp/c04_1.jsp</h1>
 </body>
 </html>
+<%
+  System.out.println("JSP 실행 했음!!!");
+%>

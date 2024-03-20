@@ -1,6 +1,5 @@
 package bitcamp.app1;
 
-
 import java.util.Map;
 import javax.servlet.ServletRequest;
 import org.springframework.stereotype.Controller;
@@ -12,9 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/c05_3")
 public class Controller05_3 {
-
-  // 테스트:
-  //   http://localhost:9999/eomcs-spring-webmvc/app1/c05_3/h1
   @GetMapping("h1")
   public String handler1(
       ServletRequest request) {
@@ -27,8 +23,6 @@ public class Controller05_3 {
     return "/WEB-INF/jsp/c05_3.jsp";
   }
 
-  // 테스트:
-  //   http://localhost:9999/eomcs-spring-webmvc/app1/c05_3/h2
   @GetMapping("h2")
   public String handler2(Map<String,Object> map) {
 
@@ -46,8 +40,6 @@ public class Controller05_3 {
     return "/WEB-INF/jsp/c05_3.jsp";
   }
 
-  // 테스트:
-  //   http://localhost:9999/eomcs-spring-webmvc/app1/c05_3/h3
   @GetMapping("h3")
   public String handler3(Model model) {
 
@@ -62,8 +54,6 @@ public class Controller05_3 {
     return "/WEB-INF/jsp/c05_3.jsp";
   }
 
-  // 테스트:
-  //   http://localhost:9999/eomcs-spring-webmvc/app1/c05_3/h4
   @GetMapping("h4")
   public ModelAndView handler4() {
 
@@ -83,17 +73,3 @@ public class Controller05_3 {
     return mv;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

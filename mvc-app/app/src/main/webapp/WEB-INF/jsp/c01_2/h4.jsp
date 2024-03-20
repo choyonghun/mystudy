@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>c01_1</title>
+<title></title>
 </head>
 <body>
 <h1>/WEB-INF/jsp/c01_2/h4.jsp</h1>
