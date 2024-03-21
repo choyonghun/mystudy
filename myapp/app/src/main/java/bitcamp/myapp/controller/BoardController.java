@@ -44,13 +44,9 @@ public class BoardController {
   }
 
   @GetMapping("form")
-  public String form(
-      int category,
-      Model model) throws Exception {
-
+  public void form(int category, Model model) throws Exception {
     model.addAttribute("boardName", category == 1 ? "게시글" : "가입인사");
     model.addAttribute("category", category);
-    return "/board/form.jsp";
   }
 
   @PostMapping("add")
@@ -104,15 +100,14 @@ public class BoardController {
   }
 
   @GetMapping("list")
-  public String list(int category, Model model) throws Exception {
+  public void list(int category, Model model) throws Exception {
     model.addAttribute("boardName", category == 1 ? "게시글" : "가입인사");
     model.addAttribute("category", category);
     model.addAttribute("list", boardDao.findAll(category));
-    return "/board/list.jsp";
   }
 
   @GetMapping("view")
-  public String view(int category, int no, Model model) throws Exception {
+  public void view(int category, int no, Model model) throws Exception {
     Board board = boardDao.findBy(no);
     if (board == null) {
       throw new Exception("번호가 유효하지 않습니다.");
@@ -124,7 +119,6 @@ public class BoardController {
     if (category == 1) {
       model.addAttribute("files", attachedFileDao.findAllByBoardNo(no));
     }
-    return "/board/view.jsp";
   }
 
   @PostMapping("update")

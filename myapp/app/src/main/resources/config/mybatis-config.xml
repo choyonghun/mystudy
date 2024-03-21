@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
   <properties resource="config/jdbc.properties"/>
 
   <environments default="development">
@@ -18,7 +19,8 @@
   </environments>
 
   <mappers>
-    <mapper resource="config/mapper/MemberMapper.xml"/>
+    <mapper resource="mapper/MemberMapper.xml"/>
   </mappers>
+
 
 </configuration>

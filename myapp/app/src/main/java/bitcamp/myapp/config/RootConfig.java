@@ -1,6 +1,5 @@
 package bitcamp.myapp.config;
 
-import java.io.IOException;
 import java.io.InputStream;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -27,12 +26,11 @@ public class RootConfig {
   }
 
   @Bean
-  public SqlSessionFactory sqlSessionFactory() throws IOException {
+  public SqlSessionFactory sqlSessionFactory() throws Exception {
     String resource = "config/mybatis-config.xml";
     InputStream inputStream = Resources.getResourceAsStream(resource);
     SqlSessionFactory sqlSessionFactory =
         new SqlSessionFactoryBuilder().build(inputStream);
-
     return sqlSessionFactory;
   }
 }
