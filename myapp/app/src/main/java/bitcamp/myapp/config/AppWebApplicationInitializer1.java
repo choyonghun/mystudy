@@ -25,8 +25,8 @@ public class AppWebApplicationInitializer1 /*implements WebApplicationInitialize
     AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
     appContext.register(AppConfig.class);
     appContext.setParent(rootContext);
+    appContext.setServletContext(servletContext);
     appContext.refresh();
-
     Dynamic registration = servletContext.addServlet("app", new DispatcherServlet(appContext));
     registration.addMapping("/app/*");
     registration.setLoadOnStartup(1);
@@ -39,8 +39,8 @@ public class AppWebApplicationInitializer1 /*implements WebApplicationInitialize
     ));
 
     CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter("UTF-8");
-    javax.servlet.FilterRegistration.Dynamic filterRegistration = servletContext.addFilter(
-        "characterEncodingFilter", characterEncodingFilter);
+    javax.servlet.FilterRegistration.Dynamic filterRegistration =
+        servletContext.addFilter("characterEncodingFilter", characterEncodingFilter);
     filterRegistration.addMappingForServletNames(
         EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.INCLUDE),
         false,
@@ -48,5 +48,6 @@ public class AppWebApplicationInitializer1 /*implements WebApplicationInitialize
     );
 
   }
+
 
 }

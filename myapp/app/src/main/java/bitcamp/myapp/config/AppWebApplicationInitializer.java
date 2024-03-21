@@ -1,38 +1,23 @@
 package bitcamp.myapp.config;
 
 import java.io.File;
-import java.util.EnumSet;
-import javax.servlet.DispatcherType;
+import javax.servlet.Filter;
 import javax.servlet.MultipartConfigElement;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration.Dynamic;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.servlet.DispatcherServlet;
-import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class AppWebApplicationInitializer extends AbstractDispatcherServletInitializer {
-
-  AnnotationConfigWebApplicationContext rootContext;
+public class AppWebApplicationInitializer extends
+    AbstractAnnotationConfigDispatcherServletInitializer {
 
   @Override
-  protected WebApplicationContext createRootApplicationContext() {
-    rootContext = new AnnotationConfigWebApplicationContext();
-    rootContext.register(RootConfig.class);
-    rootContext.refresh();
-    return rootContext;
+  protected Class<?>[] getRootConfigClasses() {
+    return new Class[]{RootConfig.class};
   }
 
   @Override
-  protected WebApplicationContext createServletApplicationContext() {
-    AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
-    appContext.register(AppConfig.class);
-//    appContext.setParent(this.rootContext);
-//    appContext.setServletContext(servletContext);
-    appContext.refresh();
-    return appContext;
+  protected Class<?>[] getServletConfigClasses() {
+    return new Class[]{AppConfig.class};
   }
 
   @Override
@@ -41,11 +26,7 @@ public class AppWebApplicationInitializer extends AbstractDispatcherServletIniti
   }
 
   @Override
-  public void onStartup(ServletContext servletContext) throws ServletException {
-    super.onStartup(servletContext);
-
-    Dynamic registration = servletContext.addServlet("app", new DispatcherServlet(appContext));
-    registration.addMapping("/app/*");
+  protected void customizeRegistration(Dynamic registration) {
     registration.setMultipartConfig(new MultipartConfigElement(
         new File("./temp").getAbsolutePath(),
         //new File(System.getProperty("java.io.tmpdir")).getAbsolutePath(),
@@ -53,15 +34,11 @@ public class AppWebApplicationInitializer extends AbstractDispatcherServletIniti
         1024 * 1024 * 100,
         1024 * 1024 * 1
     ));
-
-    CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter("UTF-8");
-    javax.servlet.FilterRegistration.Dynamic filterRegistration = servletContext.addFilter(
-        "characterEncodingFilter", characterEncodingFilter);
-    filterRegistration.addMappingForServletNames(
-        EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.INCLUDE),
-        false,
-        new String[]{"app"}
-    );
-
   }
+
+  @Override
+  protected Filter[] getServletFilters() {
+    return new Filter[]{new CharacterEncodingFilter("UTF-8")};
+  }
+
 }

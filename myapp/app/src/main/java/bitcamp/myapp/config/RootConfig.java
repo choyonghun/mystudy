@@ -12,4 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 })
 public class RootConfig {
 
+  public RootConfig() {
+    System.out.println("RootConfig()... 호출됨!");
+  }
 }
