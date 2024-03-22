@@ -15,7 +15,6 @@ public class AssignmentDaoImpl implements AssignmentDao {
   private final Log log = LogFactory.getLog(this.getClass());
   SqlSessionFactory sqlSessionFactory;
 
-
   public AssignmentDaoImpl(SqlSessionFactory sqlSessionFactory) {
     log.debug("AssignmentDaoImpl() 호출됨!");
     this.sqlSessionFactory = sqlSessionFactory;
@@ -30,7 +29,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
 
   @Override
   public int delete(int no) {
-    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
       return sqlSession.delete("AssignmentDao.delete", no);
     }
   }
@@ -51,7 +50,7 @@ public class AssignmentDaoImpl implements AssignmentDao {
 
   @Override
   public int update(Assignment assignment) {
-    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
       return sqlSession.update("AssignmentDao.update", assignment);
     }
   }

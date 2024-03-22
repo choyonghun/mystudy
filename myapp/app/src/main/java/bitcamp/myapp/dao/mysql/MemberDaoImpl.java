@@ -30,7 +30,7 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public int delete(int no) {
-    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
       return sqlSession.delete("MemberDao.delete", no);
     }
   }
@@ -59,7 +59,6 @@ public class MemberDaoImpl implements MemberDao {
   @Override
   public Member findByEmailAndPassword(String email, String password) {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
-      // 여러개를 넘기려면 Map으로 묶어서 넘기면된다!
       HashMap<String, Object> data = new HashMap<>();
       data.put("email", email);
       data.put("password", password);
@@ -67,4 +66,3 @@ public class MemberDaoImpl implements MemberDao {
     }
   }
 }
-
