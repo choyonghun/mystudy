@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.servlet.ModelAndView;
 
+
 @ControllerAdvice
 public class GlobalControllerAdvice {
 
@@ -33,7 +34,7 @@ public class GlobalControllerAdvice {
 
     mv.addObject("detail", stringWriter.toString());
 
-    mv.setViewName("/error.jsp");
+    mv.setViewName("/error");
     return mv;
   }
 }
