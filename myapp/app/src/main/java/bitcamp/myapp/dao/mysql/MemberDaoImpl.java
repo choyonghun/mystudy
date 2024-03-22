@@ -51,7 +51,7 @@ public class MemberDaoImpl implements MemberDao {
 
   @Override
   public int update(Member member) {
-    try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.update("MemberDao.update", member);
     }
   }

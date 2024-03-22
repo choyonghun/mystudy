@@ -29,21 +29,21 @@ public class AttachedFileDaoImpl implements AttachedFileDao {
 
   @Override
   public int addAll(List<AttachedFile> files) {
-    try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.insert("AttachedFileDao.addAll", files);
     }
   }
 
   @Override
   public int delete(int no) {
-    try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.delete("AttachedFileDao.delete", no);
     }
   }
 
   @Override
   public int deleteAll(int boardNo) {
-    try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.delete("AttachedFileDao.deleteAll", boardNo);
     }
   }
