@@ -18,11 +18,11 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/member")
 public class MemberController {
 
-  private final Log log = LogFactory.getLog(this.getClass());
-  private MemberService memberService;
+  private static final Log log = LogFactory.getLog(MemberController.class);
+  private final MemberService memberService;
   private String uploadDir;
 
-  public MemberController(ServletContext sc, MemberService memberService) {
+  public MemberController(MemberService memberService, ServletContext sc) {
     log.debug("MemberController() 호출됨!");
     this.memberService = memberService;
     this.uploadDir = sc.getRealPath("/upload");
@@ -87,6 +87,7 @@ public class MemberController {
     }
 
     memberService.delete(no);
+
     String filename = member.getPhoto();
     if (filename != null) {
       new File(this.uploadDir + "/" + filename).delete();

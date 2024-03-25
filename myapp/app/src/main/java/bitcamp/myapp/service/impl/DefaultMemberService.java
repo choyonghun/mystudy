@@ -1,17 +1,21 @@
 package bitcamp.myapp.service.impl;
 
+import bitcamp.myapp.controller.MemberController;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.service.MemberService;
 import bitcamp.myapp.vo.Member;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Service;
 
+@Service
+@AllArgsConstructor
 public class DefaultMemberService implements MemberService {
 
+  private static final Log log = LogFactory.getLog(MemberController.class);
   private MemberDao memberDao;
-
-  public DefaultMemberService(MemberDao memberDao) {
-    this.memberDao = memberDao;
-  }
 
   @Override
   public void add(Member member) {
