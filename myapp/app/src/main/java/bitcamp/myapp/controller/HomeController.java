@@ -10,11 +10,19 @@ public class HomeController {
 
   private static final Log log = LogFactory.getLog(HomeController.class);
 
-  public HomeController() {
-    log.debug("HomeController() 호출됨!");
-  }
-
   @GetMapping("/home")
   public void home() {
+
+    // return "home" // ==> ThymeleafViewResolver가 처리한다
+  }
+
+  @GetMapping("/home1")
+  public String hom2() {
+    return "home.jsp";  // ==> ThymeleafViewResolver가 처리한다
+  }
+
+  @GetMapping("/home2")
+  public String home2() {
+    return "home.html"; // ==> ThymeleafViewResolver가 처리한다
   }
 }

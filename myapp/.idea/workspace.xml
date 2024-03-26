@@ -5,17 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/auth/form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/auth/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/error.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/myapp.app.main.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/AboutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/AboutController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/AssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/AssignmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/BoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/MemberDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/dao/MemberDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/AssignmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/AssignmentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/BoardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/DefaultAssignmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/DefaultAssignmentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/DefaultBoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/DefaultBoardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/DefaultMemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/service/impl/DefaultMemberService.java" afterDir="false" />
@@ -23,17 +30,7 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/AttachedFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/AttachedFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/resources/mapper/MemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/resources/mapper/MemberMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/2e61aea0-4caf-42b7-b42e-807b23323c95" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/327c9af0-964e-401f-8ca0-1fdf74e8625d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/47e77ccc-2fb5-4440-906f-24101188c5b2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/4e241f99-140c-4531-8cbf-dd89da26652b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/9b281465-9093-4abf-8181-73a1e51e7a9d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/9f33cb24-a7a2-423e-9fb1-6370c5a1ed32" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/a5c745ce-3d6a-4b6c-a489-63e817d00105" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/bd08836f-e929-433c-8f49-fa3296f9ecbb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/c35f718e-bd68-4747-a562-2961093fe95f" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/upload/board/ca6c6426-6961-42e0-b06e-d44f43662724" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/board/view.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp/board/view.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,9 +92,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -142,29 +139,29 @@
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/user/git/mystudy/myapp/app/src/main/java/mystudy/myapp",
-    "last_opened_file_path": "C:/Users/user/git/mystudy/myapp/app/src/main/webapp/WEB-INF/jsp",
+    "last_opened_file_path": "C:/Users/user/git/mystudy/myapp/app/src/main/webapp/WEB-INF/templates",
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "settings.saveactions",
     "애플리케이션.DaoTest.executor": "Run",
     "애플리케이션.Test.executor": "Run"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\git\mystudy\myapp\app\src\main\webapp\WEB-INF\templates" />
+      <recent name="C:\Users\user\git\mystudy\myapp\app\src\main\webapp\WEB-INF\templates\auth" />
       <recent name="C:\Users\user\git\mystudy\myapp\app\src\main\webapp\WEB-INF\jsp" />
       <recent name="C:\Users\user\git\mystudy\myapp\app\src\main\resources\config" />
       <recent name="C:\Users\user\git\mystudy\myapp\app\src\main\webapp\member" />
-      <recent name="C:\Users\user\git\mystudy\myapp\app\src\main\webapp\auth" />
-      <recent name="C:\Users\user\git\mystudy\myapp\app\src\main\webapp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\git\mystudy\myapp\app\src\main\webapp\WEB-INF\templates" />
       <recent name="C:\Users\user\git\mystudy\myapp\app\src\main\webapp\WEB-INF\jsp" />
       <recent name="C:\Users\user\git\mystudy\myapp\app\src\main\webapp" />
       <recent name="C:\Users\user\git\mystudy\myapp\app\src\main\webapp\board" />
       <recent name="C:\Users\user\git\mystudy\myapp\app\build" />
-      <recent name="C:\Users\user\git\mystudy\myapp\app-01\src\main\java\bitcamp\myapp" />
     </key>
     <key name="MoveMembersDialog.RECENTS_KEY">
       <recent name="mystudy.myapp.Prompt" />

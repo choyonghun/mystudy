@@ -17,8 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AssignmentController {
 
   private static final Log log = LogFactory.getLog(AssignmentController.class);
-  private AssignmentService assignmentService;
-
+  private final AssignmentService assignmentService;
 
   @GetMapping("form")
   public void form() throws Exception {
@@ -39,7 +38,6 @@ public class AssignmentController {
   @GetMapping("view")
   public void view(int no, Model model) throws Exception {
     Assignment assignment = assignmentService.get(no);
-
     if (assignment == null) {
       throw new Exception("과제 번호가 유효하지 않습니다.");
     }
