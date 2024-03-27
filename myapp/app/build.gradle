@@ -40,6 +40,9 @@ dependencies {
     // => Mybatis 3.5를 Spring 5.x와 연동시켜주는 라이브러리
     implementation 'org.mybatis:mybatis-spring:2.1.2'
 
+    // Thymeleaf 라이브러리
+    implementation 'org.thymeleaf:thymeleaf-spring5:3.1.2.RELEASE'
+
     // Lombok 라이브러리
     // => 컴파일 할 때만 이 라이브러리를 사용한다.
     //    컴파일이 완료된 후에는 이 라이브러리가 필요없다.
@@ -53,8 +56,9 @@ dependencies {
     // => 단위 테스트 소스에 삽입된 lombok 애노테이션을 처리할 라이브러리를 지정한다.
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
 
-    // thymeleaf 라이브러리
-    implementation 'org.thymeleaf:thymeleaf-spring5:3.1.2.RELEASE'
+    // AWS-S3 API 라이브러리
+    implementation 'com.amazonaws:aws-java-sdk-s3:1.12.688'
+
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

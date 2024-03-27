@@ -17,7 +17,6 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
-
 @ComponentScan({"bitcamp.myapp.controller"})
 public class AppConfig {
 
@@ -36,14 +35,14 @@ public class AppConfig {
   public ViewResolver viewResolver() {
     InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
     viewResolver.setPrefix("/WEB-INF/jsp/");
-//    viewResolver.setSuffix(".jsp");
+    //viewResolver.setSuffix(".jsp");
     viewResolver.setViewNames("*.jsp");
     viewResolver.setOrder(1);
     return viewResolver;
   }
 
   @Bean
-  public ThymeleafViewResolver viewResolver(ISpringTemplateEngine springTemplateEngine) {
+  public ThymeleafViewResolver thymeleafViewResolver(ISpringTemplateEngine springTemplateEngine) {
     ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
     viewResolver.setTemplateEngine(springTemplateEngine);
     viewResolver.setViewNames(new String[]{"*.html", "*.xhtml", "*"});
@@ -60,16 +59,23 @@ public class AppConfig {
     templateResolver.setSuffix(".html");
     templateResolver.setTemplateMode(TemplateMode.HTML);
 
-    // hteml 템플릿을 Thymeleaf 엔진이 사용할수 있도록 컴파일 해둘 것인가?
+    // HTML 템플릿을 Thymeleaf 엔진이 사용할 수 있도록
+    // 특정 형식에 맞춰 컴파일 해 둘 것인가?
     // => 컴파일? 어떤 형식의 데이터를 다른 형식의 데이터로 바꾸는 것도 컴파일이다.
-    // => 개발하는 동안 템플릿 파일의 내용으 자주 바꿀수 있기 때문에 저장하지 않는것이 좋다.
-    //    실행 할때마다 템플릿 파일을 컴파일 하는것이 좋다.
-    //    왜? 템플릿 파이을 변경할 때마다 섭버를 다시 실행해야하기 때문이다
-    // => casheable = false
-    //
-    // => 개발이 완료된 다음에는 템플릿 파일을 컴파일한 결과를 보관해 두는 것이
-    //    실행 속도를 높힌다.
-    templateResolver.setCacheable(true);
+    // => cacheable = true
+    //    템플릿 파일을 한 번 컴파일하면 캐시에 보관해 둔다.
+    //    실행할 때마다 캐시에 보관된 것을 사용하여 화면을 생성한다.
+    //    실행할 때마다 매번 컴파일하지 않기 때문에 실행 속도가 빠르다.
+    //    단 개발하는 동안에는 불편하다.
+    //    왜? 개발하는 동안에는 템플릿 파일의 내용을 자주 바꾸기 때문이다.
+    //    바꾼 템플릿 파일을 적용하려면 서버를 다시 실행해야 한다.
+    // => cacheable = false
+    //    템플릿 파일의 컴파일 결과를 캐시에 보관하지 않는다.
+    //    매번 실행할 때마다 다시 템플릿 파일을 컴파일 한다.
+    //    개발하는 동안에 필요한 설정한다.
+    ///   개발을 완료하면 캐시를 사용하는 것이 성능에 좋다.
+    templateResolver.setCacheable(false);
+    
     return templateResolver;
   }
 
