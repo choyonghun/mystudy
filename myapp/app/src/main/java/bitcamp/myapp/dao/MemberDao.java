@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+
 @Mapper
 public interface MemberDao {
 
@@ -12,7 +13,9 @@ public interface MemberDao {
 
   public int delete(int no);
 
-  public List<Member> findAll();
+  public List<Member> findAll(
+      @Param("offset") int offset,
+      @Param("rowCount") int rowCount);
 
   public Member findBy(int no);
 
@@ -21,4 +24,6 @@ public interface MemberDao {
   public Member findByEmailAndPassword(
       @Param("email") String email,
       @Param("password") String password);
+
+  int countAll();
 }

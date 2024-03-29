@@ -24,34 +24,38 @@
 
   <select id="findAll" resultMap="AssignmentMap">
     select
-      assignment_no,
-      title,
-      deadline
+    assignment_no,
+    title,
+    deadline
     from
-      assignments
+    assignments
     order by
-      assignment_no desc
+    assignment_no desc
+    limit #{rowCount} offset #{offset}
   </select>
 
   <select id="findBy" resultMap="AssignmentMap" parameterType="int">
     select
-      assignment_no,
-      title,
-      content,
-      deadline
+    assignment_no,
+    title,
+    content,
+    deadline
     from
-      assignments
+    assignments
     where
-      assignment_no=#{value}
+    assignment_no=#{value}
   </select>
 
   <update id="update" parameterType="Assignment">
     update assignments set
-      title=#{title},
-      content=#{content},
-      deadline=#{deadline}
+    title=#{title},
+    content=#{content},
+    deadline=#{deadline}
     where
-      assignment_no=#{no}
+    assignment_no=#{no}
   </update>
 
+  <select id="countAll" resultType="int">
+    select count(*) from assignments;
+  </select>
 </mapper>

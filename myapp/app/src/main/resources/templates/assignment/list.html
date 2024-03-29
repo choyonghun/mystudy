@@ -10,7 +10,7 @@
 
 <h1>과제</h1>
 
-<a href='/app/assignment/form'>새 과제</a>
+<a data-th-href="@{/assignment/form}" href="form">새 과제</a>
 <table border='1'>
   <thead>
   <tr>
@@ -31,6 +31,21 @@
   </tr>
   </tbody>
 </table>
+
+<p>
+  [
+  <a data-th-if="${pageNo <= 1}">이전</a>
+  <a data-th-href="@{list(category=${category},pageNo=${pageNo - 1},pageSize=${pageSize})}"
+     data-th-if="${pageNo > 1}"
+     href="list">이전</a>
+  ]
+  [
+  <a data-th-if="${pageNo >= numOfPage}">다음</a>
+  <a data-th-href="@{list(category=${category},pageNo=${pageNo + 1},pageSize=${pageSize})}"
+     data-th-if="${pageNo < numOfPage}"
+     href="list">다음</a>
+  ]
+</p>
 
 <div data-th-replace="footer :: footer">꼬리말</div>
 

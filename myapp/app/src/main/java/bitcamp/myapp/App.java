@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @EnableTransactionManagement
 @PropertySource({
     "classpath:config/ncp.properties",
-    "classpath:config/ncp-secret.properties"})
+    "classpath:config/ncp-secret.properties"
+})
 @Controller
 public class App {
 
