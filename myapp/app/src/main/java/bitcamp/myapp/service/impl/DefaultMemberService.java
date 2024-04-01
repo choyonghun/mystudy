@@ -50,6 +50,7 @@ public class DefaultMemberService implements MemberService {
     return memberDao.delete(no);
   }
 
+
   @Override
   public int countAll() {
     return memberDao.countAll();
