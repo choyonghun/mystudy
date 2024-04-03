@@ -33,7 +33,6 @@ public class MemberController implements InitializingBean {
   @Override
   public void afterPropertiesSet() throws Exception {
     this.uploadDir = "member/";
-
     log.debug(String.format("uploadDir: %s", this.uploadDir));
     log.debug(String.format("bucketname: %s", this.bucketName));
   }

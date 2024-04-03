@@ -77,4 +77,5 @@
   <select id="countAll" resultType="int">
     select count(*) from members;
   </select>
+
 </mapper>
