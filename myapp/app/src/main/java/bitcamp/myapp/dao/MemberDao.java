@@ -14,6 +14,7 @@ public interface MemberDao {
   public int delete(int no);
 
   public List<Member> findAll(
+
       @Param("offset") int offset,
       @Param("rowCount") int rowCount);
 
