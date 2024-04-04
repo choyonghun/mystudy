@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 public class DefaultMemberService implements MemberService {
 
   private static final Log log = LogFactory.getLog(DefaultMemberService.class);
-
   private final MemberDao memberDao;
 
   @Override
@@ -26,7 +25,6 @@ public class DefaultMemberService implements MemberService {
   public List<Member> list(int pageNo, int pageSize) {
     log.debug(String.format("pageNo: %s", pageNo));
     log.debug(String.format("pageSize: %s", pageSize));
-
     return memberDao.findAll(pageSize * (pageNo - 1), pageSize);
   }
 
@@ -49,7 +47,6 @@ public class DefaultMemberService implements MemberService {
   public int delete(int no) {
     return memberDao.delete(no);
   }
-
 
   @Override
   public int countAll() {
