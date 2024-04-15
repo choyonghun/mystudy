@@ -14,11 +14,21 @@
 <script>
   "use strict"
 
-  var a = 100;
-  var a = 200;
-  var a = 300;
+  function createStudent(name, age) {
+    let obj = new Object();
+    obj.sname = name;
+    obj.age = age;
+    obj.print = function() {
+      console.log(this.sname, this.age);
+    };
+    return obj;
+  }
 
-  console.log(a);
+  let s1 = createStudent("홍길동", 20);
+  let s2 = createStudent("임꺽정", 20);
+
+  s1.print();
+  s2.print();
 
 </script>
 
