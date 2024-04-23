@@ -6,32 +6,26 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>test</title>
-
 </head>
 <body>
-<h1>JavaScript-Test</h1>
+<h1>JavaScript Test</h1>
 
 <script>
   "use strict"
 
-  function createStudent(name, age) {
-    let obj = new Object();
-    obj.sname = name;
-    obj.age = age;
-    obj.print = function() {
-      console.log(this.sname, this.age);
-    };
-    return obj;
-  }
+  let x = function(name) {
+    console.log(name);
+  };
 
-  let s1 = createStudent("홍길동", 20);
-  let s2 = createStudent("임꺽정", 20);
+  x("임꺽정");
+  x("안중근");
+  x("김구");
 
-  s1.print();
-  s2.print();
+  (function(name) {
+    console.log(name);
+  })("유관순");
 
 </script>
-
 
 </body>
 </html>
