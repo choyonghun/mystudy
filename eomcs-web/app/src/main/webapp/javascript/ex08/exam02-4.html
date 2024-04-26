@@ -16,6 +16,7 @@ const promise = new Promise((resolve, reject) => {
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
       console.log(xhr.responseText);
+      //resolve(); // 작업이 완료를 통지했을때 수행할 다음이 없으면 아무일도 안한다.
       reject(); // 문제가 발생하여 약속된 작업을 거절한다고 알린다.
     }
   };
